@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="4616cb57-9902-485c-97e5-3dedc7f5c83d" name="conn" url="http://localhost/PHP">
+      <webServer id="b3ebd0fb-7b2f-4828-9368-8e7a5c29719e" name="xampp" url="http://localhost/PHP">
         <fileTransfer mountedRoot="C:\Program Files\xampp\htdocs\PHP" accessType="MOUNT" port="0" />
       </webServer>
     </option>
