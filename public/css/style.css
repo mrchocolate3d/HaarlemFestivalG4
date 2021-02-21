@@ -1,12 +1,23 @@
-/*css here*/
+/*
+Font Light: #f5f5f5
+Font Dark: #404040
+Everybodies favourite brown #C06832
+Orange: #FF8B00
+Jazz Purple: #703D57
+Timetable Orange: #FE8115
+Timetable Yellow: #FFCF08
+*/
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   min-height: 100%;
   padding: 0px;
   margin: 0px;
   border: 0px;
   background-color: #f5f5f5;
+  color: #404040;
 }
+
 nav {
   height: 80px;
   margin: 0;
@@ -71,10 +82,22 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 900px;
+  min-height: 875px;
   color: #fff;
   text-align: center;
   margin: 0 auto;
+  position: relative;
+}
+
+#home-title {
+  position: absolute;
+  width: 100%;
+  margin: auto;
+  bottom: 2em;
+}
+#home-title * {
+  padding: 1em 0 0 0;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
 button.transparent {
