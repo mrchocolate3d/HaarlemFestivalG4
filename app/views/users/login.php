@@ -1,13 +1,8 @@
 <?php
-require APPROOT .'/views/includes/header.php';
+require APPROOT . '/views/includes/header.php';
 ?>
 
 <main role="main">
-    <section class="nav-bar">
-        <?php
-        require APPROOT . '/views/includes/navigation.php';
-        ?>
-    </section>
 
     <section class="login-container">
         <aside class="wrapper-login">
@@ -17,6 +12,7 @@ require APPROOT .'/views/includes/header.php';
                 <span class="invalidFeedback">
                     <?php echo $data['usernameError']; ?>
                 </span>
+
                 <input type="password" placeholder="Password *" name="password">
                 <span class="invalidFeedback">
                     <?php echo $data['passwordError']; ?>

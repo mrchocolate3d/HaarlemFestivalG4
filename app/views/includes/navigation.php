@@ -2,10 +2,10 @@
 
     <ul>
         <li> <img src="" alt="Haarlem Festival Logo"> </li>
-        <li> <a href="/pages/index">Home</a> </li>
-        <li> <a href="/pages/jazz">Haarlem Jazz</a> </li>
-        <li> <a href="/pages/history">Haarlem History</a> </li>
-        <li> <a href="/pages/dance">Haarlem Dance</a> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/index" ?>">Home</a> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/jazz" ?>">Haarlem Jazz</a> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/history" ?>">Haarlem History</a> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/dance" ?>">Haarlem Dance</a> </li>
 
         <li>
             <?php
@@ -15,7 +15,7 @@
                 // <li><a href="<?php echo URLROOT; ? >/users/logout">Log out</a></li>
             } else {
                 //Show Login Button
-            ?> <a class="btn-login" href="<?php echo URLROOT;} ?>/Users/Login.php">Log In</a>
+            ?> <a class="btn-login" href="<?php echo URLROOT;} ?>/users/login">Log&nbsp;In</a>
                 <!-- /users/register -->
         </li>
 

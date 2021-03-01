@@ -1,6 +1,6 @@
 <?php include APPROOT . '/views/includes/header.php'; ?>
 
-<main>
+<main id="home">
     <?php //var_dump($data); 
     ?>
 
@@ -14,7 +14,7 @@
 
     </section>
 
-    <section class="container">
+    <section id="home-info-page">
 
         <h2>Experience Haarlem</h2>
         <section id="home-info">
@@ -44,10 +44,10 @@
 
             </section>
 
-            <aside>
-                <img src="" alt="Dance Image">
-                <img src="" alt="History Image">
-                <img src="" alt="Jazz Image">
+            <aside id="events-image">
+                <img src="img/placeholder.png" alt="Dance Image">
+                <img src="img/placeholder.png" alt="History Image">
+                <img src="img/placeholder.png" alt="Jazz Image">
             </aside>
 
         </section>

@@ -9,7 +9,7 @@ define('DB_DBNAME', 'sql11392316');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 //URLROOT
-define ('URLROOT', 'https://haarlemfestival.sholden.tech');
+define ('URLROOT', 'http://localhost/HaarlemFestivalG4');
 
 //SITENAME
 define('SITENAME', 'Haarlem Festival');
