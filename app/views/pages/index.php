@@ -1,4 +1,4 @@
-<?php include APPROOT . '\views\includes\header.php'; ?>
+<?php include APPROOT . '/views/includes/header.php'; ?>
 
 <main>
     <?php //var_dump($data); 
@@ -56,4 +56,4 @@
 </main>
 
 
-<?php include APPROOT . '\views\includes/footer.php'; ?>
+<?php include APPROOT . '/views/includes/footer.php'; ?>

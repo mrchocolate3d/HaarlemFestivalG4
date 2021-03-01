@@ -9,7 +9,7 @@ class Users extends Controller
     }
 
     public function index(){
-        die(var_dump(""));
+        //die(var_dump(""));
     }
 
     public function login()
