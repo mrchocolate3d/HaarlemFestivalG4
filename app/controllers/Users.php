@@ -15,6 +15,28 @@ class Users extends Controller
             'usernameError' => '',
             'passwordError' => ''
         ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'password' => trim($_POST['password']),
+                'usernameError' => '',
+                'passwordError' => ''
+            ];
+
+            if (empty($data['username'])) {
+                $data['usernameError'] = 'Please enter username';
+            }
+
+            if (empty($data['password'])) {
+                $data['passwordError'] = 'Please enter your password';
+            }
+
+
+        }
+
         $this->view('users/login', $data);
     }
 
@@ -102,6 +124,5 @@ class Users extends Controller
             }
         }
         $this->view('users/register', $data);
-
     }
 }
