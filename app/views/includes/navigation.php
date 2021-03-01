@@ -7,7 +7,7 @@
             <a href="<?php echo URLROOT; ?>/pages/jazz">Jazz</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/pages/history">History</a>
+            <a href="<?php echo URLROOT; ?>/history/detail">History</a>
         </li>
         <li>
             <a href="<?php echo URLROOT; ?>/pages/dance">Dance</a>
