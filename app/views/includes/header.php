@@ -18,4 +18,4 @@
 ?>
 
 <body>
-<?php include APPROOT . '\views\includes\navigation.php'; ?>
+<?php include APPROOT . '/views/includes/navigation.php'; ?>
