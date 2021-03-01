@@ -5,7 +5,6 @@
     ?>
 
     <section id="home-title-screen">
-        <!-- <img id="fullscreen-image"src="<?php echo URLROOT ?>/public/img/jazz_home.png" alt="Haarlem Festival home"> -->
         <section id="home-title">
             <h1>Haarlem Festival</h1>
             <h2>Make the best out of your summer holiday</h2>

@@ -131,7 +131,7 @@ button.transparent:active {
 .btn-login {
   text-decoration: none;
   background-color: #fff;
-  padding: 0.8em 3em; /* Needs to be done in a better way*/
+  padding: 0.8em 3em; /* Needs to be done in a better way breaks at <1280px*/
   margin: 0;
   border: 2px solid #c06832;
   color: #c06832;

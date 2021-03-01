@@ -18,16 +18,4 @@
 ?>
 
 <body>
-
-    <nav id="navbar-hf">
-
-        <ul>
-            <li> <img src="" alt="Haarlem Festival Logo"> </li>
-            <li> <a href="/pages/index">Home</a> </li>
-            <li> <a href="/pages/jazz">Haarlem Jazz</a> </li>
-            <li> <a href="/pages/history">Haarlem History</a> </li>
-            <li> <a href="/pages/dance">Haarlem Dance</a> </li>
-            <li> <a class="btn-login" href="<?php echo URLROOT; ?>/app/index.php"> <?php echo isset($_SESSION['user_id']) ?  "Log out" :  "Log In" ?> </a></li>
-            <li> <a href="/cart/view"> <i class="bi bi-basket3-fill"></i></a></li>
-        </ul>
-    </nav>
+<?php include APPROOT . '\views\includes\navigation.php'; ?>
