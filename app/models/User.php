@@ -20,10 +20,6 @@ class User
     }
 
     public function newUser($data){
-
-
-
-
         $this->db->query('INSERT INTO users (firstname, lastname, email, username, password) VALUES (:username,:lastname,:email,:username,:password)');
 
         $this->db->bind(':firstname',$data['firstname']);
