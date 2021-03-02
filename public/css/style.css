@@ -304,6 +304,21 @@ input::placeholder {
 
 #jazz-info {
   grid-area: info;
+  padding: 1em;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-areas:
+    "jazz jtext jtext jtext jtext"
+    "ptext ptext ptext ptext patronaat"
+    "gm gmtext gmtext gmtext gmtext"
+    "button button button button button";
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  row-gap: 0px;
+  column-gap: 1em;
+  min-width: 0;
+  min-height: 0;
 }
 
 #jazz-artists {
@@ -317,9 +332,40 @@ input::placeholder {
   display: inline-block;
 }
 
-#jazz-timetable{
+#jazz-timetable {
   height: 90%;
   width: 80%;
   margin: 2% 9% 2% 9%;
   padding: 2em;
+}
+
+#jazz-info > img {
+  max-width: 300px;
+  max-height: 300px;
+  height: auto;
+  width: auto;
+  border: 2px solid #454545;
+}
+
+#jazz-in-haarlem {
+  grid-area: jtext;
+}
+#jazz-in-haarlem-image {
+  grid-area: jazz;
+}
+#grote-markt {
+  grid-area: gmtext;
+}
+#grote-markt-image {
+  grid-area: gm;
+}
+#patronaat {
+  grid-area: ptext;
+}
+#patronaat-image {
+  grid-area: patronaat;
+}
+
+#jazz-info.button.transparent {
+  grid-area: button;
 }

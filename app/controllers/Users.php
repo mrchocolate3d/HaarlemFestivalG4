@@ -8,10 +8,6 @@ class Users extends Controller
         $this->userModel = $this->model('User');
     }
 
-    public function index(){
-        //die(var_dump(""));
-    }
-
     public function login()
     {
         $data = [

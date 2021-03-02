@@ -19,11 +19,4 @@ class Pages extends Controller {
     public function about(){
         $this->view('pages/about');
     }
-
-    public function jazz(){
-
-        // tags title etc should be in data
-        
-        $this->view('pages/jazz');
-    }
 }
