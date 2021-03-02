@@ -117,3 +117,85 @@ input::placeholder {
 .invalidFeedback {
     color: #ff0000;
 }
+
+
+.main-history-container{
+    background-image: url('../img/history.jpg');
+    background-position: center;
+    height: 100%;
+    width: 100%;
+
+}
+.intro-history-container{
+    text-align: center;
+    color: white;
+    padding: 70px;
+    width: 75%;
+    height: 75%;
+    margin: auto;
+
+}
+#history-intro-h{
+    font-size: 40px;
+    text-transform: uppercase;
+
+ }
+#history-intro{
+    font-family: "Helvetica Neue";
+    padding: 50px;
+    font-size: 30px;
+}
+#history-show-more{
+    width: 150px;
+    height: 58px;
+    font-size: 20px;
+    background: #989898;
+    color: white;
+    border: none;
+    border:solid 1.5px white;
+    opacity: 75%;
+    text-transform: uppercase;
+}
+#history-show-more:hover{
+    opacity: 90%;
+}
+.detail-history-container{
+    height: 100%;
+    width: 100%;
+    background-color: #F5F5F5;
+}
+#history-detail-h{
+    font-size: 35px;
+    text-align: center;
+    padding:20px;
+    text-transform: uppercase;
+    color: #BF6832;
+}
+.tour-history-container{
+    background-color: white;
+    height: 70%;
+    width: 75%;
+    padding: 25px;
+    margin: auto;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #814663;
+}
+#tour-title{
+    text-transform: uppercase;
+    color: #814663;
+    font-size: 40px;
+}
+.tour-text-cont{
+    float: left;
+    width:60%;
+    color: #814663;
+    font-size: 20px;
+}
+#history-map-aside{
+    float: right;
+    right: 20px;
+}
+
+
+
