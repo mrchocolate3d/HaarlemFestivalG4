@@ -6,8 +6,10 @@ Orange: #FF8B00
 Jazz Purple: #703D57
 Timetable Orange: #FE8115
 Timetable Yellow: #FFCF08
+Border: #707070
 */
 
+/* Generic CSS */
 body {
   font-family: Helvetica, Arial, sans-serif;
   min-height: 100%;
@@ -18,20 +20,21 @@ body {
   background-color: #f5f5f5;
   color: #404040;
 }
-p{
-  font-size: 12pt;
-}
 
-#home {
-  min-height: 180vh;
+p {
+  font-size: 12pt;
+  background-color: #fff;
 }
 
 nav {
   height: 10vh;
+  /* width: 100vw; */
   margin: 0;
   padding: 0;
   background-color: #fff;
   /* border-bottom: solid black 2px; */
+  /* position: fixed; */
+  /* z-index: 9999; */
 }
 
 nav ul {
@@ -49,10 +52,6 @@ nav li {
   padding: 1em;
   text-align: center;
   min-width: 100%;
-}
-
-.bi-basket3-fill {
-  font-size: 2em;
 }
 
 nav li a {
@@ -81,93 +80,41 @@ footer {
   height: 10vh;
 }
 
-p {
-  background-color: #fff;
-}
-
-#home-title-screen {
-  min-height: 90vh;
-  background-image: url("../img/jazz_home.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  color: #fff;
-  text-align: center;
-  margin: 0 auto;
-  position: relative;
-}
-
-#home-info {
-  margin: 0 5vw 0 5vw;
-  background-color: #fff;
-  border: 4px solid #c06832;
-  width: 90vw;
-  padding: 1em;
-  display: grid;
-  grid-template-areas:
-    "header image"
-    "paragraph image";
-
-  grid-template-rows: 1fr 7fr;
-  grid-template-columns: 3fr 1fr;
-}
-
-#home-info-page>h2{
-  text-align: center;
-  margin: 0.5em;
-}
-
-#home-title {
-  position: absolute;
-  width: 100%;
+.card {
+  background: #fff;
+  padding: 2em;
   margin: auto;
-  bottom: 2em;
-}
-#home-title * {
-  padding: 1em 0 0 0;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
-    2px 2px 0 #000;
+  border: solid 2px #707070;
+  border-radius: 0px;
 }
 
-#about-us-home {
-  margin: auto;
-  grid-area: paragraph;
+.bi-basket3-fill {
+  font-size: 2em;
 }
 
-#about-us-home>p {
-  margin: 2em;
+a.button {
+  appearance: button;
+  text-decoration: none;
+  color: initial;
+  text-align: center;
 }
 
-#events-image {
-  grid-area: image;
-}
-
-#events-image>img{
-  display: block;
-  text-align: right;
-  padding: 0.5em;
-}
-
-#home-info-page {
-  height: 90vh;
-}
-
-button.transparent {
+a.button.transparent {
   background-color: rgba(152, 152, 152, 0.6);
   background-repeat: no-repeat;
   color: #fff;
   border: 2px solid white;
   padding: 1em;
 }
-button.transparent:hover {
+
+a.button.transparent:hover {
   background-color: rgba(152, 152, 152, 0.75);
   background-repeat: no-repeat;
   color: #fff;
   outline: none;
 }
 
-button.transparent:active {
+a.button.transparent:active {
   background-color: rgba(255, 255, 255, 0.75);
   /* filter: blur(8px); Doesn't really work but looks cool and could be useful*/
   background-repeat: no-repeat;
@@ -189,10 +136,82 @@ button.transparent:active {
   background-color: #eee;
   text-decoration: none;
 }
+
 .btn-login:active {
   background-color: #c06832;
   text-decoration: none;
   color: #fff;
+}
+
+/* Home CSS */
+
+#home {
+  min-height: 180vh;
+}
+
+.title-screen {
+  min-height: 90vh;
+  background-image: url("../img/jazz_home.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+#home-info {
+  margin: 0 5vw 0 5vw;
+  background-color: #fff;
+  border: 4px solid #c06832;
+  width: 90vw;
+  padding: 1em;
+  display: grid;
+  grid-template-areas: "header image" "paragraph image";
+  grid-template-rows: 1fr 7fr;
+  grid-template-columns: 3fr 1fr;
+}
+
+#home-info-page > h2 {
+  text-align: center;
+  margin: 0.5em;
+}
+
+#home-title {
+  position: absolute;
+  width: 100%;
+  margin: auto;
+  bottom: 2em;
+}
+
+#home-title * {
+  padding: 1em 0 0 0;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+#about-us-home {
+  margin: auto;
+  grid-area: paragraph;
+}
+
+#about-us-home > p {
+  margin: 2em;
+}
+
+#events-image {
+  grid-area: image;
+}
+
+#events-image > img {
+  display: block;
+  text-align: right;
+  padding: 0.5em;
+}
+
+#home-info-page {
+  height: 90vh;
 }
 
 #section-landing {
@@ -204,6 +223,7 @@ button.transparent:active {
   width: 100%;
 }
 
+/* Login CSS */
 .login-container {
   width: 100%;
   margin: 0 auto;
@@ -266,4 +286,40 @@ input::placeholder {
 
 .invalidFeedback {
   color: #ff0000;
+}
+
+/* Jazz CSS */
+
+#jazz-info-page {
+  height: 100vh;
+  width: 80vw;
+  margin: auto;
+  background: orange;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "info artists";
+}
+
+#jazz-info {
+  grid-area: info;
+}
+
+#jazz-artists {
+  grid-area: artists;
+}
+
+#jazz-timetable-page {
+  height: 90vh;
+  width: 100vw;
+  background-color: green;
+  display: inline-block;
+}
+
+#jazz-timetable{
+  height: 90%;
+  width: 80%;
+  margin: 2% 9% 2% 9%;
+  padding: 2em;
 }

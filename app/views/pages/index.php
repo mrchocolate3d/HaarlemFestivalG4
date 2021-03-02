@@ -4,19 +4,19 @@
     <?php //var_dump($data); 
     ?>
 
-    <section id="home-title-screen">
+    <section class="title-screen">
         <section id="home-title">
             <h1>Haarlem Festival</h1>
             <h2>Make the best out of your summer holiday</h2>
             <h3>The Festival for everyone</h3>
-            <button class="transparent" name="arf">AHHHHHHHHHH</button>
+            <a href="#home-info-page" class="button transparent">Show more</a>
         </section>
 
     </section>
 
     <section id="home-info-page">
 
-        <h2>Experience Haarlem</h2>
+        <h2 id="home-page-2">Experience Haarlem</h2>
         <section id="home-info">
             <h3>Who are we?</h3>
 
@@ -45,9 +45,9 @@
             </section>
 
             <aside id="events-image">
-                <img src="img/placeholder.png" alt="Dance Image">
-                <img src="img/placeholder.png" alt="History Image">
-                <img src="img/placeholder.png" alt="Jazz Image">
+                <img src="../img/placeholder.png" alt="Dance Image">
+                <img src="../img/placeholder.png" alt="History Image">
+                <img src="../img/placeholder.png" alt="Jazz Image">
             </aside>
 
         </section>
