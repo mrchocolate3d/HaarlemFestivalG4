@@ -4,7 +4,7 @@
         <li> <img src="" alt="Haarlem Festival Logo"> </li>
         <li> <a href="<?php echo URLROOT . "/pages/index" ?>">Home</a> </li>
         <li> <a href="<?php echo URLROOT . "/pages/jazz" ?>">Haarlem Jazz</a> </li>
-        <li> <a href="<?php echo URLROOT . "/pages/history" ?>">Haarlem History</a> </li>
+        <li> <a href="<?php echo URLROOT . "/histories/detail" ?>">Haarlem History</a> </li>
         <li> <a href="<?php echo URLROOT . "/pages/dance" ?>">Haarlem Dance</a> </li>
 
         <li>
