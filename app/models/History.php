@@ -9,5 +9,4 @@ class History
     {
         $this->db = new Database();
     }
-
 }
