@@ -17,20 +17,20 @@
     <section id="dance-info-page">
             <section id="dance-info" class="card">
 
-                    <img src="img/placeholder.png" alt="Haarlem festival dance stage">
+                    <img src="../img/dance_in_haarlem.png" alt="Haarlem festival dance stage">
                     <p>
                         Haarlem is no stranger to dance with many localities and venues embracing it.
                         the event's sheer size impressive lineups and unbeatable party atomosphere will make your experience in dance like never before. 
                     </p>
 
-                    <img src="img/placeholder.png" alt="Caprera openluchtheather">
+                    <img src="../img/caprera.png" alt="Caprera openluchtheather">
                     <p>
                     caprera openluchttheather prounanced as (caprera open air theather in English) is the most popular and amazing location to experience any kind of performances.
                     
                     Located between the dunes and forest, here you can enjoy all kinds of dance events experiencing the enchanting evening under the stars giving you unforgettable experieces
                     </p>
 
-                    <img src="img/placeholder.png" alt="XO the club">
+                    <img src="../img/xotheclub.png" alt="XO the club">
                     <p>
                         The second most popular club in the netherlands known for hosting incrediable performances 
                         and want to dance the night away then you should definiately go to this club.
@@ -42,9 +42,10 @@
             </section>
 
             <aside id="dance-artists">
-                <img src="../img/placeholder.png" alt="artist1">
-                <img src="../img/placeholder.png" alt="artist2">
-                <img src="../img/placeholder.png" alt="artist3">
+                <img src="../img/martin_garrix.png" alt="artist1">
+                <img src="../img/hardwell.png" alt="artist2">
+                <img src="../img/armin_van_buuren.png" alt="artist3">
+                <img src="../img/tiesto.png" alt="artist4"> 
             </aside>
 
     </section>
