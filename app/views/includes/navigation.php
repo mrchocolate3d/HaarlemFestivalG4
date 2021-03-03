@@ -27,8 +27,16 @@
 
 <nav class="right-nav">
     <ul>
+<<<<<<< HEAD
         <li class="btn-login">
             <?php if(isset($_SESSION['user_id'])) : ?>
+=======
+        <li> <img src="" alt="Haarlem Festival Logo"> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/index" ?>">Home</a> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/jazz" ?>">Haarlem Jazz</a> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/history" ?>">Haarlem History</a> </li>
+        <li> <a href="<?php echo URLROOT . "/pages/dance" ?>">Haarlem Dance</a> </li>
+>>>>>>> parent of fd6ae5b (Merge branch 'main' into Home-Page)
 
         <li>
             <a href="<?php echo URLROOT; ?>/users/account">Your Account</a>
