@@ -10,7 +10,7 @@
             <a href="<?php echo URLROOT; ?>/pages/history">History</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/pages/dance">Dance</a>
+            <a href="<?php echo URLROOT; ?>/dance/home">Dance</a>
         </li>
     </ul>
 </nav>

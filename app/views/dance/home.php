@@ -2,7 +2,7 @@
 
 <main>
     <section class="title-screen">
-        <?php require APPROOT . 'views/includes/navigation.php'?>
+       
         <section id="dance-title">
                 <h1>Haarlem Dance</h1>
                 <h2>
@@ -57,5 +57,3 @@
         </section>
     </section>
 </main>
-
-<?php include APPROOT . '/views/includes/footer.php'; ?>
