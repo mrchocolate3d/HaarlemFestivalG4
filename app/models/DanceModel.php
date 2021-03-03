@@ -2,7 +2,7 @@
     class DanceModel {
 
         private $db;
-
+        
         public function __construct() {
 
             $this->db = new Database();
@@ -15,12 +15,11 @@
                 //"end"=>"02.00"), "Jopen Kerk"=>...), "Saturday-28th July"=>array
                 //("LichtFabriek"=>..), "Sunday, 29th July"=>array("LichtFabriek"=>...);
 
-                echo "<table>
-                <tr><th>Venue</th>
-                <th>Friday-27th July</th>
-                <th>Saturday-28th July</th>
-                <th>Sunday-29th July</th></tr>";
+                global $dates, $venues;
 
+                $dates =  array("Friday-27th July", "Saturday-28th July", "Sunday-29th July");
+                $venues = array("LichtFabriek", "Jopen Kerk", "XO the Club", "Club Ruis", "Caprera openluchtheather", "Club Stalker");
+                
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
@@ -34,16 +33,15 @@
                 }
 
                 
-                $event_results = $conn->query("SELECT * FROM Event WHERE cateagory='Dance'");
+                $event_results = $conn->query("SELECT * FROM event WHERE cateagory='Dance'");
 
                 if ($event_results->num_rows > 0) {
-                    $dates = array("Friday-27th July", "Saturday-28th July", "Sunday-29th July");
-                    $venues = array("LichtFabriek", "Jopen Kerk", "XO the Club", "Club Ruis", "Caprera openluchtheather", "Club Stalker");
+                    
                     $schedule = array();
-
-                    foreach($dates as $dt) {
+                    
+                    foreach($GLOBALS['dates'] as $dt) {
                         $schedule[$dt] = array();
-                        foreach($venues as $ven) {
+                        foreach($GLOBALS['venues'] as $ven) {
                             // if(array_key_exists($ven, $schedule[$dt])){
                             // }
                             $schedule[$dt][$ven] = "NO EVENTS";
@@ -57,7 +55,7 @@
                 echo "0 results";
                 }
                 $conn->close();
-            return "";
+            return $schedule;
         }
     }
 ?>
