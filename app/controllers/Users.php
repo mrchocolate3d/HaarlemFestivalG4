@@ -35,6 +35,20 @@ class Users extends Controller
             }
 
 
+            if (empty($data['usernameError'])  && empty($data['passwordError'])) {
+
+                $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+
+                if ($this->userModel->newUser($data)){
+                    header('location: ' . URLROOT . '/users/login');
+                } else {
+                    die('Something went wrong please try again later');
+                }
+            }
+
+
+
+
 
         }
 
