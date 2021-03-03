@@ -35,6 +35,7 @@ class Users extends Controller
             }
 
 
+<<<<<<< HEAD
             if (empty($data['usernameError'])  && empty($data['passwordError'])) {
 
                 $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
@@ -50,6 +51,8 @@ class Users extends Controller
 
 
 
+=======
+>>>>>>> parent of 4112a2a (DetailPage connection fixed)
         }
 
         $this->view('users/login', $data);

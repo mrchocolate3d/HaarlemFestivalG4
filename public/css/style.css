@@ -285,6 +285,7 @@ input::placeholder {
 }
 
 .invalidFeedback {
+<<<<<<< HEAD
   color: #ff0000;
 }
 
@@ -371,3 +372,7 @@ input::placeholder {
 }
 
 
+=======
+    color: #ff0000;
+}
+>>>>>>> parent of 4112a2a (DetailPage connection fixed)

@@ -1,4 +1,25 @@
+<<<<<<< HEAD
 <nav id="navbar-hf">
+=======
+<nav class="top-nav">
+    <ul>
+        <li>
+            <a href="<?php echo URLROOT; ?>/pages/index">Home</a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/pages/jazz">Jazz</a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/pages/history">History</a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/pages/dance">Dance</a>
+        </li>
+    </ul>
+</nav>
+
+
+>>>>>>> parent of 4112a2a (DetailPage connection fixed)
 
     <ul>
         <li> <img src="" alt="Haarlem Festival Logo"> </li>
