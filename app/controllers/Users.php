@@ -15,6 +15,7 @@ class Users extends Controller
             'usernameError' => '',
             'passwordError' => ''
         ];
+<<<<<<< HEAD
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -55,6 +56,8 @@ class Users extends Controller
 >>>>>>> parent of 4112a2a (DetailPage connection fixed)
         }
 
+=======
+>>>>>>> parent of f62854f (History page created to work on and detal page)
         $this->view('users/login', $data);
     }
 
@@ -142,5 +145,6 @@ class Users extends Controller
             }
         }
         $this->view('users/register', $data);
+
     }
 }
