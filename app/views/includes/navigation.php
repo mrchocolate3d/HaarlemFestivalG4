@@ -8,7 +8,11 @@
         </li>
         <li>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="<?php echo URLROOT; ?>/history/detail">History</a>
+=======
+            <a href="<?php echo URLROOT; ?>/histories/detail">History</a>
+>>>>>>> parent of 0d49b12 (Merge pull request #2 from mrchocolate3d/Home-Page)
 =======
             <a href="<?php echo URLROOT; ?>/histories/detail">History</a>
 >>>>>>> parent of 0d49b12 (Merge pull request #2 from mrchocolate3d/Home-Page)
@@ -34,6 +38,7 @@
             <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
         </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <?php else : ?>
             <li>
                 <a href="<?php echo URLROOT; ?>/users/login">Login</a>
@@ -43,6 +48,8 @@
             </li>
         <?php endif; ?>
 =======
+=======
+>>>>>>> parent of 0d49b12 (Merge pull request #2 from mrchocolate3d/Home-Page)
             <?php else : ?>
                 <li>
                     <a href="<?php echo URLROOT; ?>/users/login">Login</a>
@@ -51,6 +58,9 @@
                     <a href="<?php echo URLROOT; ?>/users/register">Register</a>
                 </li>
             <?php endif; ?>
+<<<<<<< HEAD
+>>>>>>> parent of 0d49b12 (Merge pull request #2 from mrchocolate3d/Home-Page)
+=======
 >>>>>>> parent of 0d49b12 (Merge pull request #2 from mrchocolate3d/Home-Page)
     </ul>
 </nav>
