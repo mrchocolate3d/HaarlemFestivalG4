@@ -1,8 +1,14 @@
 <?php
-require APPROOT . '/views/includes/header.php';
+require APPROOT .'/views/includes/header.php';
 ?>
 
 <main role="main">
+    <section class="nav-bar">
+        <?php
+        require APPROOT . '/views/includes/navigation.php';
+        ?>
+    </section>
+
     <section class="login-container">
         <aside class="wrapper-login">
             <h2>Sign in</h2>
@@ -33,6 +39,8 @@ require APPROOT . '/views/includes/header.php';
 
 
                 <button id="submit" type="submit" value="submit">Submit</button>
+
+                <p class="options">Not registered yet? <a href="<?php echo URLROOT; ?>/users/register">Create an account </a></p>
             </form>
         </aside>
     </section>
