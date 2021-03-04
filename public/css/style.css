@@ -125,7 +125,7 @@ input::placeholder {
     width: 80vw;
     margin: auto;
     background: white;
-    border: purple 4px solid;
+    /*border: purple 4px solid; */
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-template-rows: 1fr;
@@ -135,10 +135,26 @@ input::placeholder {
 
 #dance-info {
     grid-area: info;
+    padding: 1em;
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-areas: 
+        "dance dtext dtext dtext dtext"
+        "ptext ptext ptext ptext caprera"
+        "gm gmtext gmtext gmtext gmtext"
+        "button button button button button";
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 0px;
+    column-gap: 1em;
+    min-width:  0;
+    min-height: 0;
 }
 
 #dance-artists {
     grid-area: artists;
+    color: #ff0000;
 }
 
 #dance-timetable-page {
@@ -154,4 +170,34 @@ input::placeholder {
     margin: 2% 9% 2% 9%;
     padding: 2em;
 }
+#dance-info > img {
+    max-width: 300px;
+    max-height: 300px;
+    height: auto;
+    width: auto;
+    border: 2px solid #454545;
+}
+
+#dance-in-haarlem {
+    grid-area: jtext;
+}
+#dance-in-haarlem-image {
+    grid-area: dance;
+}
+#caprera {
+    grid-area: gmtext;
+}
+#caprera-image {
+    grid-area: gm;
+}
+#xotheclub {
+    grid-area: ptext;
+}
+#xotheclub-image {
+    grid-area: xotheclub;
+}
+#dance-info.button.transparent {
+    grid-area: button;
+}
+
 
