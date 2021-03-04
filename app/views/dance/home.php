@@ -64,23 +64,30 @@
     <section id="dance-timetable-page">
         <section class="timetable card" id="dance-timetable">
         <?php
-               echo "<table>
+               $table =  '<table border = 1>
                <tr><th>Venue</th>
                <th>Friday-27th July</th>
                <th>Saturday-28th July</th>
-               <th>Sunday-29th July</th></tr>";
+               <th>Sunday-29th July</th></tr>';
 
                $dancetable = new DanceModel();
                $schedule = $dancetable->getTimeTable();
+               $dates =  array("Friday-27th July", "Saturday-28th July", "Sunday-29th July");
+               $venues = array("Lichtfabriek", "Jopenkerk", "XO the Club", "Club Ruis", "Caprera Openluchttheater", "Club Stalker");
 
-               foreach($dancetable->$venues as $venue) {
-                    echo '<tr>';
-                    echo '<th>'.$venue.'</th>';
-                    foreach($this->$dancetable->$dates as $dt) {
-                        echo '<td>' . $schedule[$dt][$venue].'</td>';
+               foreach($venues as $venue) {
+                    $table.= '<tr>';
+                    $table.= '<th>'.$venue.'</th>';
+                    foreach($dates as $dt) {
+                        $table.= ' <td>' . $schedule[$dt][$venue].'</td>';
                     }
-                    echo '</tr>';
+                    $table.= '</tr>';
                }
+
+               $table.= '</table>';
+               echo $table;
+              
+
         ?>
         </section>
     </section>

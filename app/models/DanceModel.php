@@ -9,16 +9,12 @@
         }
 
         public function getTimeTable() {
-                         //$schedule = array("Friday-27th July"=>
-                //array("LichtFabriek"=> array("artists"=>
-                //array("Nicky Romero ID", "Afrojack ID"), "start"=>"20.00", 
-                //"end"=>"02.00"), "Jopen Kerk"=>...), "Saturday-28th July"=>array
-                //("LichtFabriek"=>..), "Sunday, 29th July"=>array("LichtFabriek"=>...);
-
+                        
                 global $dates, $venues;
 
                 $dates =  array("Friday-27th July", "Saturday-28th July", "Sunday-29th July");
-                $venues = array("LichtFabriek", "Jopen Kerk", "XO the Club", "Club Ruis", "Caprera openluchtheather", "Club Stalker");
+                $venues = array("Lichtfabriek", "Jopenkerk", "XO the Club", "Club Ruis", "Caprera Openluchttheater ", "Club Stalker");
+                
                 
                 $servername = "localhost";
                 $username = "root";
@@ -42,8 +38,7 @@
                     foreach($GLOBALS['dates'] as $dt) {
                         $schedule[$dt] = array();
                         foreach($GLOBALS['venues'] as $ven) {
-                            // if(array_key_exists($ven, $schedule[$dt])){
-                            // }
+                            
                             $schedule[$dt][$ven] = "NO EVENTS";
                         }
                     }
