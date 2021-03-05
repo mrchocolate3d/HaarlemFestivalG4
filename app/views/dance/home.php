@@ -79,16 +79,28 @@
                     $table.= '<tr>';
                     $table.= '<th>'.$venue.'</th>';
                     foreach($dates as $dt) {
-                        $table.= ' <td>' . $schedule[$dt][$venue].'</td>';
+                        //$table.=' <td>'.$schedule[$dt][$venue].'</td>';
+
+                        $table .= '<td class="popup">
+                                <button id="myBtn"> <input type="hidden" value="'.$schedule[$dt][$venue]["id"].'" name="id"/>'.$schedule[$dt][$venue]["text"].'</button></td>';
+                                        
                     }
                     $table.= '</tr>';
                }
 
                $table.= '</table>';
                echo $table;
-              
-
         ?>
+            <section id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+            </section>
+        <script>
+                
+        </script>
         </section>
     </section>
 </main>
