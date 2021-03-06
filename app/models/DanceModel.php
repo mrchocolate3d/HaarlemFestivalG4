@@ -54,43 +54,42 @@
                 $conn->close();
             return $schedule;
         }
-
-        public function getArtist($event_id) {
-
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "haarlemfestival";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-                
-                $event_results = $conn->query("SELECT * FROM dance_event WHERE event_id=$event_id");
-
-                $artist_id = "";
-
-                while($row=$event_results->fetch_assoc()) {
-                    $artist_id = $row["artist_id"];
-                }
-
-                if($artist_id != "") {
-                    $event_results = $conn->query("SELECT * FROM artist WHERE artist_id=$artist_id");
-                    
-                    if($event_results->num_rows > 0) {
-                        $row = $event_results->fetch_assoc();
-                        return "id=". $row["artist_id"]. "<br> name=" . $row["name"] . 
-                        "<br> description=" . $row["description"] . 
-                        "<br> genre=" . $row["genre"] . "<br>  image=". 
-                        $row["image"] . "<br> facebook=" . $row["facebook"] . 
-                        "<br> twitter=" . $row["twitter"] . "<br> instagram=" . $row["instagram"] 
-                        ."<br> youtube=" . $row["youtube"];
-                    }
-                }
-
-        }
     }
+       function getArtist($event_id) {
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "haarlemfestival";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        
+        $event_results = $conn->query("SELECT * FROM dance_event WHERE event_id=$event_id");
+
+        $artist_id = "";
+
+        while($row=$event_results->fetch_assoc()) {
+            $artist_id = $row["artist_id"];
+        }
+
+        if($artist_id != "") {
+            $event_results = $conn->query("SELECT * FROM artist WHERE artist_id=$artist_id");
+            
+            if($event_results->num_rows > 0) {
+                $row = $event_results->fetch_assoc();
+                return "id=". $row["artist_id"]. "<br> name=" . $row["name"] . 
+                "<br> description=" . $row["description"] . 
+                "<br> genre=" . $row["genre"] . "<br>  image=". 
+                $row["image"] . "<br> facebook=" . $row["facebook"] . 
+                "<br> twitter=" . $row["twitter"] . "<br> instagram=" . $row["instagram"] 
+                ."<br> youtube=" . $row["youtube"];
+            }
+        }
+
+}
 ?>

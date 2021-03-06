@@ -81,7 +81,7 @@
                     foreach($dates as $dt) {
                         //$table.=' <td>'.$schedule[$dt][$venue].'</td>';
 
-                        $table .= '<td class="popup">
+                        $table .= '<td class="popup" onClick=>
                                 <button id="myBtn"> <input type="hidden" value="'.$schedule[$dt][$venue]["id"].'" name="id"/>'.$schedule[$dt][$venue]["text"].'</button></td>';
                                         
                     }
@@ -92,15 +92,73 @@
                echo $table;
         ?>
             <section id="myModal" class="modal">
-
             <!-- Modal content -->
-            <div class="modal-content">
+            <section class="modal-content">
             <span class="close">&times;</span>
             <p>Some text in the Modal..</p>
             </section>
         <script>
-                
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+            modal.style.display = "block";
+            // fetchartistData and echo it.
+              <?php 
+              $dancetable = new DanceModel();
+              $schedule = $dancetable->getArtist();
+              echo $schedule;
+              ?>
+                var event_id = this.firstElementChild.value;
+                jQuery.ajax({
+                    type: "POST",
+                    url: 'DanceModel.php',
+                    dataType: 'json',
+                    data: {functionname: 'getArtist', arguments: [event_id]},
+
+                    success: function (obj, textstatus) {
+                                if( !('error' in obj) ) {
+                                    yourVariable = obj.result;
+                                }
+                                else {
+                                    console.log(obj.error);
+                                }
+                            }
+                });
+
+                function displayArtist(event_id) {
+                        window.open(
+                            "artist.php?event_id="+encodeURI(event_id);
+                        )
+                }
+            }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
+            /*
+                https://stackoverflow.com/questions/36676552/add-onclick-event-on-a-php-generated-table-cell
+
+                follow answer from this link first answer such that the redirect URL is home.php with parameter 
+                event_id, on top of the home.php if home.php has a parameter display popup for given artist else
+                dont display.  
+            */
         </script>
         </section>
     </section>
 </main>
+
