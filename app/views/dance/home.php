@@ -1,5 +1,79 @@
 <?php include APPROOT . '/views/includes/header.php'; ?>
 
+<?php 
+    // if user clicks on an event this will be evaluated
+    if(isset($_POST['event_id'])) {
+        $dancemodel = new DanceModel();
+        $event_details = $dancemodel->getArtist($_POST['event_id']);
+
+        // <section id="Modal" class="modal">
+        //     <!-- Modal content -->
+        //             <section class="modal-content">
+        //                 <span class="close">&times;</span>
+        //                 <article id="modal-artist">
+        //                         <h3 id="modal-artist-title"></h3>
+        //                         <img id="modal-artist-image" src="" alt="artist image">
+        //                        <a> <img id="modal-artist-fb"src="" alt="Facebook"> </a>
+        //                        <a> <img  id="modal-artist-web"src="" alt="Website"> </a>
+        //                        <a> <img id="modal-artist-twitter"src="" alt="Twitter"> </a>
+
+        //                         <p id="modal-artist-description">
+
+        //                         </p>
+        //                 </article>
+        //                     <article id="modal-event-details">
+        //                             <h3>Event Details</h3>
+        //                             <h4 id="modal-event-title"></h4>
+        //                             <h4 id="modal-event-time-place"></h4>
+        //                             <a href=""><img src="" alt="Party All Night-Full day pass@150"></a>
+        //                             <h3>Price</h3>
+        //                             <h4 id="modal-event-price"></h4>
+        //                             <h3>Amount</h3>
+        //                             <select name="ticket-count" id="modal-event-ticket-no">
+        //                                     <option value="1">1</option>
+        //                                     <option value="2">2</option>
+        //                                     <option value="3">3</option>
+        //                                     <option value="4">4</option>
+        //                                     <option value="5">5</option>
+        //                             </select>
+        //                             <a href=""><img src="" alt="Dance Freak-3 day pass@250"></a>
+
+        //                     </article>
+
+        //                     <aside id="modal-ticket-details">
+        //                             <h2>Total</h2>
+        //                             <h3 id="modal-ticket-price"></h3>
+        //                             <table>
+        //                                     <tr>
+        //                                         <td>Sub-total</td>
+        //                                         <td id="modal-ticket-subtotal"></td>
+        //                                     </tr>
+
+        //                                     <tr>
+        //                                         <td>VAT@21%</td>
+        //                                         <td id="modal-ticket-vat"></td>
+        //                                     </tr>
+
+        //                                     <tr>
+        //                                         <td>Total</td>
+        //                                         <td id="modal-ticket-total"></td>
+        //                                     </tr>
+
+        //                                     <tr>
+        //                                         <td><a href=""><span>Checkout</span></a></td>
+        //                                         <td><a href=""><span>Add to Cart</span></a></td>
+        //                                     </tr>
+        //                             </table>
+        //                     </aside>
+
+        //             </section>
+        //     </section>
+    }
+    // if user clicks add to cart this will be evaluated 
+    else if(isset($_POST['add_to_cart'])) {
+        
+    }
+?>
 <main>
     <section class="title-screen">
        
@@ -82,7 +156,7 @@
                         //$table.=' <td>'.$schedule[$dt][$venue].'</td>';
 
                         $table .= '<td class="popup" onClick=>
-                                <button id="myBtn"> <input type="hidden" value="'.$schedule[$dt][$venue]["id"].'" name="id"/>'.$schedule[$dt][$venue]["text"].'</button></td>';
+                                <button id="event_btn"> <input type="hidden" value="'.$schedule[$dt][$venue]["id"].'" name="id"/>'.$schedule[$dt][$venue]["text"].'</button></td>';
                                         
                     }
                     $table.= '</tr>';
@@ -91,18 +165,13 @@
                $table.= '</table>';
                echo $table;
         ?>
-            <section id="myModal" class="modal">
-            <!-- Modal content -->
-            <section class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-            </section>
+            
         <script>
             // Get the modal
-            var modal = document.getElementById("myModal");
+            var modal = document.getElementById("Modal");
 
             // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
+            var btn = document.getElementById("event_btn");
 
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
