@@ -38,12 +38,21 @@
                 <p>Standard tickets: 17,50 euros
                     <br>Family tickets for groups of four: 60,00 euros. </p>
 
-                <button type="button">Order tickets</button>
+                <button type="button" id="history_order_btn">Order tickets</button>
+
             </section>
-            <aside id="history-map-aside">
-                <button onclick="showPopUp()" id = popup>Show locations</button>
+            <aside class="history-map-aside">
+                <img src="../img/history_map.jpg" alt="Show map" id="show_map_img">
+                <p id="history-quote">Explore<br>Haarlem...</p>
             </aside>
 
+            <button id = map_popup_btn>Show locations</button>
+
+            <section class="history_map_modal" id="map_popup">
+                <section class="modal-content">
+                    <img src="../img/history_map_locations.jpg" id="location_image">
+                </section>
+            </section>
         </section>
 
 
@@ -53,15 +62,16 @@
 
 <script>
     //popup
-    function showPopUp(){
-        var btn = confirm("Pick");
-        var a;
-        if(btn == true){
-            a = "true";
-        }
-        else{
-            a ="false";
-        }
-        document.getElementById("popup").innerHTML = x;
+    var btn = document.getElementById("map_popup_btn");
+    var modal=document.getElementById("map_popup");
+
+    btn.onclick=function (){
+        modal.style.display = "block";
     }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+
 </script>
