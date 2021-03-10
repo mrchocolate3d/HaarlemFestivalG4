@@ -11,5 +11,8 @@ class history extends Controller
     public function detail(){
         $this->view('history/detail');
     }
+    public function tickets(){
+        $this->view('history/tickets');
+    }
 
 }
