@@ -13,7 +13,7 @@
 
             $data = [
                 'title' => 'Dance Home',
-                'name' => $timetable
+                'name' => $timetable,
             ];
             $this->view('dance/home', $data, "");
         }

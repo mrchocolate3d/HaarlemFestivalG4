@@ -5,69 +5,71 @@
     if(isset($_POST['event_id'])) {
         $dancemodel = new DanceModel();
         $event_details = $dancemodel->getArtist($_POST['event_id']);
+        $price = $event_details["price"];
+        $vat = 0.21 * $price;
+        $totalprice = $price + $vat;
+        $popup = '<section id="Modal" class="modal">
+            <!-- Modal content -->
+                    <section class="modal-content">
+                        <span class="close">&times;</span>
+                        <article id="modal-artist">
+                                <h3 id="modal-artist-title">'.$event_details["name"].'</h3>
+                                <img id="modal-artist-image" src="'.$event_details["image"].'" alt="artist image">
+                               <a href="'.$event_details["facebook"].'"> <img id="modal-artist-fb"src="" alt="Facebook"> </a>
+                               <a href="'.$event_details["instagram"].'"> <img  id="modal-artist-insta"src="" alt="Instagram"> </a>
+                               <a href="'.$event_details["twitter"].'"> <img id="modal-artist-twitter"src="" alt="Twitter"> </a>
 
-        // <section id="Modal" class="modal">
-        //     <!-- Modal content -->
-        //             <section class="modal-content">
-        //                 <span class="close">&times;</span>
-        //                 <article id="modal-artist">
-        //                         <h3 id="modal-artist-title"></h3>
-        //                         <img id="modal-artist-image" src="" alt="artist image">
-        //                        <a> <img id="modal-artist-fb"src="" alt="Facebook"> </a>
-        //                        <a> <img  id="modal-artist-web"src="" alt="Website"> </a>
-        //                        <a> <img id="modal-artist-twitter"src="" alt="Twitter"> </a>
+                                <p id="modal-artist-description">
+                                    '.$event_details["description"].'
+                                </p>
+                        </article>
+                            <article id="modal-event-details">
+                                    <h3>Event Details</h3>
+                                    <h4 id="modal-event-title">'.$event_details["name"].'</h4>
+                                    <h4 id="modal-event-time-place">'.$event_details["time_place"].'</h4>
+                                    <a href=""><img src="" alt="Party All Night-Full day pass@150">'.$event_details["price"].'</a>
+                                    <h3>Price</h3>
+                                    <h4 id="modal-event-price">€'.$totalprice.'</h4>
+                                    <h3>Amount</h3>
+                                    <select name="ticket-count" id="modal-event-ticket-count">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                    </select>
+                                    <a href=""><img src="" alt="Dance Freak-3 day pass@250"></a>
 
-        //                         <p id="modal-artist-description">
+                            </article>
 
-        //                         </p>
-        //                 </article>
-        //                     <article id="modal-event-details">
-        //                             <h3>Event Details</h3>
-        //                             <h4 id="modal-event-title"></h4>
-        //                             <h4 id="modal-event-time-place"></h4>
-        //                             <a href=""><img src="" alt="Party All Night-Full day pass@150"></a>
-        //                             <h3>Price</h3>
-        //                             <h4 id="modal-event-price"></h4>
-        //                             <h3>Amount</h3>
-        //                             <select name="ticket-count" id="modal-event-ticket-no">
-        //                                     <option value="1">1</option>
-        //                                     <option value="2">2</option>
-        //                                     <option value="3">3</option>
-        //                                     <option value="4">4</option>
-        //                                     <option value="5">5</option>
-        //                             </select>
-        //                             <a href=""><img src="" alt="Dance Freak-3 day pass@250"></a>
+                            <aside id="modal-ticket-details">
+                                    <h2>Total</h2>
+                                    <h3 id="modal-ticket-price">€'.$totalprice.'</h3>
+                                    <table>
+                                            <tr>
+                                                <td>Sub-total</td>
+                                                <td id="modal-ticket-subtotal">€'.$price.'</td>
+                                            </tr>
 
-        //                     </article>
+                                            <tr>
+                                                <td>VAT@21%</td>
+                                                <td id="modal-ticket-vat">€'.$vat.'</td>
+                                            </tr>
 
-        //                     <aside id="modal-ticket-details">
-        //                             <h2>Total</h2>
-        //                             <h3 id="modal-ticket-price"></h3>
-        //                             <table>
-        //                                     <tr>
-        //                                         <td>Sub-total</td>
-        //                                         <td id="modal-ticket-subtotal"></td>
-        //                                     </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td id="modal-ticket-total">€'.$totalprice.'</td>
+                                            </tr>
 
-        //                                     <tr>
-        //                                         <td>VAT@21%</td>
-        //                                         <td id="modal-ticket-vat"></td>
-        //                                     </tr>
+                                            <tr>
+                                                <td><a href="home.php?add_to_cart='.$_POST["event_id"].'"><span>Checkout</span></a></td>
+                                                <td><a href=""><span>Add to Cart</span></a></td>
+                                            </tr>
+                                    </table>
+                            </aside>
 
-        //                                     <tr>
-        //                                         <td>Total</td>
-        //                                         <td id="modal-ticket-total"></td>
-        //                                     </tr>
-
-        //                                     <tr>
-        //                                         <td><a href=""><span>Checkout</span></a></td>
-        //                                         <td><a href=""><span>Add to Cart</span></a></td>
-        //                                     </tr>
-        //                             </table>
-        //                     </aside>
-
-        //             </section>
-        //     </section>
+                    </section>
+            </section>';
     }
     // if user clicks add to cart this will be evaluated 
     else if(isset($_POST['add_to_cart'])) {
@@ -155,8 +157,15 @@
                     foreach($dates as $dt) {
                         //$table.=' <td>'.$schedule[$dt][$venue].'</td>';
 
-                        $table .= '<td class="popup" onClick=>
-                                <button id="event_btn"> <input type="hidden" value="'.$schedule[$dt][$venue]["id"].'" name="id"/>'.$schedule[$dt][$venue]["text"].'</button></td>';
+                        $table .= '<td class="popup">';
+                        
+                            if($schedule[$dt][$venue]["text"] == "NO EVENTS") {
+                                 $table .= "NO EVENTS</td>";
+                            }
+                            else {
+                                $table .= '<a href="home.php?event_id='.$schedule[$dt][$venue]["id"].'">'.$schedule[$dt][$venue]["text"].'</a></td>';
+                            }
+                                
                                         
                     }
                     $table.= '</tr>';
@@ -165,67 +174,46 @@
                $table.= '</table>';
                echo $table;
         ?>
-            
         <script>
             // Get the modal
             var modal = document.getElementById("Modal");
-
-            // Get the button that opens the modal
-            var btn = document.getElementById("event_btn");
-
+            
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
 
-            // When the user clicks the button, open the modal 
-            btn.onclick = function() {
-            modal.style.display = "block";
-            // fetchartistData and echo it.
-              <?php 
-              $dancetable = new DanceModel();
-              $schedule = $dancetable->getArtist();
-              echo $schedule;
-              ?>
-                var event_id = this.firstElementChild.value;
-                jQuery.ajax({
-                    type: "POST",
-                    url: 'DanceModel.php',
-                    dataType: 'json',
-                    data: {functionname: 'getArtist', arguments: [event_id]},
-
-                    success: function (obj, textstatus) {
-                                if( !('error' in obj) ) {
-                                    yourVariable = obj.result;
-                                }
-                                else {
-                                    console.log(obj.error);
-                                }
-                            }
-                });
-
-                function displayArtist(event_id) {
-                        window.open(
-                            "artist.php?event_id="+encodeURI(event_id);
-                        )
-                }
-            }
             // When the user clicks on <span> (x), close the modal
             span.onclick = function() {
-            modal.style.display = "none";
+                modal.remove();
             }
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+                if (event.target == modal) {
+                    modal.remove();
+                }
+            
             }
-            }
-            /*
-                https://stackoverflow.com/questions/36676552/add-onclick-event-on-a-php-generated-table-cell
+            // dropdown ticket count on change
+            var ticket_Count = document.getElementById("modal-event-ticket-count");
 
-                follow answer from this link first answer such that the redirect URL is home.php with parameter 
-                event_id, on top of the home.php if home.php has a parameter display popup for given artist else
-                dont display.  
-            */
+            var price = document.getElementById("modal-ticket-price");
+            var subtotal = document.getElementById("modal-ticket-subtotal");
+            var vat = document.getElementById("modal-ticket-vat");
+            var total = document.getElementById("modal-ticket-total");
+
+            ticket_Count.addEventListener("change", function() {
+                var count = parseInt(ticket_Count.value);
+                var price_value = parseFloat(subtotal.slice(1));
+                var new_subtotal = price_value * count;
+                var new_vat = 0.21 * new_subtotal;
+                var new_total = new_vat + new_total;
+
+                price.innerText = "€" + new_total;
+                total.innerText = "€" + new_total;
+                vat.innerText = "€" + new_vat;
+                subtotal.innerText = "€" + new_subtotal;
+            });
+
         </script>
         </section>
     </section>
