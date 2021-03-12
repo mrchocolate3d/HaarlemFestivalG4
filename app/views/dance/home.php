@@ -2,34 +2,41 @@
 
 <?php 
     // if user clicks on an event this will be evaluated
-    if(isset($_POST['event_id'])) {
-        $dancemodel = new DanceModel();
-        $event_details = $dancemodel->getArtist($_POST['event_id']);
-        $price = $event_details["price"];
-        $vat = 0.21 * $price;
-        $totalprice = $price + $vat;
-        $popup = '<section id="Modal" class="modal">
-            <!-- Modal content -->
-                    <section class="modal-content">
-                        <span class="close">&times;</span>
-                        <article id="modal-artist">
-                                <h3 id="modal-artist-title">'.$event_details["name"].'</h3>
-                                <img id="modal-artist-image" src="'.$event_details["image"].'" alt="artist image">
-                               <a href="'.$event_details["facebook"].'"> <img id="modal-artist-fb"src="" alt="Facebook"> </a>
-                               <a href="'.$event_details["instagram"].'"> <img  id="modal-artist-insta"src="" alt="Instagram"> </a>
-                               <a href="'.$event_details["twitter"].'"> <img id="modal-artist-twitter"src="" alt="Twitter"> </a>
+    if(isset($data['event_id']) && !empty(trim($data['event_id']))) {
+        $event_details = $data["artist_data"];
 
-                                <p id="modal-artist-description">
-                                    '.$event_details["description"].'
-                                </p>
-                        </article>
+        if (is_array($event_details)) {
+            $price = $event_details["price"];
+            $vat = 0.21 * $price;
+            $totalprice = $price + $vat;
+            $popup = '<section id="Modal" class="modal">
+                    <!-- Modal content -->
+                        <section class="modal-content">
+                            <span class="close">&times;</span>
+                            <article id="modal-artist">
+                                    <h3 id="modal-artist-title">'.$event_details["name"].'</h3>
+                                    <img id="modal-artist-image" src="'.$event_details["image"].'" alt="artist image">
+                                   <a href="' . $event_details["facebook"] . '"> <img id="modal-artist-fb" src="" alt="Facebook"> </a>
+                                   <a href="' . $event_details["instagram"]. '"> <img id="modal-artist-insta" src="" alt="Instagram"> </a>
+                                   <a href="' . $event_details["twitter"]  . '"> <img id="modal-artist-twitter" src="" alt="Twitter"> </a>
+
+                                    <p id="modal-artist-description">
+                                        '.$event_details["description"].'
+                                    </p>
+                            </article>
+
                             <article id="modal-event-details">
                                     <h3>Event Details</h3>
                                     <h4 id="modal-event-title">'.$event_details["name"].'</h4>
                                     <h4 id="modal-event-time-place">'.$event_details["time_place"].'</h4>
-                                    <a href=""><img src="" alt="Party All Night-Full day pass@150">'.$event_details["price"].'</a>
+
+                                    <form action="' . URLROOT . '/cart/daypass" method="POST" >
+                                        <input type="hidden" name="event_id" value="dance_1_day_pass" />
+                                        <button type="submit"><img src="" alt="Party All Night - Full Day Pass @150"></button>
+                                    </form>
+
                                     <h3>Price</h3>
-                                    <h4 id="modal-event-price">€'.$totalprice.'</h4>
+                                    <h4 id="modal-event-price">€'.$price.'</h4>
                                     <h3>Amount</h3>
                                     <select name="ticket-count" id="modal-event-ticket-count">
                                             <option value="1">1</option>
@@ -38,13 +45,18 @@
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                     </select>
-                                    <a href=""><img src="" alt="Dance Freak-3 day pass@250"></a>
+
+                                    <form action="' . URLROOT . '/cart/multipass" method="POST" >
+                                        <input type="hidden" name="event_id" value="dance_3_days_pass" />
+                                        <button type="submit"><img src="" alt="Dance Freak - 3 Days Pass @250"></button>
+                                    </form>
 
                             </article>
 
                             <aside id="modal-ticket-details">
                                     <h2>Total</h2>
                                     <h3 id="modal-ticket-price">€'.$totalprice.'</h3>
+                                    <hr />
                                     <table>
                                             <tr>
                                                 <td>Sub-total</td>
@@ -62,14 +74,29 @@
                                             </tr>
 
                                             <tr>
-                                                <td><a href="home.php?add_to_cart='.$_POST["event_id"].'"><span>Checkout</span></a></td>
-                                                <td><a href=""><span>Add to Cart</span></a></td>
+                                                <td>
+                                                    <form action="' . URLROOT . '/cart/checkout" method="POST" >
+                                                        <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
+                                                        <input type="hidden" name="checkout_count" value=1 />
+                                                        <button type="submit">Checkout</button>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="' . URLROOT . '/cart/add_to_cart" method="POST" >
+                                                        <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
+                                                        <input type="hidden" name="atc_count" value=1 />
+                                                        <button type="submit">Add To Cart</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                     </table>
                             </aside>
 
-                    </section>
-            </section>';
+                        </section>
+                    </section>';
+
+                    echo $popup;
+            }
     }
     // if user clicks add to cart this will be evaluated 
     else if(isset($_POST['add_to_cart'])) {
@@ -82,7 +109,7 @@
         <section id="dance-title">
                 <h1>Haarlem Dance</h1>
                 <h2>
-                    The festival bringing you to the best dance acts from, both local and all around the world.performing at haarlem's very own 
+                    The festival bringing you to the best dance acts from, both local and all around the world, performing at haarlem's very own 
                     caprera openluchttheather, and other exciting theathers in haarlem, a enjoyable
                     and fun event you dont wanna miss. 
                 </h2>
@@ -146,26 +173,22 @@
                <th>Saturday-28th July</th>
                <th>Sunday-29th July</th></tr>';
 
-               $dancetable = new DanceModel();
-               $schedule = $dancetable->getTimeTable();
-               $dates =  array("Friday-27th July", "Saturday-28th July", "Sunday-29th July");
-               $venues = array("Lichtfabriek", "Jopenkerk", "XO the Club", "Club Ruis", "Caprera Openluchttheater", "Club Stalker");
-
-               foreach($venues as $venue) {
+               foreach($data['venues'] as $venue) {
                     $table.= '<tr>';
                     $table.= '<th>'.$venue.'</th>';
-                    foreach($dates as $dt) {
-                        //$table.=' <td>'.$schedule[$dt][$venue].'</td>';
-
+                    foreach($data['dates'] as $dt) {
                         $table .= '<td class="popup">';
                         
-                            if($schedule[$dt][$venue]["text"] == "NO EVENTS") {
-                                 $table .= "NO EVENTS</td>";
+                            if($data['timetable'][$dt][$venue]["text"] == "NO EVENTS") {
+                                 $table .= "NO EVENTS";
                             }
                             else {
-                                $table .= '<a href="home.php?event_id='.$schedule[$dt][$venue]["id"].'">'.$schedule[$dt][$venue]["text"].'</a></td>';
+                                $table .=   '<form action="' . URLROOT . '/dance/event" method="POST">
+                                                <input type="hidden" name="event_id" value="' . $data['timetable'][$dt][$venue]["id"] . '" />
+                                                <button type="submit">' . $data['timetable'][$dt][$venue]["text"] . '</button>
+                                            </form>';
                             }
-                                
+                        $table .= '</td>';      
                                         
                     }
                     $table.= '</tr>';
@@ -200,6 +223,8 @@
             var subtotal = document.getElementById("modal-ticket-subtotal");
             var vat = document.getElementById("modal-ticket-vat");
             var total = document.getElementById("modal-ticket-total");
+            var checkout_count = document.getElementByName("checkout_count");
+            var add_to_cart = document.getElementByName("atc_count");
 
             ticket_Count.addEventListener("change", function() {
                 var count = parseInt(ticket_Count.value);
@@ -212,10 +237,15 @@
                 total.innerText = "€" + new_total;
                 vat.innerText = "€" + new_vat;
                 subtotal.innerText = "€" + new_subtotal;
+
+                checkout_count.value = count;
+                atc_count.value = count;
             });
 
         </script>
         </section>
     </section>
 </main>
+
+
 
