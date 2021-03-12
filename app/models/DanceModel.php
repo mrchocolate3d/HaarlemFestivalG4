@@ -14,18 +14,11 @@
 
                 $dates =  array("Friday-27th July", "Saturday-28th July", "Sunday-29th July");
                 $venues = array("Lichtfabriek", "Jopenkerk", "XO the Club", "Club Ruis", "Caprera Openluchttheater", "Club Stalker");
-                
-                
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "haarlemfestival";
 
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
+
                 // Check connection
-                if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+                if ($db->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
                 }
 
                 
@@ -57,15 +50,9 @@
 
         function getArtist($event_id) {
 
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "haarlemfestival";
-    
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+
             // Check connection
-            if ($conn->connect_error) {
+            if ($db->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
             
