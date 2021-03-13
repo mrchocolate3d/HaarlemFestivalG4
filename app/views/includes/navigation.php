@@ -18,6 +18,8 @@
         </li>
 
         <li>
-            <a href="/cart/view"> <i class="bi bi-basket3-fill"></i></a>
+            <a href="<?php echo URLROOT;?>/cart/display"> <i class="bi bi-basket3-fill"></i></a>
+        </li>
+></a>
         </li>
 </nav>
