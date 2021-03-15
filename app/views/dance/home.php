@@ -6,9 +6,14 @@
         $event_details = $data["artist_data"];
 
         if (is_array($event_details)) {
+
+            // foreach($event_details as $ed) {
+            //     echo $ed;
+            // }
             $price = $event_details["price"];
             $vat = 0.21 * $price;
             $totalprice = $price + $vat;
+            
             $popup = '<section id="Modal" class="modal">
                         <!-- Modal content -->
                         <section class="modal-content">
@@ -94,131 +99,33 @@
 
                         </section>
                     </section>';
-                    $popup_script = "<script>
-                    $(function() {
-                        // CODE TO CLOSE THE POPUP
-                        // USE THE .on METHOD IN CASE WE
-                        // WANT TO MODIFY THIS TO LOAD POPUP
-                        // CONTENT VIA AJAX
-                        $('body').on('click','.closePopup', function() {
-                            $('.modal').remove()
-                        });
-                        // HANDLE THE WINDOW RESIZE.
-                        // WHEN WINDO IS RESIZED - MAKE SURE
-                        // POPUP STAYS CENTERED.
-                        $(window).resize(function() {
-                            // FIND THE POPUP
-                            var popup = $('#Modal');
-                        // IF IT EXISTS CENTRE IT
-                            if (popup.length > 0) {
-                            centerPopup();
-                            }
-                        });
-                        
-                        $('document').ready(function(e) {
-                            var popup = '".$popup."';
-                            $('body').append(popup);
-                            centerPopup();
-                        });
-                        });
-                        
-                        function centerPopup()
-                        {
-                        var popup = $('#Modal');
-                        // LEFT AND TOP VALUES IS HALF THE DIFFERENCE 
-                        // BETWEEN THE WINDOW AND POPUP METRICS.
-                        // USE THE SHIFT RIGHT OPERATOR TO DO DIV BY 2
-                        var left = ($(window).width() - popup.width()) >> 1;
-                        var top = ($(window).height() - popup.height()) >> 1;
-                        // SET LEFT AND TOP STYLES TO CALCULATED VALUES
-                        popup.css({left: left + 'px', top: top + 'px'});
-                        }";
+                    
+                    echo $popup;
+                    
 
-                    echo $popup_script;
-            }
+    // echo '
+    //     <!-- The Modal -->
+    //     <div id="myModal" class="modal">
+
+    //     <!-- Modal content -->
+    //     <div class="modal-content">
+    //         <span class="close">&times;</span>
+    //         <p>Some text in the Modal..</p>
+    //     </div>
+
+    //     </div>
+    //     ';
+
+
+        }
     }
     // if user clicks add to cart this will be evaluated 
     else if(isset($_POST['add_to_cart'])) {
         
     }
 ?>
-    <script type="text/javascript">
-            $(function() {
-            // CODE TO CLOSE THE POPUP
-            // USE THE .on METHOD IN CASE WE
-            // WANT TO MODIFY THIS TO LOAD POPUP
-            // CONTENT VIA AJAX
-            $('body').on('click','.closePopup', function() {
-                // CHANGE BACKGROUND TO GREEN 
-            // FOLLOWED BY A FADEOUT TO GIVE
-            // A DELAY TO SHOW CHANGE IN COLOUR
-                $('.action input').css({backgroundColor: 'green'}).fadeOut(300, function() {
-                // REMOVE ALL ELEMENTS WITH THE 
-                // popupElement STYLE - INCLUDES OVERLAY
-                // AND POUP
-                $('.popupElement').remove()
-                });
-            });
-            // HANDLE THE WINDOW RESIZE.
-            // WHEN WINDO IS RESIZED - MAKE SURE
-            // POPUP STAYS CENTERED.
-            $(window).resize(function() {
-                // FIND THE POPUP
-                var popup = $('#popupWindow');
-            // IF IT EXISTS CENTRE IT
-                if (popup.length > 0) {
-                centerPopup();
-                }
-            });
-            // TRIGER DISPLAY OF POPUP
-            $('a').click(function(e) {
-                // DISABLE DEFAULT CLICK FUNCTIONALITY FOR <a>
-                e.preventDefault();
-            // CREATE OUR OVERLAY AND APPEND TO BODY
-                var overlay = $('<div/>').addClass('overlay').addClass('popupElement');
-                $('body').append(overlay);
-            // CREATE OUR POPUP AND POSITION OFFSCREEN.
-            // WE DO THIS SO WE CAN DISPLAY IT AND CALCULATE
-            // ITS WIDTH AND HEIGHT SO WE CAN CENTRE IT
-                var popup = $('<div/>').attr('id','popupWindow').addClass('popup').addClass('popupElement').css({left: '-999px'});
-            // CREATE THE HTML FOR THE POPUP
-                var html = '<img src="' + $(this).attr('href') + '" /><div class="action"><input type="button" value="Continue" class="closePopup"/></div>';
-                popup.html(html);
-            // APPEND THE POPUP TO THE BODY
-                $('body').append(popup);
-            // AND CENTER IT
-                centerPopup();
-            });
-            });
-            // FUNCTION TO CENTER THE POPUP
-            function centerPopup()
-            {
-            var popup = $('#popupWindow');
-            // LEFT AND TOP VALUES IS HALF THE DIFFERENCE 
-            // BETWEEN THE WINDOW AND POPUP METRICS.
-            // USE THE SHIFT RIGHT OPERATOR TO DO DIV BY 2
-            var left = ($(window).width() - popup.width()) >> 1;
-            var top = ($(window).height() - popup.height()) >> 1;
-            // SET LEFT AND TOP STYLES TO CALCULATED VALUES
-            popup.css({left: left + 'px', top: top + 'px'});
-            }
-</script>
-<style type="text/css">
-.modal {
-  background: #999;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  opacity: 0.95;
-  filter: alpha(opacity=95);
-  z-index: 1;
-}
-</style>
-
+  
 <main>
-    <a href="images/a3.jpg">Click me</a>
     <section class="title-screen">
        
         <section id="dance-title">
@@ -312,26 +219,70 @@
                $table.= '</table>';
                echo $table;
         ?>
-        
+        <style>
+	 /* The Modal (background) */
+	.modal {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Sit on top */
+	  left: 50%;
+	  top: 50%;
+	  width: 100%; /* Full width */
+	  height: 100%; /* Full height */
+	  overflow: auto; /* Enable scroll if needed */
+	  background-color: rgb(0,0,0); /* Fallback color */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content/Box */
+	.modal-content {
+	  background-color: #fefefe;
+	  margin: 15% auto; /* 15% from the top and centered */
+	  padding: 20px;
+	  border: 1px solid #888;
+	  width: 80%; /* Could be more or less, depending on screen size */
+	}
+
+	/* The Close Button */
+	.close {
+	  color: #aaa;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	  color: black;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+</style>
         <script>
-            // Get the modal
-            var modal = document.getElementById("Modal");
-            
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+	// Get the modal
+	var modal = document.getElementById("Modal");
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.remove();
-            }
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.remove();
-                }
-            
-            }
+	// When the user clicks on the button, open the modal
+	var display_popup = function() {
+	  modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+</script>
+        <script>
             // dropdown ticket count on change
             var ticket_Count = document.getElementById("modal-event-ticket-count");
 
@@ -339,8 +290,8 @@
             var subtotal = document.getElementById("modal-ticket-subtotal");
             var vat = document.getElementById("modal-ticket-vat");
             var total = document.getElementById("modal-ticket-total");
-            var checkout_count = document.getElementByName("checkout_count");
-            var add_to_cart = document.getElementByName("atc_count");
+            var checkout_count = document.getElementsByName("checkout_count")[0];
+            var add_to_cart = document.getElementsByName("atc_count")[0];
 
             ticket_Count.addEventListener("change", function() {
                 var count = parseInt(ticket_Count.value);
@@ -357,11 +308,19 @@
                 checkout_count.value = count;
                 atc_count.value = count;
             });
-
+            
         </script>
         </section>
     </section>
 </main>
+<?php
+    if(isset($data['event_id']) && !empty(trim($data['event_id']))) {
+        $event_details = $data["artist_data"];
 
+        if (is_array($event_details)) {
+            echo "<script type='text/javascript'> window.onload=display_popup; </script>";
+        }
+    }
+?>
 
 
