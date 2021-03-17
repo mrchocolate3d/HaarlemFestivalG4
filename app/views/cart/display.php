@@ -3,7 +3,12 @@
 <main>
 
     <?php
-    print_r($_SESSION['cart']);
+    if (isset($data['tickets'])) 
+    {
+        
+        var_dump($data['tickets']);
+        
+    }
 
     ?>
 

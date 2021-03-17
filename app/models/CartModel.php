@@ -1,6 +1,9 @@
 <?php
 
+use Classes\Artist;
+use Classes\JazzEvent;
 use Classes\Ticket;
+use Classes\Location;
 
 class CartModel
 {
@@ -11,27 +14,51 @@ class CartModel
         $this->db = new Database();
     }
 
-    public function getTickets(): Ticket
+    public function getTickets()
     {
-        $query = "SELECT * FROM ticket WHERE ticket_id IN (";
+        // $query = "SELECT * FROM ticket WHERE ticket_id IN (";
 
-        $max = count($_SESSION['cart']);
-        for ($i = 0; $i < $max; $i++) // Add placeholders to add to in clause
-        {
-            $query = $query . ":id$i" . ($i < $max - 1 ? ", " : ")");
+        // $max = count($_SESSION['cart']);
+        // for ($i = 0; $i < $max; $i++) // Add placeholders to add to in clause
+        // {
+        //     $query = $query . ":id$i" . ($i < $max - 1 ? ", " : ")");
+        // }
+
+        // $count = 0;
+        // $this->db->query($query);
+
+        // foreach ($_SESSION['cart'] as $key) // fill placeholders with keys
+        // {
+        //     //echo ":id$count - $key[0]";
+        //     $this->db->bind(":id$count", $key[0]);
+        //     $count++;
+        // }
+
+        // $this->db->execute();
+        // return $this->db->resultSetToObj("Ticket");
+
+        $tickets = [];
+        if(isset($_SESSION['cart'])){
+
+            foreach ($_SESSION['cart'] as $ticket) 
+            {
+                array_push($ticket, unserialize($ticket));
+            }
         }
+    }
 
-        $count = 0;
-        $this->db->query($query);
+    public function getTicketTest()
+    {
+        $artist = new Artist(1, "Gare Du Nord", "Very cool jazz mans", "Classic Jazz");
+        $location = new Location(1, "Patronaat", "Main Hall", 500);
+        $event = new JazzEvent(101 , $artist, $location, new DateTime('now'), new DateTime('now'));
+        $ticket = new Ticket("ar", $event, 15);
 
-        foreach ($_SESSION['cart'] as $key) // fill placeholders with keys
-        {
-            //echo ":id$count - $key[0]";
-            $this->db->bind(":id$count", $key[0]);
-            $count++;
-        }
+        return $ticket;
+    }
 
-        $this->db->execute();
-        return $this->db->resultSetToObj("Ticket");
+    public function addToCart(Ticket $ticket)
+    {
+        $_SESSION['cart'] = serialize($ticket);
     }
 }
