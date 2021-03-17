@@ -1,8 +1,5 @@
 <?php
 
-namespace Classes;
-
-use DateTime;
 
 abstract class Event
 {

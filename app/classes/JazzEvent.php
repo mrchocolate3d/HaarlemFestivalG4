@@ -1,8 +1,6 @@
 <?php
 
-namespace Classes;
-
-use DateTime;
+require_once APPROOT.'/classes/Event.php';
 
 class JazzEvent extends Event
 {

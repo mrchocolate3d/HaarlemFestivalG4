@@ -1,7 +1,5 @@
 <?php
 
-namespace Classes;
-
 class Ticket
 {
     private int $ticketID;

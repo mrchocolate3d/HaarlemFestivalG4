@@ -1,6 +1,5 @@
 <?php
 
-namespace Classes;
 
 class Artist
 {
@@ -11,7 +10,7 @@ class Artist
     // private string $image;
     private array $socialLinks;
 
-    public function __construct(int $artistId, int $name, string $description, string $genre)
+    public function __construct(int $artistId, string $name, string $description, string $genre)
     {
         $this->artistId = $artistId;
         $this->name = $name;

@@ -1,9 +1,11 @@
 <?php
 
-use Classes\Artist;
-use Classes\JazzEvent;
-use Classes\Ticket;
-use Classes\Location;
+require_once APPROOT.'\classes\Artist.php';
+require_once APPROOT.'\classes\JazzEvent.php';
+require_once APPROOT.'\classes\Location.php';
+require_once APPROOT.'\classes\Ticket.php';
+require_once APPROOT.'\classes\Ticket.php';
+
 
 class CartModel
 {
@@ -38,23 +40,21 @@ class CartModel
         // return $this->db->resultSetToObj("Ticket");
 
         $tickets = [];
-        if(isset($_SESSION['cart'])){
+        if (isset($_SESSION['cart'])) {
 
-            foreach ($_SESSION['cart'] as $ticket) 
-            {
+            foreach ($_SESSION['cart'] as $ticket) {
                 array_push($ticket, unserialize($ticket));
             }
         }
+        return $tickets;
     }
 
     public function getTicketTest()
     {
         $artist = new Artist(1, "Gare Du Nord", "Very cool jazz mans", "Classic Jazz");
         $location = new Location(1, "Patronaat", "Main Hall", 500);
-        $event = new JazzEvent(101 , $artist, $location, new DateTime('now'), new DateTime('now'));
-        $ticket = new Ticket("ar", $event, 15);
-
-        return $ticket;
+        $event = new JazzEvent(101, $artist, $location, new DateTime('now'), new DateTime('now'));
+        $this->addToCart(new Ticket(0, $event, 15));
     }
 
     public function addToCart(Ticket $ticket)
