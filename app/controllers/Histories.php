@@ -8,8 +8,8 @@ class Histories extends Controller
         $this->historyModel = $this->model('History');
     }
 
-    public function detail(){
+    public function detail()
+    {
         $this->view('histories/detail');
     }
-
 }
