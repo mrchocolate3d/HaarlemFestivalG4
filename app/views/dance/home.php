@@ -141,19 +141,27 @@
 
     <section id="dance-info-page">
             <section id="dance-info" class="card">
+                    <table>
+                    <tr>
+                    <td>
+                        <img src="../img/dance_in_haarlem.png" alt="Haarlem festival dance stage" id="dance-in-haarlem-image">
+                    </td>
 
-                    <img src="../img/dance_in_haarlem.png" alt="Haarlem festival dance stage" id="dance-in-haarlem-image">
+                    <td colspan = "2">
                     <section id="dance-in-haarlem">
                         <h3>Dance In Haarlem</h3>
                         <p>
-                        Haarlem is no stranger to dance with many localities and venues embracing it.
+                            Haarlem is no stranger to dance with many localities and venues embracing it.
                         </p>
                     <p>
                         The event's sheer size impressive lineups and unbeatable party atomosphere will make your experience in dance like never before. 
                     </p>
                     </section>
+                    </td>
 
-                    <img src="../img/caprera.png" alt="Caprera openluchtheather" id="caprera-image">
+                    </tr>
+                    <tr>
+                    <td colspan = "2">
                     <section id="caprera">
                         <h3>Caprera Openluchttheather</h3>
                     <p>
@@ -163,9 +171,15 @@
                         Located between the dunes and forest, here you can enjoy all kinds of dance events experiencing the enchanting evening under the stars giving you unforgettable experieces
                     </p>
                     </section>
+                        <td> <img src="../img/caprera.png" alt="Caprera openluchtheather" id="caprera-image"> </td>
+                    </tr>
 
-                    <img src="../img/xotheclub.png" alt="XO the club" id="xothclub-image">
-                    <section id="xotheclub">
+                    <tr>
+                    <td>
+                        <img src="../img/xotheclub.png" alt="XO the club" id="xothclub-image">
+                    </td>
+                    <td colspan = "2">
+                        <section id="xotheclub">
                         <h3>XO the club</h3>
                     <p>
                         The second most popular club in the netherlands known for hosting incrediable performances 
@@ -174,15 +188,36 @@
                         the doors are open from 9pm at night to 4 am in the morning!
                     </p>
                     </section>
+                    </td>
+                    </table>
                     <a href="#dance-timetable-page" class="button transparent">See What's On</a>
             </section>
 
-            <!-- <aside id="dance-artists">
-                <img src="../img/martin_garrix.png" alt="artist1">
-                <img src="../img/hardwell.png" alt="artist2">
-                <img src="../img/armin_van_buuren.png" alt="artist3">
-                <img src="../img/tiesto.png" alt="artist4"> 
-            </aside> -->
+             <aside id="dance-artists">
+                <section class="frame">
+                     <img src="../img/vip all access.png" alt="vip ticket" width="300px" >
+                </section>
+
+                <section class="frame">
+                    <h4>Martin Garrix</h4>
+                    <img src="../img/martin_garrix.png" alt="artist1">
+                </section>
+
+                <section class="frame">
+                    <h4>Hardwell</h4>
+                    <img src="../img/hardwell.png" alt="artist2">
+                </section>
+
+                <section class="frame">
+                    <h4>Armin van Burren</h4>
+                    <img src="../img/armin_van_buuren.png" alt="artist3">
+                </section>
+
+                <section class="frame">
+                    <h4>Tiesto</h4>
+                    <img src="../img/tiesto.png" alt="artist4">
+                </section> 
+            </aside> 
 
     </section>
 
