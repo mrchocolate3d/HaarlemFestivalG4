@@ -43,7 +43,7 @@
                                     <h3>Price</h3>
                                     <h4 id="modal-event-price">€'.$price.'</h4>
                                     <h3>Amount</h3>
-                                    <select name="ticket-count" id="modal-event-ticket-count">
+                                    <select name="ticket-count" id="modal-event-ticket-count" onchange="oc">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -128,13 +128,13 @@
 <main>
     <section class="title-screen">
        
-        <section id="dance-title">
-                <h1>Haarlem Dance</h1>
-                <h2>
+        <section id="dance-title" class="content">
+                <h1 style="float: center;">Haarlem Dance</h1>
+                <p>
                     The festival bringing you to the best dance acts from, both local and all around the world, performing at haarlem's very own 
-                    caprera openluchttheather, and other exciting theathers in haarlem, a enjoyable
+                    caprera openluchttheather, and other exciting theathers <br> in haarlem, a enjoyable
                     and fun event you dont wanna miss. 
-                </h2>
+                </p>
                 <a href="#dance-info-page" class="button transparent">Show More</a>
         </section>
     </section>
@@ -257,7 +257,7 @@
         <style>
 	 /* The Modal (background) */
 	.modal {
-	  display: none; /* Hidden by default */
+        display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */
 	  z-index: 1; /* Sit on top */
 	  left: 50%;
@@ -271,11 +271,11 @@
 
 	/* Modal Content/Box */
 	.modal-content {
-	  background-color: #fefefe;
-	  margin: 15% auto; /* 15% from the top and centered */
-	  padding: 20px;
-	  border: 1px solid #888;
-	  width: 80%; /* Could be more or less, depending on screen size */
+        background-color: #fefefe;
+	    margin: 15% auto; /* 15% from the top and centered */
+	    padding: 20px;
+	    border: 1px solid #888;
+	    width: 80%; /* Could be more or less, depending on screen size */
 	}
 
 	/* The Close Button */
@@ -288,9 +288,10 @@
 
 	.close:hover,
 	.close:focus {
-	  color: black;
-	  text-decoration: none;
-	  cursor: pointer;
+
+        color: black;
+	    text-decoration: none;
+	    cursor: pointer;
 	}
 </style>
         <script>
@@ -328,7 +329,7 @@
             var checkout_count = document.getElementsByName("checkout_count")[0];
             var add_to_cart = document.getElementsByName("atc_count")[0];
 
-            ticket_Count.addEventListener("change", function() {
+                ticket_Count.addEventListener("change", function() {
                 var count = parseInt(ticket_Count.value);
                 var price_value = parseFloat(subtotal.slice(1));
                 var new_subtotal = price_value * count;
@@ -343,6 +344,22 @@
                 checkout_count.value = count;
                 atc_count.value = count;
             });
+
+            oc=function() {
+                var count = parseInt(ticket_Count.value);
+                var price_value = parseFloat(subtotal.slice(1));
+                var new_subtotal = price_value * count;
+                var new_vat = 0.21 * new_subtotal;
+                var new_total = new_vat + new_total;
+
+                price.innerText = "€" + new_total;
+                total.innerText = "€" + new_total;
+                vat.innerText = "€" + new_vat;
+                subtotal.innerText = "€" + new_subtotal;
+
+                checkout_count.value = count;
+                atc_count.value = count;
+            };
             
         </script>
         </section>

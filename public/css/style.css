@@ -120,11 +120,31 @@ input::placeholder {
 
 /* Dance CSS */
 
+.title-screen {
+    background-image: url("../img/dance_home.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title-screen .content {
+
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 100%; /* Full width */
+    padding: 20px; /* Some padding */
+    vertical-align: baseline;
+}
  #dance-info-page {
     height:  auto;
     width: 80%;
-    margin: auto;
+    margin: 2em;
     background: white;
+    display: inline-block;
 }
 
 #dance-info {
@@ -133,9 +153,8 @@ input::placeholder {
     height: auto;
     width: 80%;
     margin: 0;
-    border: purple 4px solid; 
-    min-width:  0;
-    min-height: 0;
+    border: purple 4px solid;
+    float: left; 
 }
 #dance-info table {
         table-layout: fixed;
@@ -205,25 +224,20 @@ input::placeholder {
 /* spotlight section */
 
 #dance-artists {
-    grid-area: artists;
-    position: top;
     float: right;
-    top: 80%;
-    position: relative;
 }
 
 .frame {
     /* height: 40%; */      /* Equals maximum image height */
     line-height: 25px;
-    width: 180%;
+    padding: 1em;
     border: 1px solid orange;
     text-align: center;
-    margin: 1em 0;
+    margin: 1em;
     vertical-align: middle;
     top: 80%;
     position: relative;
-    width: 398px;
-    height: 150px;
+    
 }
 
 /* Dance Popup css */
@@ -241,7 +255,9 @@ input::placeholder {
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+
+    
   }
   
  
@@ -252,6 +268,8 @@ input::placeholder {
     border: 1px solid #888;
     width: 80%;
     height: auto;
+
+    
   }
 
  
@@ -267,5 +285,8 @@ input::placeholder {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+
+     
   }
+
 
