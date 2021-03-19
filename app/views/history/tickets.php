@@ -17,9 +17,9 @@
             <section class="history-ticket-container">
                 <button onclick="myFunction()" id="history-dropdown-btn">Select a language</button>
                 <section class="history-ticket-dropdown">
-                    <a href="#about">Chinese</a>
-                    <a href="#base">English</a>
-                    <a href="#blog">Dutch</a>
+                    <a href="#chinese">Chinese</a>
+                    <a href="#english">English</a>
+                    <a href="#dutch">Dutch</a>
                 </section>
             </section>
 
@@ -99,6 +99,10 @@
                 </section>
             </section>
 
+            <section class="history-tickets-modal">
+
+            </section>
+
         </section>
     </section>
 </main>
@@ -127,4 +131,20 @@
             }
         }
     }
+    var click = document.getElementById("map_popup_btn");
+    var modal=document.getElementById("history-tickets-modal");
+
+    click.onclick=function (){
+        modal.style.display = "block";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+
+
+
+
+
 </script>
