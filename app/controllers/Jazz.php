@@ -6,6 +6,7 @@ class Jazz extends Controller
     public function __construct()
     {
         $this->jazzModel = $this->model('JazzModel');
+        $this->jazzModel = $this->view('jazz/home');
     }
 
     public function home()
@@ -13,7 +14,7 @@ class Jazz extends Controller
         $timetable = $this->jazzModel->getTimetable();
         $data = [
             'title' => 'Jazz Home',
-            'name' => $timetable
+            'timetable' =>$timetable
         ];
         $this->view('jazz/home', $data, "");
     }

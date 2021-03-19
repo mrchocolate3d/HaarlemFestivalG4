@@ -4,7 +4,6 @@ require_once APPROOT.'\classes\Artist.php';
 require_once APPROOT.'\classes\JazzEvent.php';
 require_once APPROOT.'\classes\Location.php';
 require_once APPROOT.'\classes\Ticket.php';
-require_once APPROOT.'\classes\Ticket.php';
 
 
 class CartModel
