@@ -47,7 +47,7 @@
                 <p id="history-quote">Explore<br>Haarlem...</p>
             </aside>
 
-            <button id = map_popup_btn>Show locations</button>
+            <button id = "map_popup_btn">Show locations</button>
 
             <section class="history_map_modal" id="map_popup">
                 <section class="modal-content">
