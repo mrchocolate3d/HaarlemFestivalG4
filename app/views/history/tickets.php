@@ -81,26 +81,10 @@
                         <td></td>
                     </tr>
                 </table>
-                <section class="history-calendar-10">
-                    <aside class="calendar-thursday">
-                        <table>
-
-                        </table>
-                    </aside>
-                    <aside class="calendar-thursday"></aside>
-                    <aside class="calendar-thursday"></aside>
-                    <aside class="calendar-thursday"></aside>
-                </section>
-                <section class="history-calendar-13">
-
-                </section>
-                <section class="history-calendar-16">
-
-                </section>
             </section>
 
             <section class="history-tickets-modal">
-
+                <span id="history-tickets-modal-close"></span>
             </section>
 
         </section>
@@ -110,7 +94,7 @@
 <script>
 
     function myFunction() {
-        document.getElementById("history-ticket-dropdown").classList.toggle("show");
+        document.getElementsByClassName("history-ticket-dropdown").classList.toggle("show");
     }
 
     function filterFunction() {
@@ -132,10 +116,13 @@
         }
     }
     var click = document.getElementById("map_popup_btn");
-    var modal=document.getElementById("history-tickets-modal");
-
+    var modal=document.getElementsByClassName("history-tickets-modal");
+    var closebtn = document.getElementById("history-tickets-modal-close");
     click.onclick=function (){
         modal.style.display = "block";
+    }
+    closebtn.onclick=function (){
+        modal.style.display="close";
     }
 
     window.onclick = function(event) {
