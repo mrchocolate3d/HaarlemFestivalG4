@@ -5,16 +5,14 @@
         <li> <a href="<?php echo URLROOT . "/jazz/home" ?>">Haarlem Jazz</a> </li>
         <li> <a href="<?php echo URLROOT . "/histories/detail" ?>">Haarlem History</a> </li>
         <li> <a href="<?php echo URLROOT . "/pages/dance" ?>">Haarlem Dance</a> </li>
+
         <li>
-            <?php
-            if (isset($_SESSION['user_id'])) {
-                //Show User Menu Drop down
-                // <li><a href="<?php echo URLROOT; ? >/users/account">Your Account</a></li>
-                // <li><a href="<?php echo URLROOT; ? >/users/logout">Log out</a></li>
-            } else {
-                //Show Login Button
-            ?> 
-            <a class="btn-login" href="<?php echo URLROOT; }?>/users/login">Log&nbsp;In</a>
+            <?php if (isset($_SESSION['firstname'])) : ?>
+                <a href="<?php echo URLROOT; ?>/users/account">Your Account</a>
+                <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
+            <?php else : ?>
+                <a href="<?php echo URLROOT; ?>/users/login">Log In</a>
+            <?php endif; ?>
         </li>
 
         <li>

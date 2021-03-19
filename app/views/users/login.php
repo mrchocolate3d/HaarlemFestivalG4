@@ -1,5 +1,6 @@
 <?php
 require APPROOT . '/views/includes/header.php';
+include APPROOT . '/views/includes/navigation.php';
 ?>
 
 <main role="main">
@@ -8,9 +9,9 @@ require APPROOT . '/views/includes/header.php';
         <aside class="wrapper-login">
             <h2>Sign in</h2>
             <form action="<?php echo URLROOT; ?>/users/login" method="post">
-                <input type="text" placeholder="Username *" name="username">
+                <input type="text" placeholder="Email *" name="email">
                 <span class="invalidFeedback">
-                    <?php echo $data['usernameError']; ?>
+                    <?php echo $data['emailError']; ?>
                 </span>
 
                 <input type="password" placeholder="Password *" name="password">

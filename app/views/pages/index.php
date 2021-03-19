@@ -1,4 +1,5 @@
-<?php include APPROOT . '/views/includes/header.php'; ?>
+<?php include APPROOT . '/views/includes/header.php';
+include APPROOT . '/views/includes/navigation.php'; ?>
 
 <main id="home">
     <?php //var_dump($data); 

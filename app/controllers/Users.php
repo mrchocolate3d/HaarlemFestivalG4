@@ -11,8 +11,10 @@ class Users extends Controller
     public function login()
     {
         $data = [
-            'title' => 'Login Page',
-            'usernameError' => '',
+            'title'=> 'Login Page',
+            'email'=> '',
+            'password' => '',
+            'emailError' => '',
             'passwordError' => ''
         ];
 
@@ -20,48 +22,59 @@ class Users extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'username' => trim($_POST['username']),
+                'email'=> trim($_POST['email']),
                 'password' => trim($_POST['password']),
-                'usernameError' => '',
+                'emailError' => '',
                 'passwordError' => ''
             ];
 
-            if (empty($data['username'])) {
-                $data['usernameError'] = 'Please enter username';
+            //Validate email
+            if (empty($data['email'])) {
+                $data['emailError'] = 'Please enter Email';
             }
-
+            //Validate password
             if (empty($data['password'])) {
                 $data['passwordError'] = 'Please enter your password';
             }
 
 
-            if (empty($data['usernameError'])  && empty($data['passwordError'])) {
+            if (empty($data['emailError'])  && empty($data['passwordError'])) {
+                $LogInUserCheck = $this->userModel->loginCheck($data['email'],$data['password']);
 
-                $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
-
-                if ($this->userModel->newUser($data)){
-                    header('location: ' . URLROOT . '/users/login');
+                if($LogInUserCheck){
+                    $this->createUserSession($LogInUserCheck);
                 } else {
-                    die('Something went wrong please try again later');
+                    $data['passwordError'] = 'Password or email is incorrect. PLease try again';
+                    $this->view('users/login', $data);
                 }
             }
-
-
-
-
-
         }
         $this->view('users/login', $data);
+    }
+
+
+    public function createUserSession($user){
+        $_SESSION['userID'] = $user->id;
+        $_SESSION['firstname'] = $user->firstname;
+        $_SESSION['email'] = $user->email;
+        header('location:' . URLROOT . '/pages/index');
+    }
+
+    public function logout(){
+        unset($_SESSION['userID']);
+        unset($_SESSION['firstname']);
+        unset($_SESSION['email']);
+        header('location:' . URLROOT . '/users/login');
     }
 
     public function register()
     {
         $data = [
-            'username' => '',
+            'firstname' => '',
+            'lastname' => '',
             'email' => '',
             'password' => '',
             'confirmPassword' => '',
-            'usernameError' => '',
             'emailError' => '',
             'passwordError' => '',
             'confirmPasswordError' => ''
@@ -73,11 +86,9 @@ class Users extends Controller
             $data = [
                 'firstname' => trim($_POST['firstname']),
                 'lastname' => trim($_POST['lastname']),
-                'username' => trim($_POST['username']),
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'confirmPassword' => trim($_POST['confirmPassword']),
-                'usernameError' => '',
                 'emailError' => '',
                 'passwordError' => '',
                 'confirmPasswordError' => ''
@@ -88,12 +99,6 @@ class Users extends Controller
             $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
 
-            //Check if a username is valid or empty
-            if (empty($data['username'])) {
-                $data['usernameError'] = 'Please enter username';
-            } else if (!preg_match($nameValidation, $data['username'])) {
-                $data['usernameError'] = 'Please enter valid syntax';
-            }
 
             //Check if a username is valid or empty
             if (empty($data['email'])) {
@@ -125,11 +130,11 @@ class Users extends Controller
                     }
                 }
 
-                if (empty($data['usernameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+                if (empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
 
                     $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
 
-                    if ($this->userModel->newUser($data)){
+                    if ($this->userModel->newCustomer($data)){
                         header('location: ' . URLROOT . '/users/login');
                     } else {
                         die('Something went wrong please try again later');

@@ -10,17 +10,5 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- Mb don't want to use Bootstrap -->
     <link rel="stylesheet" href="<?php echo URLROOT . "/public/css/style.css" ?>">
-    <?php 
-    
-    // Page specific CSS?
-    
-    ?>
-
-</head>
-
-<?php
-// $_SESSION['user_id'] = 'test_user_id';
-?>
-
+    </head>
 <body>
-<?php include APPROOT . '/views/includes/navigation.php'; ?>

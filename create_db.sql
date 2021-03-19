@@ -1,86 +1,131 @@
-CREATE TABLE `user` (
-    user_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    email_address VARCHAR(250)
+SELECT * FROM users;
+
+drop table users;
+
+
+CREATE TABLE roles (
+roleID INT PRIMARY KEY AUTO_INCREMENT,
+type VARCHAR(255)
 );
-CREATE TABLE `customer` (
-    customer_id INT(10) UNSIGNED PRIMARY KEY,
-    billing_address VARCHAR(60),
-    FOREIGN KEY (customer_id) REFERENCES user(user_id)
+
+/*Roles inset values*/
+INSERT INTO roles (type) VALUES ('SuperAdministrator');
+INSERT INTO roles (type) VALUES ('Administrator');
+INSERT INTO roles (type) VALUES ('Volunteer');
+INSERT INTO roles (type) VALUES ('Customer');
+
+SELECT * FROM roles;
+
+CREATE TABLE admin(
+adminID INT PRIMARY KEY AUTO_INCREMENT,
+email VARCHAR(255),
+password VARCHAR(255),
+roleID INT,
+FOREIGN KEY (roleID) REFERENCES roles(roleID)
 );
-CREATE TABLE `admin` (
-    admin_id INT(10) UNSIGNED PRIMARY KEY,
-    FOREIGN KEY (admin_id) REFERENCES user(user_id)
+
+SELECT * FROM admin;
+
+INSERT INTO admin(email, password, roleID) VALUES ('text@outlook.com','password',1);
+
+/*Stoped here*/
+
+CREATE TABLE users (
+userID INT PRIMARY KEY AUTO_INCREMENT,
+firstname VARCHAR(255) NOT NULL ,
+lastname VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+roleID INT NOT NULL,
+FOREIGN KEY (roleID) REFERENCES roles(roleID)
 );
-CREATE TABLE `volunteer` (
-    volunteer_id INT(10) UNSIGNED PRIMARY KEY,
-    FOREIGN KEY (volunteer_id) REFERENCES user(user_id)
+
+SELECT * FROM users;
+
+
+CREATE TABLE user_address(
+user_address_id INT PRIMARY KEY AUTO_INCREMENT,
+userID INT,
+addressID INT,
+FOREIGN KEY (userID) REFERENCES users(userID),
+FOREIGN KEY (addressID) REFERENCES address(addressID)
 );
-CREATE TABLE `order` (
-    order_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    customer_id INT(10) UNSIGNED NOT NULL,
-    total FLOAT(10) NOT NULL
+
+
+CREATE TABLE address (
+addressID INT PRIMARY KEY AUTO_INCREMENT,
+address_line1 VARCHAR(255),
+address_line2 VARCHAR(255),
+city VARCHAR(255),
+post_code VARCHAR(255)
 );
-CREATE TABLE `ticket` (
-    ticket_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    event_id INT(10) UNSIGNED NOT NULL,
-    ticket_price FLOAT(10) NOT NULL,
-    ticket_quantity INT(4) NOT NULL
+
+CREATE TABLE order_status(
+orderStatusID INT PRIMARY KEY AUTO_INCREMENT,
+status VARCHAR(255)
 );
-CREATE TABLE `order_item` (
-    order_id INT(10) UNSIGNED,
-    ticket_id INT(10) UNSIGNED,
-    quantity INT(2) UNSIGNED NOT NULL,
-    PRIMARY KEY (order_id, ticket_id),
-    FOREIGN KEY (order_id) REFERENCES `order`(order_id),
-    FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)
+
+CREATE TABLE orders(
+orderID INT PRIMARY KEY AUTO_INCREMENT,
+userID INT,
+totalPrice DOUBLE,
+orderStatusID INT,
+FOREIGN KEY (userID) REFERENCES users(userID)
 );
-CREATE TABLE `location`(
-    location_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    location_name VARCHAR(50),
-    description VARCHAR(500),
-    capacity INT(4) UNSIGNED
+
+CREATE TABLE payment_method(
+paymentMethodID INT PRIMARY KEY AUTO_INCREMENT,
+method VARCHAR(255)
 );
-CREATE TABLE `event` (
-    event_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    event_name VARCHAR(50),
-    category VARCHAR(50),
-    start_time TIME,
-    end_time TIME,
-    event_date DATE,
-    location_id INT(10) UNSIGNED,
-    FOREIGN KEY (location_id) REFERENCES `location`(location_id)
+
+INSERT INTO payment_method(method) VALUES ('Visa');
+INSERT INTO payment_method(method) VALUES ('Credit Card');
+INSERT INTO payment_method(method) VALUES ('Paypal');
+
+
+CREATE TABLE order_receipt(
+orderReceiptID INT PRIMARY KEY AUTO_INCREMENT,
+orderID INT,
+customerID INT,
+date DATETIME,
+paymentMethodID INT,
+totalPrice double,
+FOREIGN KEY (paymentMethodID) REFERENCES payment_method(paymentMethodID)
 );
-CREATE TABLE `artist` (
-    artist_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) UNIQUE,
-    description VARCHAR(5000),
-    genre VARCHAR(50),
-    image MEDIUMBLOB,
-    facebook_link VARCHAR(200),
-    twitter_link VARCHAR(200),
-    instagram_link VARCHAR(200),
-    youtube_link VARCHAR(200)
+
+CREATE TABLE event(
+eventID INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(255),
+category VARCHAR(255),
+start_time DATETIME,
+end_time DATETIME
 );
-CREATE TABLE `jazz_event` (
-    jazz_event_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    artist_id INT(10) UNSIGNED,
-    event_id INT(10) UNSIGNED,
-    FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
-    FOREIGN KEY (event_id) REFERENCES `event`(event_id)
+
+CREATE TABLE ticket(
+ticketID INT PRIMARY KEY AUTO_INCREMENT,
+ticketPrice DOUBLE,
+eventID INT,
+FOREIGN KEY (eventID) REFERENCES event(eventID)
 );
-CREATE TABLE `dance_event` (
-    dance_event_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    artist_id INT(10) UNSIGNED,
-    event_id INT(10) UNSIGNED,
-    FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
-    FOREIGN KEY (event_id) REFERENCES `event`(event_id)
+
+CREATE TABLE order_ticket(
+orderID INT,
+ticketID INT,
+quantity INT,
+FOREIGN KEY (orderID) REFERENCES orders(orderID),
+FOREIGN KEY (ticketID) REFERENCES ticket(ticketID),
+PRIMARY KEY (orderID,ticketID)
 );
-CREATE TABLE `history_event` (
-    dance_event_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    event_id INT(10) UNSIGNED,
-    guide_user_id INT(10) UNSIGNED,
-    FOREIGN KEY (guide_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (event_id) REFERENCES `event`(event_id)
-);
+
+CREATE TABLE
+
+
+
+
+
+
+
+
+
+
+
