@@ -1,7 +1,5 @@
 <?php
 
-namespace Classes;
-
 class Order
 {
     private int $orderId;

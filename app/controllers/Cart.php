@@ -20,7 +20,7 @@ class Cart extends Controller
 
     public function add(int $ticket_id, int $quantity)
     {
-        array_push($_SESSION['cart'], [$ticket_id, $quantity]);
+        $t = $this->cartModel->GetTicketById($ticket_id);
         header('location: ' . URLROOT . '/cart/display');
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-namespace Classes;
-
 class OrderItem
 {
     private Ticket $ticket;

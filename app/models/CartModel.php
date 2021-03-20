@@ -1,11 +1,5 @@
 <?php
 
-require_once APPROOT.'\classes\Artist.php';
-require_once APPROOT.'\classes\JazzEvent.php';
-require_once APPROOT.'\classes\Location.php';
-require_once APPROOT.'\classes\Ticket.php';
-
-
 class CartModel
 {
     private $db;
@@ -42,7 +36,7 @@ class CartModel
         if (isset($_SESSION['cart'])) {
 
             foreach ($_SESSION['cart'] as $ticket) {
-                array_push($ticket, unserialize($ticket));
+                array_push($tickets, unserialize($ticket));
             }
         }
         return $tickets;
