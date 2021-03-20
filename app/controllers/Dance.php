@@ -19,7 +19,7 @@
                 'dates' => $this->dates,
                 'venues' => $this->venues
             ];
-            $this->view('dance/home', $data, "");
+            $this->view('dance/home', $data);
         }
 
         public function event() {
@@ -46,7 +46,7 @@
                     'artist_data' => $this->danceModel->getArtist($_POST['event_id'])
                 ];
                 
-                $this->view('dance/home', $data, "");
+                $this->view('dance/home', $data);
             }
         }
     }

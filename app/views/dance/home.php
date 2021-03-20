@@ -7,17 +7,14 @@
 
         if (is_array($event_details)) {
 
-            // foreach($event_details as $ed) {
-            //     echo $ed;
-            // }
             $price = $event_details["price"];
             $vat = 0.21 * $price;
-            $totalprice = $price + $vat;
+            $totalprice = $price;
             
             $popup = '<section id="Modal" class="modal">
                         <!-- Modal content -->
                         <section class="modal-content">
-                            <span class="close">&times;</span>
+                            <span class="close" style="float: right;">&times;</span>
                             <article id="modal-artist">
                                     <h3 id="modal-artist-title">'.$event_details["name"].'</h3>
                                     <img id="modal-artist-image" src="'.$event_details["image"].'" alt="artist image">
@@ -33,14 +30,14 @@
                             <article id="modal-event-details">
                                     <h3>Event Details</h3>
                                     <h4 id="modal-event-title">'.$event_details["name"].'</h4>
-                                    <h4 id="modal-event-time-place">'.$event_details["time_place"].'</h4>
+                                    <p id="modal-event-time-place">'.$event_details["time_place"].'</p>
 
                                     <form action="' . URLROOT . '/cart/daypass" method="POST" >
                                         <input type="hidden" name="event_id" value="dance_1_day_pass" />
                                         <button type="submit"><img src="" alt="Party All Night - Full Day Pass @150"></button>
                                     </form>
 
-                                    <h3>Price</h3>
+                                    <h3 id="modal-price-label">Price</h3>
                                     <h4 id="modal-event-price">€'.$price.'</h4>
                                     <h3>Amount</h3>
                                     <select name="ticket-count" id="modal-event-ticket-count" onchange="oc">
@@ -83,14 +80,14 @@
                                                     <form action="' . URLROOT . '/cart/checkout" method="POST" >
                                                         <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
                                                         <input type="hidden" name="checkout_count" value=1 />
-                                                        <button type="submit">Checkout</button>
+                                                        <button id="checkoutbutton" type="submit">Checkout</button>
                                                     </form>
                                                 </td>
                                                 <td>
                                                     <form action="' . URLROOT . '/cart/add_to_cart" method="POST" >
                                                         <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
                                                         <input type="hidden" name="atc_count" value=1 />
-                                                        <button type="submit">Add To Cart</button>
+                                                        <button id="addcartbutton"type="submit">Add To Cart</button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -101,22 +98,6 @@
                     </section>';
                     
                     echo $popup;
-                    
-
-    // echo '
-    //     <!-- The Modal -->
-    //     <div id="myModal" class="modal">
-
-    //     <!-- Modal content -->
-    //     <div class="modal-content">
-    //         <span class="close">&times;</span>
-    //         <p>Some text in the Modal..</p>
-    //     </div>
-
-    //     </div>
-    //     ';
-
-
         }
     }
     // if user clicks add to cart this will be evaluated 
@@ -135,7 +116,7 @@
                     caprera openluchttheather, and other exciting theathers <br> in haarlem, a enjoyable
                     and fun event you dont wanna miss. 
                 </p>
-                <a href="#dance-info-page" class="button transparent">Show More</a>
+                <a href="#dance-info-page" class="buttonTransparent">Show More</a>
         </section>
     </section>
 
@@ -190,36 +171,37 @@
                     </section>
                     </td>
                     </table>
-                    <a href="#dance-timetable-page" class="button transparent">See What's On</a>
+                    <a href="#dance-timetable-page" class="button">See What's On</a>
+                    
             </section>
-
-             <aside id="dance-artists">
-                <section class="frame">
+    </section>
+    
+            <aside id="dance-artists" class="justify-content-end">
+                <h3 style="text-align: center;">Spotlight</h3>
+                <section id="image1" class="frame">
                      <img src="../img/vip all access.png" alt="vip ticket" width="300px" >
                 </section>
 
                 <section class="frame">
-                    <h4>Martin Garrix</h4>
+                    <h4 id="image-header">Martin Garrix</h4>
                     <img src="../img/martin_garrix.png" alt="artist1">
                 </section>
 
                 <section class="frame">
-                    <h4>Hardwell</h4>
+                    <h4 id="image-header">Hardwell</h4>
                     <img src="../img/hardwell.png" alt="artist2">
                 </section>
 
                 <section class="frame">
-                    <h4>Armin van Burren</h4>
+                    <h4 id="image-header">Armin van Burren</h4>
                     <img src="../img/armin_van_buuren.png" alt="artist3">
                 </section>
 
                 <section class="frame">
-                    <h4>Tiesto</h4>
+                    <h4 id="image-header">Tiesto</h4>
                     <img src="../img/tiesto.png" alt="artist4">
                 </section> 
             </aside> 
-
-    </section>
 
     <section id="dance-timetable-page">
         <section class="timetable card" id="dance-timetable">
@@ -232,17 +214,17 @@
 
                foreach($data['venues'] as $venue) {
                     $table.= '<tr>';
-                    $table.= '<th>'.$venue.'</th>';
+                    $table.= '<th id="table-venue">'.$venue.'</th>';
                     foreach($data['dates'] as $dt) {
-                        $table .= '<td class="popup">';
+                        $table .= '<td id="table-content" class="popup">';
                         
                             if($data['timetable'][$dt][$venue]["text"] == "NO EVENTS") {
-                                 $table .= "NO EVENTS";
+                                 $table .= "<b>NO EVENTS</b>";
                             }
                             else {
                                 $table .=   '<form action="' . URLROOT . '/dance/event" method="POST">
                                                 <input type="hidden" name="event_id" value="' . $data['timetable'][$dt][$venue]["id"] . '" />
-                                                <button type="submit">' . $data['timetable'][$dt][$venue]["text"] . '</button>
+                                                <button id="event-button" type="submit">'.'<b>' . $data['timetable'][$dt][$venue]["text"] .'</b>'. '</button>
                                             </form>';
                             }
                         $table .= '</td>';      
@@ -267,6 +249,7 @@
 	  overflow: auto; /* Enable scroll if needed */
 	  background-color: rgb(0,0,0); /* Fallback color */
 	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      
 	}
 
 	/* Modal Content/Box */
@@ -274,16 +257,19 @@
         background-color: #fefefe;
 	    margin: 15% auto; /* 15% from the top and centered */
 	    padding: 20px;
-	    border: 1px solid #888;
 	    width: 80%; /* Could be more or less, depending on screen size */
+        border: 4px solid orange;
 	}
 
 	/* The Close Button */
 	.close {
 	  color: #aaa;
 	  float: right;
-	  font-size: 28px;
+	  font-size: 50px;
 	  font-weight: bold;
+      position: absolute;
+      top: 5;
+      right: 5;
 	}
 
 	.close:hover,
@@ -374,5 +360,3 @@
         }
     }
 ?>
-
-
