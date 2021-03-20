@@ -1,6 +1,5 @@
 <?php
 
-
 class Location
 {
     private int $locationId;

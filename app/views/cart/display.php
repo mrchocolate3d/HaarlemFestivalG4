@@ -1,19 +1,17 @@
 <?php include APPROOT . '/views/includes/header.php'; ?>
 
-<main>
+<main class='container'>
+    <pre>
 
-    <?php
-    if (isset($data['tickets']))
-    {
-        
-        //print_r($data['tickets']);
-        
-    }
-    echo '<pre>';
-    print_r($_SESSION['cart']);
-    echo '</pre>';
-    ?>
+        <?php
+        if (isset($data['tickets'])) {
 
+            var_dump($data['tickets']);
+
+        }
+        ?>
+
+    </pre>
 
 
 </main>

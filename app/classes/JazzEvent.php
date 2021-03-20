@@ -1,7 +1,5 @@
 <?php
 
-require_once APPROOT.'/classes/Event.php';
-
 class JazzEvent extends Event
 {
     private Artist $artist;
