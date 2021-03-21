@@ -58,15 +58,36 @@ class JazzModel
         $timetable = [];
 
         foreach ($events as $key => $value) {
+            $date = $value->startDateTime->format("Y-m-d");
+            $location = $value->location->description;
 
-            $event = "<section class='event jazz-event'>" .
-                "<h3>" . $value->artist->name . "</h3>" .
-                "<span class='time'>" . $value->startDateTime->format("H:i") .
-                " - " . $value->endDateTime->format("H:i") . "</span>";
-            $event .= "</section>";
-
-            array_push($timetable, $event);
+            if (!isset($timetable[$date][$location])) {
+                // Generate the timetable headers
+                $timetable[$date][$location] = array($this->formatJazzHeader($value));
+            }
+            array_push($timetable[$date][$location], $this->formatJazzEvent($value));
         }
         return $timetable;
+    }
+
+    private function formatJazzEvent($event): string
+    {
+
+        $formattedEvent = "<section class='event jazz-event'>" .
+            "<h3>" . $event->artist->name . "</h3>" .
+            "<span class='time'>" . $event->startDateTime->format("H:i") .
+            " - " . $event->endDateTime->format("H:i") . "</span>" . "</section>";
+
+        return $formattedEvent;
+    }
+
+    private function formatJazzHeader($event)
+    {
+        $formattedHeader = "<section class='jazz-event-header'>" .
+            "<h3>" . $event->artist->name . "</h3>" .
+            "<span class='date'>" . $event->startDateTime->format("d-m") . "</span></section>";
+            "<span class='location'>" . $event->location->description . "</span></section>";
+
+        return $formattedHeader;
     }
 }

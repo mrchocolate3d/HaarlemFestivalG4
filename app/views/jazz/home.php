@@ -71,7 +71,7 @@
         <section class="timetable card table" id="jazz-timetable">
             <?php
             if (isset($data['timetable'])) {
-                print_r($data['timetable']);
+                print_r($data['timetable'], false);
             } else {
                 echo "There was an error loading the timetable";
             }
