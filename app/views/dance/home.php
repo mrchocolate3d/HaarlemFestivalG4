@@ -207,11 +207,11 @@
         <section class="timetable card" id="dance-timetable">
         <?php
                $table =  '<table border = 1>
-               <tr><th>Venue</th>
-               <th>Friday-27th July</th>
-               <th>Saturday-28th July</th>
-               <th>Sunday-29th July</th></tr>';
-
+               <tr><th>Venue</th>';
+               foreach($data['dates'] as $dt) {
+                   $table .= '<th>'. $dt . '</th>';
+               }
+               $table .= '</tr>';
                foreach($data['venues'] as $venue) {
                     $table.= '<tr>';
                     $table.= '<th id="table-venue">'.$venue.'</th>';
@@ -235,6 +235,13 @@
 
                $table.= '</table>';
                echo $table;
+
+            // if(isset($data['timetable'])) {
+            //     print_r($data['timetable'], false);
+            // }
+            // else {
+            //     echo "there was an error loading the timetable!";
+            // }
         ?>
         <style>
 	 /* The Modal (background) */
