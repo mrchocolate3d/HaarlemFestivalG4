@@ -6,7 +6,11 @@ class Jazz extends Controller
     public function __construct()
     {
         $this->jazzModel = $this->model('JazzModel');
-        $this->jazzModel = $this->view('jazz/home');
+    }
+
+    public function index()
+    {
+        $this->home();
     }
 
     public function home()

@@ -3,11 +3,11 @@
 
 abstract class Event
 {
-    private int $eventId;
-    // private string $name;
-    // private string $category; // Category is the class name of the child class
-    private DateTime $startDateTime;
-    private DateTime $EndDateTime;
+    protected int $eventId;
+    // protected string $name;
+    // protected string $category; // Category is the class name of the child class
+    protected DateTime $startDateTime;
+    protected DateTime $endDateTime;
 
     public function __construct(int $eventId, DateTime $startDateTime, DateTime $endDateTime) 
     {
