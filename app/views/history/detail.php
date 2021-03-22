@@ -14,14 +14,14 @@
     </section>
 
     <section class="main-history-container">
-        <aside class="intro-history-container">
+        <section class="intro-history-container">
             <h1 id="history-intro-h">Haarlem History</h1>
             <p id="history-intro">Haarlem history gives you a unique experience of Haarlem,
                 <br>it is something you do not want to miss.
                 <br>Join one of our tours on Thursday, Friday, Saturday
                 or Sunday.</p>
             <button type="button" id="history-show-more">Join us</button>
-        </aside>
+        </section>
     </section>
 
     <section class="detail-history-container">

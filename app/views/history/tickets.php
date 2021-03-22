@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <head>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css">
@@ -12,9 +9,12 @@
         require APPROOT . '/views/includes/navigation.php';
         ?>
     </section>
-    <section class="history-page-container">
-        <section class="history-tickets-container">
-            <section class="history-ticket-container">
+    <section class="main-history-container">
+
+        <section class="intro-history-container">
+            <h1 id="history-tickets-h">Tour Schedule</h1>
+
+            <section class="history-ticket-dropdown-container">
                 <button onclick="myFunction()" id="history-dropdown-btn">Select a language</button>
                 <section class="history-ticket-dropdown">
                     <a href="#chinese">Chinese</a>
