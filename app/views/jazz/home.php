@@ -68,8 +68,14 @@
     </section>
 
     <section id=jazz-timetable-page>
-        <section class="timetable card" id="jazz-timetable">
-            <p>This is the jazz timetable</p>
+        <section class="timetable card table" id="jazz-timetable">
+            <?php
+            if (isset($data['timetable'])) {
+                print_r($data['timetable'], false);
+            } else {
+                echo "There was an error loading the timetable";
+            }
+            ?>
         </section>
     </section>
 

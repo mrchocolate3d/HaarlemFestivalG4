@@ -80,6 +80,18 @@ footer {
   height: 10vh;
 }
 
+.table {
+  display: table;
+}
+
+.table__row {
+  display: table-row;
+}
+
+.table__cell {
+  display: table-cell;
+}
+
 .card {
   background: #fff;
   padding: 2em;
@@ -221,6 +233,13 @@ a.button.transparent:active {
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
+}
+
+.event{
+  display: inline-block;
+}
+.jazz-event{
+  background-color: orange;
 }
 
 /* Login CSS */

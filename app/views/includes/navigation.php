@@ -20,6 +20,6 @@
         <li>
             <a href="<?php echo URLROOT;?>/cart/display"> <i class="bi bi-basket3-fill"></i></a>
         </li>
-></a>
+</a>
         </li>
 </nav>

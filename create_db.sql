@@ -20,6 +20,7 @@ CREATE TABLE `volunteer` (
 CREATE TABLE `order` (
     order_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     customer_id INT(10) UNSIGNED NOT NULL,
+    order_date DATETIME,
     total FLOAT(10) NOT NULL
 );
 CREATE TABLE `ticket` (
@@ -39,23 +40,22 @@ CREATE TABLE `order_item` (
 CREATE TABLE `location`(
     location_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     location_name VARCHAR(50),
-    description VARCHAR(500),
+    location_description VARCHAR(500),
     capacity INT(4) UNSIGNED
 );
 CREATE TABLE `event` (
     event_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     event_name VARCHAR(50),
     category VARCHAR(50),
-    start_time TIME,
-    end_time TIME,
-    event_date DATE,
+    start_time DATETIME,
+    end_time DATETIME,
     location_id INT(10) UNSIGNED,
     FOREIGN KEY (location_id) REFERENCES `location`(location_id)
 );
 CREATE TABLE `artist` (
     artist_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) UNIQUE,
-    description VARCHAR(5000),
+    artist_name VARCHAR(50) UNIQUE,
+    artist_description VARCHAR(5000),
     genre VARCHAR(50),
     image MEDIUMBLOB,
     facebook_link VARCHAR(200),
@@ -64,9 +64,8 @@ CREATE TABLE `artist` (
     youtube_link VARCHAR(200)
 );
 CREATE TABLE `jazz_event` (
-    jazz_event_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    event_id INT(10) UNSIGNED PRIMARY KEY,
     artist_id INT(10) UNSIGNED,
-    event_id INT(10) UNSIGNED,
     FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
     FOREIGN KEY (event_id) REFERENCES `event`(event_id)
 );
