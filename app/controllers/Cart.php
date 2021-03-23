@@ -9,7 +9,7 @@ class Cart extends Controller
 
     public function display()
     {
-        $data['tickets'] = $this->cartModel->getTickets();
+        $data['tickets'] = $this->cartModel->getTicketTest();
         $this->view("cart/display", $data);
     }
 
@@ -20,7 +20,9 @@ class Cart extends Controller
 
     public function add(int $ticket_id, int $quantity)
     {
-        $t = $this->cartModel->GetTicketById($ticket_id);
+        $t = $this->cartModel->getTicketTest();
+        // $t = $this->cartModel->getTicketById($ticket_id);
+        // $this->cartModel->addToCart($t, $quantity);
         header('location: ' . URLROOT . '/cart/display');
     }
 }

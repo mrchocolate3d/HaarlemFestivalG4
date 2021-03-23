@@ -54,4 +54,9 @@ class CartModel
     {
         $_SESSION['cart'] = serialize($ticket);
     }
+
+    public function getTicketById()
+    {
+
+    }
 }

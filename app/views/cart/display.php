@@ -7,7 +7,6 @@
         if (isset($data['tickets'])) {
 
             var_dump($data['tickets']);
-
         }
         ?>
 
