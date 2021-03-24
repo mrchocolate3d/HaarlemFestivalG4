@@ -9,7 +9,7 @@ class Cart extends Controller
 
     public function display()
     {
-        $data['tickets'] = $this->cartModel->getTicketsFromCart();
+        $data['tickets'] = $this->cartModel->displayTickets();
         $this->view("cart/display", $data);
     }
 

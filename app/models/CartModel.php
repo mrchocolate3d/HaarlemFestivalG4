@@ -42,7 +42,13 @@ class CartModel
                 array_push($tickets, unserialize($ticket));
             }
         }
-        return $tickets;
+
+        $formattedTickets= [];
+        foreach ($tickets as $key => $value) {
+            array_push($formattedTickets, $this->formatTicket($value));
+        }
+
+        return $formattedTickets;
     }
 
     public function removeFromCart(int $id)
@@ -52,6 +58,15 @@ class CartModel
 
     private function formatTicket(Ticket $t)
     {
-
+        
+        $cartRow = "
+        <section class='cart-row'>
+            <section class='ticket'>
+                <span>{Event_type} - {$t->event->artist->name}</span>
+                <span>". $t->event->startDateTime->format("d M H:i") ." - {$t->event->location->name} {$t->event->location->description}</span>
+            </section>
+        </section>
+        ";
+        return $cartRow;
     }
 }

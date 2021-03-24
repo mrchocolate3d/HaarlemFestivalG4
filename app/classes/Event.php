@@ -5,7 +5,7 @@ abstract class Event
 {
     protected int $eventId;
     // protected string $name;
-    // protected string $category; // Category is the class name of the child class
+    protected string $category; // Category is the class name of the child class
     protected DateTime $startDateTime;
     protected DateTime $endDateTime;
 
