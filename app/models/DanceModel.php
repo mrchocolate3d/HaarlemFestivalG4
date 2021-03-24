@@ -23,7 +23,7 @@ class DanceModel {
     public function getTimeTable() {
 
         $this->db->query("SELECT * FROM event WHERE category='Dance'");
-       
+        // inner join on using location_id
         $event_results = $this->db->resultSet();
        if ($this->db->rowCount() > 0) {
 
@@ -36,7 +36,7 @@ class DanceModel {
                    $schedule[$dt][$ven] = array();
                    $schedule[$dt][$ven]["id"] = "";
                    $schedule[$dt][$ven]["text"] = "NO EVENTS";
-               }
+                }
            }
 
               foreach($event_results as $row) {
@@ -69,8 +69,8 @@ class DanceModel {
 
            foreach($event_results as $row) {
                $event_details["name"] = $row->event_name;
-               $event_details["time_place"] = $row->date . " - ".  $row->start_time . " at " . $row->location_id;
-               $event_details["price"] = $row->price;
+               $event_details["time_place"] = $row->event_date . " - ".  $row->start_time . " at " . $row->location_id;
+               //$event_details["price"] = $row->price;
            }
        }
        else {
@@ -80,11 +80,13 @@ class DanceModel {
        $this->db->query("SELECT * FROM dance_event WHERE event_id=$event_id");
        $event_results = $this->db->resultSet();
        $artist_id = "";
-       if($this->db->rowCount() > 0) {
-           foreach($event_details as $row) {
-               $artist_id = $row->artist_id;
-           }
-       }
+       if(!$event_results) {
+            if($this->db->rowCount() > 0) {
+                foreach($event_details as $row) {
+                    $artist_id = $row->artist_id;
+                }
+            }
+        }
        else {
            return "dance event not found!";
        }

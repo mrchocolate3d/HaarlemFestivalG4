@@ -120,25 +120,62 @@ input::placeholder {
 
 /* Dance CSS */
 
+.dance-title {
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: "Montserrat";
+    color: #404040;
+}
+p.dance-title {
+    font-size: 18px;
+}
+.dance-title-image {
+    width: 100%;
+
+}
+.dance-button {
+     border: 2px solid #C06832;
+     width: 180px;
+     height: 50px;
+     padding: 2%;
+     text-decoration: none;
+     color: #C06832;
+}
+.dance-button:hover {
+    background-color: #C06832;
+     width: 180px;
+     height: 50px;
+     padding: 2%;
+     color: white;
+     text-decoration: none;
+}
 .title-screen {
     background-image: url("../img/dance_home.png");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-left: 0;
+    padding-right: 0;
+    
+}
+.dance-info-class {
+    width: 80%;
+    margin: auto;
+    margin-top: 241px;
+
 }
 
 .title-screen .content {
-
-    position: absolute; /* Position the background text */
-    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-    background: rgb(0, 0, 0); /* Fallback color */
-    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-    color: #f1f1f1; /* Grey text */
-    width: 100%; /* Full width */
-    padding: 20px; /* Some padding */
-    vertical-align: baseline;
+    position: absolute;
+    top: 78%;
+    background: rgba(0, 0, 0, 0.5); 
+    color: #f1f1f1; 
+    width: 100%; 
+    padding-top: 20px;
+    padding-left: 0;
+    padding-bottom: 20px; 
 }
+
  #dance-info-page {
     height:  auto;
     width: 80%;
@@ -186,17 +223,18 @@ input::placeholder {
     border: 2px solid #454545;
 }
 
-#dance-in-haarlem {
+/* #dance-in-haarlem {
     grid-area: jtext;
 }
 #dance-in-haarlem-image {
     grid-area: dance;
-}
+} */
 #caprera {
     grid-area: gmtext;
 }
 #caprera-image {
     grid-area: gm;
+    float: left;
 }
 #xotheclub {
     grid-area: ptext;
@@ -267,7 +305,13 @@ input::placeholder {
     position: relative;
     
 }
-
+.dance-parent {
+    height: 140px;
+}
+.dance-child {
+    position: relative;
+    top: 54.6px;
+}
 #image {
     float: left;
 }

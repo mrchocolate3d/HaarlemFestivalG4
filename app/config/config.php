@@ -1,5 +1,5 @@
 <?php
-// Database credentials
+//Database credentials
 define('DB_HOST', 'sql11.freemysqlhosting.net');
 define('DB_USER', 'sql11392316');
 define('DB_PASSWORD', 'FwuZYKtIJs');
