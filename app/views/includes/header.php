@@ -23,4 +23,3 @@
 ?>
 
 <body>
-<?php include APPROOT . '/views/includes/navigation.php'; ?>

@@ -1,5 +1,8 @@
 <?php
 
+require_once "EventModel.php";
+require_once "TicketModel.php";
+
 class CartModel
 {
     private $db;
@@ -7,34 +10,34 @@ class CartModel
     public function __construct()
     {
         $this->db = new Database();
+        if (!isset($_SESSION['cart'])) 
+        {
+            $_SESSION['cart'] = [];
+        }
     }
 
-    public function getTickets()
+    public function getTicketsFromCart()
     {
-        // $query = "SELECT * FROM ticket WHERE ticket_id IN (";
+        $tickets = [];
+        foreach ($_SESSION['cart'] as $key => $value) 
+        {
+            array_push($tickets, unserialize($_SESSION['cart'][$key]));
+        }
+        return $tickets;
+    }
 
-        // $max = count($_SESSION['cart']);
-        // for ($i = 0; $i < $max; $i++) // Add placeholders to add to in clause
-        // {
-        //     $query = $query . ":id$i" . ($i < $max - 1 ? ", " : ")");
-        // }
+    public function addToCart(int $ticket_id)
+    {
+        $t = new TicketModel;
+        $ticket = $t->getTicketById($ticket_id);
 
-        // $count = 0;
-        // $this->db->query($query);
+        array_push($_SESSION['cart'], serialize($ticket));
+    }
 
-        // foreach ($_SESSION['cart'] as $key) // fill placeholders with keys
-        // {
-        //     //echo ":id$count - $key[0]";
-        //     $this->db->bind(":id$count", $key[0]);
-        //     $count++;
-        // }
-
-        // $this->db->execute();
-        // return $this->db->resultSetToObj("Ticket");
-
+    public function displayTickets()
+    {
         $tickets = [];
         if (isset($_SESSION['cart'])) {
-
             foreach ($_SESSION['cart'] as $ticket) {
                 array_push($tickets, unserialize($ticket));
             }
@@ -42,20 +45,12 @@ class CartModel
         return $tickets;
     }
 
-    public function getTicketTest()
+    public function removeFromCart(int $id)
     {
-        $artist = new Artist(1, "Gare Du Nord", "Very cool jazz mans", "Classic Jazz");
-        $location = new Location(1, "Patronaat", "Main Hall", 500);
-        $event = new JazzEvent(101, $artist, $location, new DateTime('now'), new DateTime('now'));
-        $this->addToCart(new Ticket(0, $event, 15));
+        // Remove
     }
 
-    public function addToCart(Ticket $ticket)
-    {
-        $_SESSION['cart'] = serialize($ticket);
-    }
-
-    public function getTicketById()
+    private function formatTicket(Ticket $t)
     {
 
     }

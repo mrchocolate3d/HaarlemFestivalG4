@@ -46,7 +46,7 @@ CREATE TABLE `location`(
 CREATE TABLE `event` (
     event_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     event_name VARCHAR(50),
-    category VARCHAR(50),
+    category VARCHAR(50) NOT NULL CHECK (category IN ("jazz", "dance", "history", "food")),
     start_time DATETIME,
     end_time DATETIME,
     location_id INT(10) UNSIGNED,

@@ -71,6 +71,7 @@ class Database
     //Return array as type of class
     public function resultSetToObj(string $class)
     {
+        $this->statement->setFetchMode(PDO::FETCH_CLASS, $class);
         $this->execute();
         return $this->statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
@@ -84,8 +85,9 @@ class Database
 
     public function singleRowToObj(string $class)
     {
+        $this->statement->setFetchMode(PDO::FETCH_CLASS, $class);
         $this->execute();
-        return $this->statement->fetch(PDO::FETCH_CLASS, $class);
+        return $this->statement->fetch();
     }
 
     //Get row count of rows changed or affected by a query
