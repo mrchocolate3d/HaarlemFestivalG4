@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css">
 </head>
 
-<main role ="main">
+<main role ="main" id="history-main">
     <section class="nav-bar">
         <?php
         require APPROOT . '/views/includes/navigation.php';
@@ -15,70 +15,63 @@
             <h1 id="history-tickets-h">Tour Schedule</h1>
 
             <section class="history-ticket-dropdown-container">
-                <button onclick="myFunction()" id="history-dropdown-btn">Select a language</button>
-                <section class="history-ticket-dropdown">
-                    <a href="#chinese">Chinese</a>
-                    <a href="#english">English</a>
-                    <a href="#dutch">Dutch</a>
-                </section>
+                <label for="history-ticket-dropdown" id="history-dropdown-btn">Select a language</label>
+                <select id="history-ticket-dropdown">
+                    <option value="lang_chinese">Chinese</option>
+                    <option value="lang_dutch">Dutch</option>
+                    <option value="lang_english">English</option>
+                </select>
             </section>
-
-            <section class="history-calendar-days">
-                <ul id="history-calendar-day-names">
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                    <li>Sunday</li>
-                </ul>
-            </section>
-            <aside class="history-calender-timestamps">
-                <ul id="history-calendar-times">
-                    <li>10:00</li>
-                    <li>13:00</li>
-                    <li>16:00</li>
-                </ul>
-            </aside>
-
             <section class="history-calendar-container">
-                <table>
+                <table id="history-table">
+                    <thead>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Language</th>
+                    <th>Select</th>
+                    </thead>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>day</td>
+                        <td>time</td>
+                        <td>language</td>
+                        <td>Select</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>day</td>
+                        <td>time</td>
+                        <td>language</td>
+                        <td>Select</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>day</td>
+                        <td>time</td>
+                        <td>language</td>
+                        <td>Select</td>
+                    </tr>
+                    <tr>
+                        <td>day</td>
+                        <td>time</td>
+                        <td>language</td>
+                        <td>Select</td>
+                    </tr>
+                    <tr>
+                        <td>day</td>
+                        <td>time</td>
+                        <td>language</td>
+                        <td>Select</td>
+                    </tr>
+                    <tr>
+                        <td>day</td>
+                        <td>time</td>
+                        <td>language</td>
+                        <td>Select</td>
+                    </tr>
 
-                    </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>day</td>
+                        <td>time</td>
+                        <td>language</td>
+                        <td>Select</td>
                     </tr>
                 </table>
             </section>
@@ -93,8 +86,8 @@
 
 <script>
 
-    function myFunction() {
-        document.getElementsByClassName("history-ticket-dropdown").classList.toggle("show");
+    function ShowModal() {
+
     }
 
     function filterFunction() {

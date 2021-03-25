@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css">
 </head>
 
-<main role ="main">
+<main role ="main" id="history-main">
     <section class="nav-bar">
         <?php
         require APPROOT . '/views/includes/navigation.php';
@@ -20,13 +20,18 @@
                 <br>it is something you do not want to miss.
                 <br>Join one of our tours on Thursday, Friday, Saturday
                 or Sunday.</p>
-            <button type="button" id="history-show-more">Join us</button>
+            <a id="history-show-more" href="#detail-history-container" type="button">Join us</a>
         </section>
     </section>
 
-    <section class="detail-history-container">
+    <section id="detail-history-container">
         <h2 id="history-detail-h">Travel through history with us</h2>
         <section class="tour-history-container">
+            <section class="history_map_modal" id="map_popup">
+                <section class="modal-content">
+                    <img src="../img/history_map_locations.jpg" id="location_image">
+                </section>
+            </section>
             <section class="tour-text-cont">
                 <h1 id="tour-title">Tour Information</h1>
                 <p>Our tours are for anyone to enjoy, it is especially a way for some quality family time.
@@ -49,11 +54,7 @@
 
             <button id = "map_popup_btn">Show locations</button>
 
-            <section class="history_map_modal" id="map_popup">
-                <section class="modal-content">
-                    <img src="../img/history_map_locations.jpg" id="location_image">
-                </section>
-            </section>
+
         </section>
 
 

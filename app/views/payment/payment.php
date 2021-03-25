@@ -2,7 +2,7 @@
     <section class="main-payment-container">
         <section class="payment-container">
             <h1></h1>
-            <section class="payment-info-container">
+            <form class="payment-info-container" action="<?php echo URLROOT; ?>/payment/payment" method="post">
 
                 <section class="payment-person-info-container">
                     <label for="payment-first-name">Firstname</label>
@@ -29,12 +29,12 @@
 
                 <section class="payment-method-container">
                     <section class="payment-method-dropdown-container">
-                        <button onclick="myFunction()" id="payment-dropdown-btn">Select a payment method</button>
-                        <section class="payment-dropdown">
-                            <a href="#paypal">Paypal</a>
-                            <a href="#ideal">Ideal</a>
-                            <a href="#mastercard">Mastercard</a>
-                        </section>
+                        <label id="payment-dropdown-lbl" for="payment-dropdown">Select a payment method</label>
+                        <select id="payment-dropdown">
+                            <option value="pay_paypal">Paypal</option>
+                            <option value="pay_ideal">Ideal</option>
+                            <option value="pay_master">Mastercard</option>
+                        </select>
                     </section>
                 </section>
             </section>

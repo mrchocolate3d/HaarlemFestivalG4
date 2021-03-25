@@ -479,6 +479,9 @@ input::placeholder {
   grid-area: button;
 }
 
+#history-main{
+    max-width: 100%;
+}
 .main-history-container{
     background-image: url('../img/history.jpg');
     background-position: center;
@@ -488,29 +491,29 @@ input::placeholder {
 }
 .intro-history-container{
     text-align: center;
-    color: white;
     padding: 70px;
     width: 75%;
     height: 75%;
     margin: auto;
 
 }
-#history-intro-h{
+.intro-history-container h1{
+    color: white;
     font-size: 40px;
     text-transform: uppercase;
-
- }
-#history-intro{
-    font-family: "Helvetica Neue";
-    padding: 50px;
-    font-size: 30px;
 }
+.intro-history-container p{
+    color: white;
+    font-size: 30px;
+    padding: 30px;
+    background-color: transparent;
+}
+
 #history-show-more{
     width: 150px;
     height: 58px;
     font-size: 20px;
     background: #989898;
-    color: white;
     border: none;
     border:solid 1.5px white;
     opacity: 75%;
@@ -521,7 +524,7 @@ input::placeholder {
 }
 .detail-history-container{
     height: 100%;
-    width: 100%;
+    width: 80%;
     margin: auto;
     background-color: #F5F5F5;
 }
@@ -536,7 +539,6 @@ input::placeholder {
     background-color: white;
     height: 70%;
     width: 75%;
-
     margin: auto;
     border-style: solid;
     border-width: 2px;
@@ -608,8 +610,40 @@ input::placeholder {
 
 .history_map_modal{
     display: none;
-    position: relative;
+    position: fixed;
     border:solid 2px #BF6832;
  }
+
+.tickets-history-container{
+    background-color: white;
+}
+.history-calendar-container{
+}
+.history-calendar-container table{
+    background-color: white;
+    width: 100%;
+    height: 80%;
+    align-content: center;
+}
+.history-calendar-container tr,th{
+    border: 2px solid #BF6832 ;
+    padding: 0px;
+    text-align: center;
+}
+.history-calendar-container th {
+    background-color: #BF6832;
+    color: white;
+}
+.history-calendar-container tr:nth-child(even) {
+    background-color: #BF6832;
+}
+.history-calendar-container tr:nth-child(odd) {
+    background-color: #FFBE85;
+}
+.history-tickets-modal{
+    display: none;
+}
+
+
 
 
