@@ -18,6 +18,18 @@ class Admin
         return $result;
     }
 
+    public function getAllDance(){
+        $this->db->query('SELECT event_id, event_name, start_time,
+       event_date from event where category = :dance');
+
+        $this->db->bind(':dance','Dance');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+
+    }
+
     public function adminCheck($email,$password){
         $this->db->query('SELECT * FROM admin WHERE email = :email');
 

@@ -6,6 +6,38 @@ class Admins extends Controller
     public function __construct()
     {
         $this->adminModel = $this->model('Admin');
+
+    }
+
+    public function newDance(){
+
+        $data = [
+            'title' => 'Add Dance',
+            'danceTitle'=> '',
+            'startTime' =>'',
+            'endTime' =>'',
+            'description' => '',
+            'performer' => '',
+            'guestPerformer' => ''
+        ];
+        $this->view('admins/newDance');
+
+
+    }
+
+    public function danceAdmin(){
+        $result = $this->adminModel->getAllDance();
+
+        /*while($row = mysqli_fetch_array($result)){
+            $data[] = array ('event_name'=>$row['event_name']);
+        }*/
+
+        foreach ($result as $row){
+            $data[] = array('event_id'=>$row->event_id,'event_name'=>$row->event_name,'event_date'=>$row->event_date,'start_time'=>$row->start_time);
+        }
+
+        //print_r($result);
+        $this->view('admins/danceAdmin',$data);
     }
 
     public function loginAdmin(){
