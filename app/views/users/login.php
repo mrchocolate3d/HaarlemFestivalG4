@@ -1,22 +1,19 @@
 <?php
-require APPROOT .'/views/includes/header.php';
+require APPROOT . '/views/includes/header.php';
+include APPROOT . '/views/includes/navigation.php';
 ?>
 
 <main role="main">
-    <section class="nav-bar">
-        <?php
-        require APPROOT . '/views/includes/navigation.php';
-        ?>
-    </section>
 
     <section class="login-container">
         <aside class="wrapper-login">
             <h2>Sign in</h2>
             <form action="<?php echo URLROOT; ?>/users/login" method="post">
-                <input type="text" placeholder="Username *" name="username">
+                <input type="text" placeholder="Email *" name="email">
                 <span class="invalidFeedback">
-                    <?php echo $data['usernameError']; ?>
+                    <?php echo $data['emailError']; ?>
                 </span>
+
                 <input type="password" placeholder="Password *" name="password">
                 <span class="invalidFeedback">
                     <?php echo $data['passwordError']; ?>

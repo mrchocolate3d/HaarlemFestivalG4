@@ -13,7 +13,3 @@ define ('URLROOT', 'http://localhost/PHP/HaarlemFestivalG4');
 
 //SITENAME
 define('SITENAME', 'Haarlem Festival');
-
-
-
-
