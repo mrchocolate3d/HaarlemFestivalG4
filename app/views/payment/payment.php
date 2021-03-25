@@ -44,6 +44,7 @@
         </section>
     </section>
 </main>
+
 <script>
     function myFunction() {
         document.getElementsByClassName("payment-dropdown").classList.toggle("show");
