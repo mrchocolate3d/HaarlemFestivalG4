@@ -56,6 +56,12 @@ class CartModel
         // Remove
     }
 
+    public function clearCart(){
+        if(isset($_SESSION['cart'])){
+            unset($_SESSION['cart']);
+        }
+    }
+
     private function formatTicket(Ticket $t)
     {
         

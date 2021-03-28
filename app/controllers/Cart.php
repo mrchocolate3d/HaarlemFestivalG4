@@ -23,4 +23,9 @@ class Cart extends Controller
         $this->cartModel->addToCart($ticket_id, $quantity);
         header('location: ' . URLROOT . '/cart/display');
     }
+
+    public function clear(){
+        $this->cartModel->clearCart();
+        header('location: ' . URLROOT . '/cart/display');
+    }
 }

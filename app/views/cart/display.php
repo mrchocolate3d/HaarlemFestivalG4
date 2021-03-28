@@ -13,7 +13,7 @@
         ?>
 
     </pre>
-
+    <a href="<?php echo URLROOT . '/cart/clear' ?>" class="button"><i class="bi bi-trash"></i>Clear Cart</a>
 
 </main>
 
