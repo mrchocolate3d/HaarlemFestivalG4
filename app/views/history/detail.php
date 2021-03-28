@@ -1,14 +1,9 @@
-<?php
 
-?>
-
-<head>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css">
-</head>
 
 <main role ="main" id="history-main">
     <section class="nav-bar">
         <?php
+        require APPROOT . '/views/includes/header.php';
         require APPROOT . '/views/includes/navigation.php';
         ?>
     </section>

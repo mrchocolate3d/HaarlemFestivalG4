@@ -1,11 +1,9 @@
 
-<head>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css">
-</head>
 
 <main role ="main" id="history-main">
     <section class="nav-bar">
         <?php
+        require APPROOT . '/views/includes/header.php';
         require APPROOT . '/views/includes/navigation.php';
         ?>
     </section>
@@ -25,54 +23,21 @@
             <section class="history-calendar-container">
                 <table id="history-table">
                     <thead>
-                    <th>Day</th>
+                    <th>Date</th>
                     <th>Time</th>
                     <th>Language</th>
+                    <th>Guide</th>
                     <th>Select</th>
                     </thead>
-                    <tr>
-                        <td>day</td>
-                        <td>time</td>
-                        <td>language</td>
-                        <td>Select</td>
-                    </tr>
-                    <tr>
-                        <td>day</td>
-                        <td>time</td>
-                        <td>language</td>
-                        <td>Select</td>
-                    </tr>
-                    <tr>
-                        <td>day</td>
-                        <td>time</td>
-                        <td>language</td>
-                        <td>Select</td>
-                    </tr>
-                    <tr>
-                        <td>day</td>
-                        <td>time</td>
-                        <td>language</td>
-                        <td>Select</td>
-                    </tr>
-                    <tr>
-                        <td>day</td>
-                        <td>time</td>
-                        <td>language</td>
-                        <td>Select</td>
-                    </tr>
-                    <tr>
-                        <td>day</td>
-                        <td>time</td>
-                        <td>language</td>
-                        <td>Select</td>
-                    </tr>
 
+
+                    <?php var_dump($data)
+                    /*foreach ($data as $datum){?>
                     <tr>
-                        <td>day</td>
-                        <td>time</td>
-                        <td>language</td>
-                        <td>Select</td>
-                    </tr>
+                        <td><?php echo $datum[]</td>
+                    </tr>*/?>
+
+
                 </table>
             </section>
 
@@ -122,9 +87,9 @@
         if (event.target == modal) {
             modal.style.display = "none";
         }
-
-
-
-
-
+    }
 </script>
+
+
+
+
