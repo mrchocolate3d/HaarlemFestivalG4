@@ -38,7 +38,7 @@
                 <p>Standard tickets: 17,50 euros
                     <br>Family tickets for groups of four: 60,00 euros. </p>
 
-                <a href="<?php echo URLROOT; ?>/history/tickets"><button type="button" id="history_order_btn">Order tickets</button></a>
+                <a href="<?php echo URLROOT; ?>/histories/tickets"><button type="button" id="history_order_btn">Order tickets</button></a>
 
 
             </section>

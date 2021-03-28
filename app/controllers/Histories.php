@@ -19,8 +19,8 @@ class Histories extends Controller
                 'tour_guide'=>$item->tour_guide, 'location_id'=>$item->location_id,
                 'starting_time'=>$item->starting_time,'tour_date'=>$item->tour_date);
         }
-        
-        $this->view('history/tickets',$data);
+
+        $this->view('histories/tickets',$data);
     }
 
 }

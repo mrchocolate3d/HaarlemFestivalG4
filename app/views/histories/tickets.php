@@ -31,11 +31,16 @@
                     </thead>
 
 
-                    <?php var_dump($data)
-                    /*foreach ($data as $datum){?>
-                    <tr>
-                        <td><?php echo $datum[]</td>
-                    </tr>*/?>
+                    <?php
+                    foreach ($data as $datum){?>
+                        <tr>
+                        <td><?php echo $datum['tour_date']?></td>
+                        <td><?php echo $datum['starting_time']?></td>
+                        <td><?php echo $datum['language']?></td>
+                        <td><?php echo $datum['tour_guide']?></td>
+
+                        </tr><?php }?>
+
 
 
                 </table>
