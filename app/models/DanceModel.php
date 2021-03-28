@@ -60,13 +60,36 @@ class DanceModel {
    }
 
    function getArtist($event_id) {
+        //     $this->db->query("SELECT EV.event_name AS event_name, EV.event_date, EV.start_time, LOC.location_name AS location,
+        //     TKT.ticketPrice AS price, ART.description, ART.facebook_link, ART.instagram_link, ART.twitter_link, 
+        //     ART.youtube_link, ART.image FROM event AS EV JOIN location AS LOC ON LOC.location_id = EV.location_id 
+        //     JOIN tickets AS TKT ON TKT.event_id = EV.event_id JOIN dance_event AS DEV ON EV.event_id = DEV.event_id JOIN artist AS ART ON DEV.artist_id = ART.artist_id 
+        //      WHERE EV.event_id = $event_id");
+        // $row = $this->db->singleRow();
 
+        // $event_details = array();
+
+        // if($row) {
+        // 	$event_details["name"] = $row->event_name;
+        // 	$event_details["time_place"] = $row->event_date . " - ".  $row->start_time . " at " . $row->location;
+        // 	$event_details["price"] = $row->price;
+                    
+        // 	$event_details["description"] = $row->description;
+        // 	$event_details["facebook"] = $row->facebook_link;
+        // 	$event_details["instagram"] = $row->instagram_link;
+        // 	$event_details["twitter"] = $row->twitter_link;
+        // 	$event_details["youtube"] = $row->youtube_link;
+        // 	$event_details["image"] = $row->image;
+
+        // 	return $event_details;
+        // } else {
+        // 	return "Event not found!!";
+        // }
        $this->db->query("SELECT * FROM event WHERE event_id=$event_id");
        $event_results = $this->db->resultSet();
-       print_r($event_results);
+    //    print_r($event_results);
        $event_details = array();
        if($this->db->rowCount() > 0) {
-
            foreach($event_results as $row) {
                $event_details["name"] = $row->event_name;
                $event_details["time_place"] = $row->event_date . " - ".  $row->start_time . " at " . $row->location_id;
@@ -74,15 +97,19 @@ class DanceModel {
            }
        }
        else {
-           return "dance event not found!";
+           return "this dance event not found!";
        }
-       
+       // issue with if on line 84 event_result
        $this->db->query("SELECT * FROM dance_event WHERE event_id=$event_id");
        $event_results = $this->db->resultSet();
        $artist_id = "";
-       if(!$event_results) {
+    //    print_r($event_results);
+    //    print_r($event_details);
+       if($event_results) {
             if($this->db->rowCount() > 0) {
-                foreach($event_details as $row) {
+                // foreach($event_details as $row) {
+                    foreach($event_results as $row) {
+
                     $artist_id = $row->artist_id;
                 }
             }

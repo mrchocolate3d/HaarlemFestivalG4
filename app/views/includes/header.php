@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <script rel="text/javascript.js" src="/public/javascript/javascript.js"></script>
     <script rel="jquery" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 </head>
 <body>
