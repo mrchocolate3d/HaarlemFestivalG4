@@ -75,7 +75,7 @@ footer {
   background-color: #fff;
   border: solid #c06832 4px;
   padding: 1em;
-  margin: none;
+  margin: 0;
   text-align: center;
   height: 10vh;
 }
@@ -495,4 +495,11 @@ input::placeholder {
 
 #jazz-info.button.transparent {
   grid-area: button;
+}
+
+/* Cart */
+#cart-tickets h3{
+  margin: auto;
+  text-align: center;
+  padding: 3em;
 }

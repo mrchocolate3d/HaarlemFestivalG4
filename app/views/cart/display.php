@@ -2,18 +2,27 @@
 <?php include APPROOT . '/views/includes/navigation.php'; ?>
 
 <main class='container'>
-    <pre>
 
-        <?php
-        if (isset($data['tickets']) || true) {
-            var_dump($data['tickets']);
-        } else {
-            echo "Shopping card is empty";
-        }
-        ?>
+    <section id="cart" class="card">
+        <section id="cart-tickets">
+            <?php
+            if ($data['tickets'] != null) {
+                foreach ($data['tickets'] as $key => $value) {
+                    echo $value;
+                }
+            ?>
+                <span id="cart-buttons">
+                    <a href="<?php echo URLROOT . '/cart/clear' ?>" class="button"><i class="bi bi-trash"></i>Clear Cart</a>
+                    <a href="<?php echo URLROOT . '/checkout/display' ?>" class="button">Continue To Checkout</a>
+                </span>
 
-    </pre>
-    <a href="<?php echo URLROOT . '/cart/clear' ?>" class="button"><i class="bi bi-trash"></i>Clear Cart</a>
+            <?php
+            } else {
+                echo "<h3>Shopping cart is empty</h3>";
+            }
+            ?>
+        </section>
+    </section>
 
 </main>
 

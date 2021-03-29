@@ -16,30 +16,30 @@ class CartModel
         }
     }
 
-    public function getTicketsFromCart()
+    public function getTicketsFromCart() : array
     {
         $tickets = [];
         foreach ($_SESSION['cart'] as $key => $value) 
         {
-            array_push($tickets, unserialize($_SESSION['cart'][$key]));
+            array_push($tickets, unserialize($value));
         }
         return $tickets;
     }
 
-    public function addToCart(int $ticket_id)
+    public function addToCart(int $ticket_id, int $quantity) : void
     {
         $t = new TicketModel;
         $ticket = $t->getTicketById($ticket_id);
-
-        array_push($_SESSION['cart'], serialize($ticket));
+        $orderItem = new OrderItem($ticket, $quantity);
+        array_push($_SESSION['cart'], serialize($orderItem));
     }
 
     public function displayTickets()
     {
         $tickets = [];
         if (isset($_SESSION['cart'])) {
-            foreach ($_SESSION['cart'] as $ticket) {
-                array_push($tickets, unserialize($ticket));
+            foreach ($_SESSION['cart'] as $orderItem) {
+                array_push($tickets, unserialize($orderItem));
             }
         }
 
@@ -47,7 +47,6 @@ class CartModel
         foreach ($tickets as $key => $value) {
             array_push($formattedTickets, $this->formatTicket($value));
         }
-
         return $formattedTickets;
     }
 
@@ -62,17 +61,41 @@ class CartModel
         }
     }
 
-    private function formatTicket(Ticket $t)
+    private function formatTicket(OrderItem $t)
     {
         
         $cartRow = "
         <section class='cart-row'>
             <section class='ticket'>
-                <span>{Event_type} - {$t->event->artist->name}</span>
+                <span><h4>{Event_type} - {$t->event->artist->name} &euro;$t->price</h4></span>
                 <span>". $t->event->startDateTime->format("d M H:i") ." - {$t->event->location->name} {$t->event->location->description}</span>
+            </section>
+            <section class='ticket-quantity'>
+                <span>$t->quantity</span>
+                <span>&euro;{($t->quantity * $t->price)}</span>
             </section>
         </section>
         ";
         return $cartRow;
+    }
+
+    private function isInCart(int $id) : bool
+    {
+        foreach ($_SESSION['cart'] as $key => $value) {
+            if($value->ticket->event->eventId == $id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private function updateQuantity(int $id, int $quantity) : void
+    {
+        foreach ($_SESSION['cart'] as $key => $value) {
+            if($value->ticket->event->eventId == $id)
+            {
+
+            }
+        }
     }
 }
