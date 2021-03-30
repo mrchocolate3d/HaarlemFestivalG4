@@ -618,12 +618,16 @@ input::placeholder {
     background-color: white;
 }
 .history-calendar-container{
+
 }
+
 .history-calendar-container table{
     background-color: white;
     width: 100%;
     height: 80%;
     align-content: center;
+    overflow: auto;
+
 }
 .history-calendar-container tr,th{
     border: 2px solid #BF6832 ;

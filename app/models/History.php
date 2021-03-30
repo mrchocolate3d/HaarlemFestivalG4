@@ -14,8 +14,7 @@ class History
     public function getHistoryEvents(){
 
 
-        $this->db->query('SELECT history_event_id,:lang,tour_guide,location_id,starting_time,tour_date from history_event');
-        $this->db->bind(':lang','language');
+        $this->db->query('SELECT history_event_id,lang,tour_guide,location_id,starting_time,tour_date from history_event');
         $result =$this->db->resultSet();
         return $result;
 
@@ -23,9 +22,9 @@ class History
     }
 
 
-    public function GetHistoryEventByLanguage($language){
-        $this->db->bind(':lang','language');
-        return$this->db->query('SELECT language,tour_guide,location_id,starting_time,tour_date FROM history_events WHERE :lang :lang');
+    public function GetHistoryEventByLanguage($lang){
+        $this->db->bind(':$lang','lang');
+        return$this->db->query('SELECT history_event_id, lang, tour_guide, location_id, starting_time, tour_date from history_event where lang = :lang');
     }
 
 }

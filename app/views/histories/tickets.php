@@ -12,13 +12,18 @@
         <section class="intro-history-container">
             <h1 id="history-tickets-h">Tour Schedule</h1>
 
+
             <section class="history-ticket-dropdown-container">
                 <label for="history-ticket-dropdown" id="history-dropdown-btn">Select a language</label>
-                <select id="history-ticket-dropdown">
-                    <option value="lang_chinese">Chinese</option>
-                    <option value="lang_dutch">Dutch</option>
-                    <option value="lang_english">English</option>
-                </select>
+                <form method="post" action="<?php echo URLROOT; ?>/histories/tickets">
+                    <select name="ticket_dropdown" id="history-ticket-dropdown">
+                        <option name="lange_all" value="lang_all">All languages</option>
+                        <option name="Chinese" value="Chinese">Chinese</option>
+                        <option name="Dutch" value="Dutch">Dutch</option>
+                        <option name="English" value="English">English</option>
+                    </select>
+                    <input type="submit" name="filter-language">
+                </form>
             </section>
             <section class="history-calendar-container">
                 <table id="history-table">
@@ -29,20 +34,15 @@
                     <th>Guide</th>
                     <th>Select</th>
                     </thead>
-
-
                     <?php
                     foreach ($data as $datum){?>
                         <tr>
                         <td><?php echo $datum['tour_date']?></td>
                         <td><?php echo $datum['starting_time']?></td>
-                        <td><?php echo $datum['language']?></td>
+                        <td><?php echo $datum['lang']?></td>
                         <td><?php echo $datum['tour_guide']?></td>
-
+                        <td><a class="history-select-tour" type="button">Select</a></td>
                         </tr><?php }?>
-
-
-
                 </table>
             </section>
 
@@ -55,10 +55,6 @@
 </main>
 
 <script>
-
-    function ShowModal() {
-
-    }
 
     function filterFunction() {
         var input;
@@ -78,7 +74,7 @@
             }
         }
     }
-    var click = document.getElementById("map_popup_btn");
+    var click = document.getElementById("history-select-tour");
     var modal=document.getElementsByClassName("history-tickets-modal");
     var closebtn = document.getElementById("history-tickets-modal-close");
     click.onclick=function (){
