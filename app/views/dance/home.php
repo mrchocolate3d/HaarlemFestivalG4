@@ -3,7 +3,8 @@
 <?php 
     include APPROOT . '/views/dance/dancepopup.php';
 ?>
-  
+
+<!--The main static page for spotlighting artists and dance venues-->
 <main>
     <section class="title-screen container-fluid" style="padding-left: 0;">
        
@@ -141,6 +142,7 @@
 
     </section>
 
+    <!--The table page rendering it down with html and php-->
     <section id="dance-timetable-page">
         <section class="timetable card" id="dance-timetable">
         <?php
@@ -183,49 +185,7 @@
                echo $table;
                echo "Click on the event you want to select!";
         ?>
-    <!-- <style>
-    .modal {
-            display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 50%;
-        top: 50%;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-      
-	}
 
-	/* Modal Content/Box */
-	.modal-content {
-        background-color: #fefefe;
-	    margin: 15% auto; /* 15% from the top and centered */
-	    padding: 20px;
-	    width: 80%; /* Could be more or less, depending on screen size */
-        border: 4px solid orange;
-	}
-
-	/* The Close Button */
-	.close {
-	  color: #aaa;
-	  float: right;
-	  font-size: 50px;
-	  font-weight: bold;
-      position: absolute;
-      top: 5;
-      right: 5;
-	}
-
-
-	.close:hover,
-	.close:focus {
-        color: black;
-	    text-decoration: none;
-	    cursor: pointer;
-	}
-    </style> -->
         <script>
 	// Get the modal
 	var modal = document.getElementById("Modal");

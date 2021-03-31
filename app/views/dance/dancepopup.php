@@ -1,6 +1,6 @@
 <?php 
 
- // if user clicks on an event this will be evaluated
+ // if user clicks on an event on the table cell this will be evaluated
  if(isset($data['event_id']) && !empty(trim($data['event_id']))) {
     $event_details = $data["artist_data"];
     if (is_array($event_details)) {
@@ -11,7 +11,7 @@
         $popup1 = '<section id="Modal" class="modal">
                         <section class="row modal-content">
                             <span class="close" style="float: right;">&times;</span>
-                                <section class="col-sm-9">
+                                <section class="col-sm-8" style="border: #F07913 3px solid;">
                                         <section class="row">
                                                 <section class="col-sm-12">
                                                         
@@ -34,34 +34,79 @@
                                                                 </section>
 
                                                                 <section class="col-sm-8">
-                                                                        <h1 class="dance-title" id="modal-artist-title">'.$event_details["name"].'</h1>
+                                                                        <h2 class="dance-title" id="modal-artist-title">'.$event_details["name"].'</h2>
+
+                                                                        <p id="modal-artist-description">'.$event_details["description"].'</p>
                                                                 </section>
                                                         </section>
                                                 </section>
                                         </section>
 
-                                        <section class="row">
-                                                <section class="col-sm-12">
-                                                        <section class="row">
+                                        <section class="row" style="border-top: #F07913 3px dashed; margin-top: 2%;">
+                                                <section class="col-sm-12" style="margin-top: 2%;">
+                                                        <section class="row dance-title">
+                                                               <section class="col-sm-4">
+                                                                        <h4> Event Details </h4>
+                                                               </section>
+                                                               
+                                                               <section class="col-sm-4">
+                                                                        <h4 class="text-center"> Price </h4>
+                                                               </section> 
 
+                                                               <section class="col-sm-4">
+                                                                        <h4> Amount </h4>
+                                                               </section> 
+                                                        </section>
+
+                                                        <section class="row dance-title">
+                                                                <section class="col-sm-4">
+                                                                        <p>'.$event_details["name"].'</p>
+                                                                </section>
+                                                                
+                                                                <section class="col-sm-4">
+                                                                        <!--<p>€'.$price.'</p>-->
+                                                                        <p class="text-center">€110</p>
+                                                                </section> 
+
+                                                                <section class="col-sm-4 form-group">
+                                                                
+                                                                <!-- <select name="ticket-count" id="modal-event-ticket-count" onchange="oc"> -->
+                                                                     <select name="ticket-count" id="modal-event-ticket-count" class="form-control dance-select">
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                    </select>
+                                                                </section> 
+                                                        </section>
+
+                                                        <section class="row dance-title">
+                                                                <section class="col-sm-12">
+                                                                        <p>'.$event_details["time_place"].'</p>
+                                                                </section>
                                                         </section>
 
                                                         <section class="row">
+                                                                <section class="col-sm-6">
+                                                                        <form action="' . URLROOT . '/cart/multipass" method="POST" >
+                                                                                <input type="hidden" name="event_id" value="dance_3_days_pass" />
+                                                                                <button type="submit"><img src="" alt="Dance Freak - 3 Days Pass @250"></button>
+                                                                        </form>
+                                                                </section>
 
-                                                        </section>
-
-                                                        <section class="row">
-
-                                                        </section>
-
-                                                        <section class="row">
-
+                                                                <section class="col-sm-6">
+                                                                        <form action="' . URLROOT . '/cart/daypass" method="POST" >
+                                                                                <input type="hidden" name="event_id" value="dance_1_day_pass" />
+                                                                                <button type="submit"><img src="" alt="Party All Night - Full Day Pass @150"></button>
+                                                                        </form>
+                                                                </section>
                                                         </section>
                                                 </section>
                                         </section>
                                 </section>
 
-                                <section class="col-sm-3">
+                                <section class="col-sm-4" style="border: #F07913 3px solid;">
 
                                 </section>
                         </section>
@@ -183,9 +228,9 @@ else if(isset($_POST['add_to_cart'])) {
 	/* Modal Content/Box */
 	.modal-content {
         background-color: #fefefe;
-	    margin: 15% auto; /* 15% from the top and centered */
-	    padding: 20px;
-	    width: 80%; /* Could be more or less, depending on screen size */
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	width: 80%; /* Could be more or less, depending on screen size */
         border: 4px solid orange;
 	}
 
@@ -195,9 +240,9 @@ else if(isset($_POST['add_to_cart'])) {
 	  float: right;
 	  font-size: 50px;
 	  font-weight: bold;
-      position: absolute;
-      top: 5;
-      right: 5;
+          position: absolute;
+          top: 5;
+          right: 5;
 	}
 
 

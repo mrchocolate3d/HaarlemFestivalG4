@@ -85,9 +85,15 @@ class DanceModel {
         // } else {
         // 	return "Event not found!!";
         // }
+    
+
+
+
+
+
        $this->db->query("SELECT * FROM event WHERE event_id=$event_id");
        $event_results = $this->db->resultSet();
-    //    print_r($event_results);
+    
        $event_details = array();
        if($this->db->rowCount() > 0) {
            foreach($event_results as $row) {
@@ -99,12 +105,10 @@ class DanceModel {
        else {
            return "this dance event not found!";
        }
-       // issue with if on line 84 event_result
+      
        $this->db->query("SELECT * FROM dance_event WHERE event_id=$event_id");
        $event_results = $this->db->resultSet();
        $artist_id = "";
-    //    print_r($event_results);
-    //    print_r($event_details);
        if($event_results) {
             if($this->db->rowCount() > 0) {
                 // foreach($event_details as $row) {
