@@ -5,9 +5,9 @@
     $event_details = $data["artist_data"];
     if (is_array($event_details)) {
         
-        // $price = $event_details["price"];
-        // $vat = 0.21 * $price;
-        // $totalprice = $price;
+        $price = $event_details["price"];
+        $vat = 0.21 * $price;
+        $totalprice = $price;
         $popup1 = '<section id="Modal" class="modal">
                         <section class="row modal-content">
                             <span class="close" style="float: right;">&times;</span>
@@ -64,8 +64,8 @@
                                                                 </section>
                                                                 
                                                                 <section class="col-sm-4">
-                                                                        <!--<p>€'.$price.'</p>-->
-                                                                        <p class="text-center">€110</p>
+                                                                        <p class="text-center">€'.$price.'</p>
+                                                                        <!--<p class="text-center">€110</p>-->
                                                                 </section> 
 
                                                                 <section class="col-sm-4 form-group">
@@ -89,16 +89,16 @@
 
                                                         <section class="row">
                                                                 <section class="col-sm-6">
-                                                                        <form action="' . URLROOT . '/cart/multipass" method="POST" >
-                                                                                <input type="hidden" name="event_id" value="dance_3_days_pass" />
-                                                                                <button type="submit"><img src="" alt="Dance Freak - 3 Days Pass @250"></button>
+                                                                        <form action="' . URLROOT . '/cart/daypass" method="POST" >
+                                                                                <input type="hidden" name="event_id" value="dance_1_day_pass" />
+                                                                                <button type="submit"><img src="" alt="Party All Night - Full Day Pass @150"></button>
                                                                         </form>
                                                                 </section>
 
                                                                 <section class="col-sm-6">
-                                                                        <form action="' . URLROOT . '/cart/daypass" method="POST" >
-                                                                                <input type="hidden" name="event_id" value="dance_1_day_pass" />
-                                                                                <button type="submit"><img src="" alt="Party All Night - Full Day Pass @150"></button>
+                                                                        <form action="' . URLROOT . '/cart/multipass" method="POST" >
+                                                                                <input type="hidden" name="event_id" value="dance_3_days_pass" />
+                                                                                <button type="submit"><img src="" alt="Dance Freak - 3 Days Pass @250"></button>
                                                                         </form>
                                                                 </section>
                                                         </section>
