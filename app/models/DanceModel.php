@@ -6,18 +6,9 @@ class DanceModel {
     public function __construct() {
 
         $this->db = new Database;
-        // $servername = "localhost";
-        // $username = "root";
-        // $password = "";
-        // $dbname = "haarlemfestival";
-        // // Create connection
-        // $this->db = new mysqli($servername, $username, $password, $dbname);
-        // // Check connection
-        // if ($this->db->connect_error) {
-        //     die("Connection failed: ".$this->db->connect_error);
-        // }
         $this->dates =  array("Tuesday-27th July", "Wednesday-28th July", "Thursday-29th July");
         $this->venues = array("Lichtfabriek", "Jopenkerk", "XO the Club", "Club Ruis", "Caprera Openluchttheater", "Club Stalker");
+        $this->cart = array();
     }
 
     public function getTimeTable() {
@@ -86,54 +77,23 @@ class DanceModel {
         	return "Event not found!!";
         }
     
+    }
 
-//        $this->db->query("SELECT * FROM event WHERE event_id=$event_id");
-//        $event_results = $this->db->resultSet();
-    
-//        $event_details = array();
-//        if($this->db->rowCount() > 0) {
-//            foreach($event_results as $row) {
-//                $event_details["name"] = $row->event_name;
-//                $event_details["time_place"] = $row->event_date . " - ".  $row->start_time . " at " . $row->location_id;
-//                //$event_details["price"] = $row->price;
-//            }
-//        }
-//        else {
-//            return "this dance event not found!";
-//        }
-      
-//        $this->db->query("SELECT * FROM dance_event WHERE event_id=$event_id");
-//        $event_results = $this->db->resultSet();
-//        $artist_id = "";
-//        if($event_results) {
-//             if($this->db->rowCount() > 0) {
-//                 // foreach($event_details as $row) {
-//                     foreach($event_results as $row) {
+    public function addToCart($eventid, $totalprice, $count, $name, $location) {
+        try {
+            $key = "".microtime(true)."_"."userid";
+            $this->cart[$key] = array(); // get users id and for storing into the cart
+            $this->cart[$key]["event_id"] = $eventid;
+            $this->cart[$key]["totalprice"] = $totalprice;
+            $this->cart[$key]["count"] = $count;
+            $this->cart[$key]["name"] = $name;
+            $this->cart[$key]["location"] = $location;
+            return true;
+        }
+        catch(Exception $e) {
+            return false;
+        }
 
-//                     $artist_id = $row->artist_id;
-//                 }
-//             }
-//         }
-//        else {
-//            return "dance event not found!";
-//        }
-
-//        if($artist_id != "") {
-//            $this->db->query("SELECT * FROM artist WHERE artist_id=$artist_id");
-           
-//            $row = $this->db->singleRow();
-//            if($row) {
-//                $event_details["description"] = $row->description;
-//                $event_details["facebook"] = $row->facebook_link;
-//                $event_details["instagram"] = $row->instagram_link;
-//                $event_details["twitter"] = $row->twitter_link;
-//                $event_details["youtube"] = $row->youtube_link;
-//                $event_details["image"] = $row->image;
-
-//                return $event_details;
-//            }
-//        }
-//        return "artist not found!";
     }
 }
 

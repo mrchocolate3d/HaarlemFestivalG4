@@ -49,5 +49,33 @@
                 $this->view('dance/home', $data);
             }
         }
+
+        public function add_to_cart() {
+            $data = [
+                'title' => 'Dance Home',
+                'timetable' => $this->timetable,
+                'dates' => $this->dates,
+                'venues' => $this->venues,
+                'addtocart' => false,
+
+
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'title' => 'Dance Home',
+                'timetable' => $this->timetable,
+                'dates' => $this->dates,
+                'venues' => $this->venues,
+                'addtocart' => $this->danceModel->addToCart($_POST["event_id"], $_POST["total-price"], $_POST["atc_count"], $_POST["name"], $_POST["location"])
+            ];
+            
+            $this->view('dance/home', $data);
+        }
+        }
     }
 ?>

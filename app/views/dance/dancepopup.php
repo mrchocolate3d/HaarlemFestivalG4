@@ -1,15 +1,17 @@
 <?php 
 
  // if user clicks on an event on the table cell this will be evaluated
- if(isset($data['event_id']) && !empty(trim($data['event_id']))) {
+
     $event_details = $data["artist_data"];
     if (is_array($event_details)) {
         
         $price = $event_details["price"];
         $vat = 0.21 * $price;
+        $subtotal = $price - $vat;
         $totalprice = $price;
         $popup1 = '<section id="Modal" class="modal">
-                        <section class="row modal-content">
+                <section class="modal-content">
+                        <section class="row">
                             <span class="close" style="float: right;">&times;</span>
                                 <section class="col-sm-8" style="border: #F07913 3px solid;">
                                         <section class="row">
@@ -64,8 +66,8 @@
                                                                 </section>
                                                                 
                                                                 <section class="col-sm-4">
-                                                                        <p class="text-center">€'.$price.'</p>
-                                                                        <!--<p class="text-center">€110</p>-->
+                                                                        <p id="modal-ticket-price" class="text-center">€'.$price.'</p>
+                                                                        
                                                                 </section> 
 
                                                                 <section class="col-sm-4 form-group">
@@ -107,106 +109,86 @@
                                 </section>
 
                                 <section class="col-sm-4" style="border: #F07913 3px solid;">
+                                <section class="row" style="height: 60%;">
+                                        <h2 class="dance-title text-center" style="width: 100%; height: 80%;">Total</h2>
+
+                                        <h3 id="checkoutTotal" class="dance-title text-center" style="width: 100%; height: 20%;">€'.$totalprice.'</h3>
 
                                 </section>
+                                        <section class="row dance-title" style="height: 38%; border-top: #F07913 3px dashed; margin-top: 1%;">
+                                        <section class="col-sm-12">
+                                        <section class="row" style="width: 100%; margin-top: 1%">
+                                                <section class="col-sm-6">
+                                                        <p>Subtotal</p>
+                                                </section>
+
+                                                <section class="col-sm-6 text-right">
+                                                        <p>€'.$subtotal.'</p>
+                                                </section>
+                                        </section>
+
+                                        <section class="row" style="width: 100%">
+                                                <section class="col-sm-6">
+                                                        <p>Vat @21%:</p>
+                                                </section>
+
+                                                <section class="col-sm-6 text-right">
+                                                        <p>€'.$vat.'</p>
+                                                </section>
+                                        </section>
+
+                                        <section class="row" style="width: 100%;">
+                                                <section class="col-sm-6">
+                                                        <p>Total:</p>
+                                                </section>
+
+                                                <section class="col-sm-6 text-right">
+                                                        <p id="total">€'.$price.'</p>
+                                                </section>
+                                        </section>
+
+                                        <section class="row" style="width: 100%">
+                                                <section class="col-sm-6">
+                                                        <form action="' . URLROOT . '/dance/add_to_cart" method="POST" >
+                                                                <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
+                                                                <input type="hidden" name="atc_count" value=1 />
+                                                                <input type="hidden" name="total-price" value='.$price.' />
+                                                                <input type="hidden" name="name" value='.$event_details["name"].'/>
+                                                                <input type="hidden" name="location" value='.$event_details["time_place"].'/>
+                                                                <button id="addcartbutton" class="dance-button" type="submit" style="height: 80%; width: 80%; margin: auto;">Add To Cart</button>
+                                                        </form>
+                                                </section>
+
+                                                <section class="col-sm-6 text-right">
+                                                        <form action="' . URLROOT . '/cart/checkout" method="POST" >
+                                                        <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
+                                                        <input type="hidden" name="checkout_count" value=1 />
+                                                        <button id="checkoutbutton" class="dance-button" type="submit" style="height: 80%; width: 80%; margin: auto;">Checkout</button>
+                                                </form>
+                                                </section>
+                                        </section>
+                                </section>
+
+                                        
+                                                <section class="col-sm-12">
+                                                        <h2 id="total" style="float: right; "></h2>
+                                                        
+                                                </section>
+                                        </section>
+                                </section>
                         </section>
-                   </section>';
-        // $popup = '<section id="Modal" class="modal">
-        //             <!-- Modal content -->
-        //             <section class="modal-content">
-        //                 <span class="close" style="float: right;">&times;</span>
-        //                 <article id="modal-artist">
-        //                         <h3 id="modal-artist-title">'.$event_details["name"].'</h3>
-        //                         <img id="modal-artist-image" src="'.$event_details["image"].'" alt="artist image">
-        //                        <a href="' . $event_details["facebook"] . '"> <img id="modal-artist-fb" src="" alt="Facebook"> </a>
-        //                        <a href="' . $event_details["instagram"]. '"> <img id="modal-artist-insta" src="" alt="Instagram"> </a>
-        //                        <a href="' . $event_details["twitter"]  . '"> <img id="modal-artist-twitter" src="" alt="Twitter"> </a>
-
-        //                         <p id="modal-artist-description">
-        //                             '.$event_details["description"].'
-        //                         </p>
-        //                 </article>
-
-        //                 <article id="modal-event-details">
-        //                         <h3>Event Details</h3>
-        //                         <h4 id="modal-event-title">'.$event_details["name"].'</h4>
-        //                         <p id="modal-event-time-place">'.$event_details["time_place"].'</p>
-
-        //                         <form action="' . URLROOT . '/cart/daypass" method="POST" >
-        //                             <input type="hidden" name="event_id" value="dance_1_day_pass" />
-        //                             <button type="submit"><img src="" alt="Party All Night - Full Day Pass @150"></button>
-        //                         </form>
-
-        //                         <h3 id="modal-price-label">Price</h3>
-        //                         <h4 id="modal-event-price">€</h4>
-        //                         <h3>Amount</h3>
-        //                         <select name="ticket-count" id="modal-event-ticket-count" onchange="oc">
-        //                                 <option value="1">1</option>
-        //                                 <option value="2">2</option>
-        //                                 <option value="3">3</option>
-        //                                 <option value="4">4</option>
-        //                                 <option value="5">5</option>
-        //                         </select>
-
-        //                         <form action="' . URLROOT . '/cart/multipass" method="POST" >
-        //                             <input type="hidden" name="event_id" value="dance_3_days_pass" />
-        //                             <button type="submit"><img src="" alt="Dance Freak - 3 Days Pass @250"></button>
-        //                         </form>
-
-        //                 </article>
-
-        //                 <aside id="modal-ticket-details">
-        //                         <h2>Total</h2>
-        //                         <h3 id="modal-ticket-price">€'.$totalprice.'</h3>
-        //                         <hr />
-        //                         <table>
-        //                                 <tr>
-        //                                     <td>Sub-total</td>
-        //                                     <td id="modal-ticket-subtotal">€'.$price.'</td>
-        //                                 </tr>
-
-        //                                 <tr>
-        //                                     <td>VAT@21%</td>
-        //                                     <td id="modal-ticket-vat">€'.$vat.'</td>
-        //                                 </tr>
-
-        //                                 <tr>
-        //                                     <td>Total</td>
-        //                                     <td id="modal-ticket-total">€'.$totalprice.'</td>
-        //                                 </tr>
-
-        //                                 <tr>
-        //                                     <td>
-        //                                         <form action="' . URLROOT . '/cart/checkout" method="POST" >
-        //                                             <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
-        //                                             <input type="hidden" name="checkout_count" value=1 />
-        //                                             <button id="checkoutbutton" type="submit">Checkout</button>
-        //                                         </form>
-        //                                     </td>
-        //                                     <td>
-        //                                         <form action="' . URLROOT . '/cart/add_to_cart" method="POST" >
-        //                                             <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
-        //                                             <input type="hidden" name="atc_count" value=1 />
-        //                                             <button id="addcartbutton"type="submit">Add To Cart</button>
-        //                                         </form>
-        //                                     </td>
-        //                                 </tr>
-        //                         </table>
-        //                 </aside>
-
-        //             </section>
-        //         </section>';
+                </section>
+                </section>';
+        
                 
                 echo $popup1;
                 
-    }
+    
     
     
 }
 // if user clicks add to cart this will be evaluated 
-else if(isset($_POST['add_to_cart'])) {
-    
-}
+
 ?>
 
 <style>

@@ -1,7 +1,12 @@
 <?php include APPROOT . '/views/includes/header.php'; ?>
 
-<?php 
-    include APPROOT . '/views/dance/dancepopup.php';
+<?php
+     if(isset($data['event_id']) && !empty(trim($data['event_id']))) {
+        include APPROOT . '/views/dance/dancepopup.php';
+     }
+     else if(isset($data['addtocart']) && $data['addtocart']) {
+        echo '<script>alert("Item added to cart")</script>';
+    }
 ?>
 
 <!--The main static page for spotlighting artists and dance venues-->
@@ -212,50 +217,46 @@
 </script>
         <script>
             // dropdown ticket count on change
-            var ticket_Count = document.getElementById("modal-event-ticket-count");
+            var finalPrice = document.getElementsByName("total-price")[0]; // return elements array
 
+            var ticket_Count = document.getElementById("modal-event-ticket-count"); 
+            var total = document.getElementById("total");
+            var checkoutTotal = document.getElementById("checkoutTotal");
             var price = document.getElementById("modal-ticket-price");
-            var subtotal = document.getElementById("modal-ticket-subtotal");
-            var vat = document.getElementById("modal-ticket-vat");
-            var total = document.getElementById("modal-ticket-total");
-            var checkout_count = document.getElementsByName("checkout_count")[0];
             var add_to_cart = document.getElementsByName("atc_count")[0];
-
-                ticket_Count.addEventListener("change", function() {
-                var count = parseInt(ticket_Count.value);
-                var price_value = parseFloat(subtotal.slice(1));
-                var new_subtotal = price_value * count;
-                var new_vat = 0.21 * new_subtotal;
-                var new_total = new_vat + new_total;
-
-                price.innerText = "€" + new_total;
-                total.innerText = "€" + new_total;
-                vat.innerText = "€" + new_vat;
-                subtotal.innerText = "€" + new_subtotal;
-
-                checkout_count.value = count;
-                atc_count.value = count;
+            ticket_Count.addEventListener("change", function() {
+                finalPrice.value = (parseInt(ticket_Count.value) * parseFloat((price.innerHTML).slice(1)));
+                total.innerHTML = '€' + finalPrice.value;
+                checkoutTotal.innerHTML = '€' + finalPrice.value;
+                add_to_cart.value = ticket_Count.value;
             });
 
-            oc=function() {
-                var count = parseInt(ticket_Count.value);
-                var price_value = parseFloat(subtotal.slice(1));
-                var new_subtotal = price_value * count;
-                var new_vat = 0.21 * new_subtotal;
-                var new_total = new_vat + new_total;
+            // // ticket_Count.addEventListener
+            // oc=function() {
+            //     var count = parseInt(ticket_Count.value);
+            //     var price_value = parseFloat(subtotal.slice(1));
+            //     var new_subtotal = price_value * count;
+            //     var new_vat = 0.21 * new_subtotal;
+            //     var new_total = new_vat + new_total;
 
-                price.innerText = "€" + new_total;
-                total.innerText = "€" + new_total;
-                vat.innerText = "€" + new_vat;
-                subtotal.innerText = "€" + new_subtotal;
+            //     price.innerText = "€" + new_total;
+            //     total.innerText = "€" + new_total;
+            //     vat.innerText = "€" + new_vat;
+            //     subtotal.innerText = "€" + new_subtotal;
 
-                checkout_count.value = count;
-                atc_count.value = count;
-            };
+            //     checkout_count.value = count;
+            //     atc_count.value = count;
+            // };
+
+            
             
         </script>
         </section>
     </section>
+
+    <form action="<?php echo URLROOT. '/pdf_invoices/send_mail';?>" method="POST">
+            <button type="submit">SendMail</button>
+    </form>
 </main>
 <?php
     if(isset($data['event_id']) && !empty(trim($data['event_id']))) {

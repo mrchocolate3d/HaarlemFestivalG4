@@ -21,7 +21,7 @@ class Invoice {
 
         // fetch data for the given order receiptID
         $query = "SELECT Receipt.orderReceiptID, Receipt.date, Receipt.totalPrice, 
-        PM.method, ST.status, OT.  quantity, TKT.ticketPrice, EV.event_name FROM order_receipt as 
+        PM.method, ST.status, OT.quantity, TKT.ticketPrice, EV.event_name FROM order_receipt as 
         Receipt JOIN payment_method as PM ON Receipt.paymentMethodID = PM.paymentMethodID 
         JOIN orders AS ORD ON Receipt.orderID = ORD.orderID JOIN order_status AS ST ON 
         ORD.orderStatusID = ST.orderStatusID JOIN order_ticket AS OT ON Receipt.orderID 
@@ -37,24 +37,21 @@ class Invoice {
         $mail = new PHPMailer(true);
         try {
             //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'user@example.com';                     //SMTP username
-            $mail->Password   = 'secret';                               //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+            $mail->isSMTP();                                            
+            $mail->Host       = 'smtp.example.com';                     
+            $mail->SMTPAuth   = true;                                   
+            $mail->Username   = 'abhishek.narvekar80@gmail.com';                     
+            $mail->Password   = '@Mx8g$E3';                               
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;        
+            $mail->Port       = 587;                                    
         
             //Recipients
-            $mail->setFrom('from@example.com', 'Mailer');
-            $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-        
-            //Attachments
+            $mail->setFrom('abhishek.narvekar80@gmail.com', 'Mailer');
+            $mail->addAddress('abhishek.narvekar90@gmail.com', 'Joe User');    
             
-        
             //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->isHTML(true);                                  
             $mail->Subject = 'Haarlem festival tickets';
             $mail->Body    = 'Find your tickets for the festival below';
             
@@ -62,8 +59,10 @@ class Invoice {
             
             $mail->send();
             echo 'Message has been sent';
+            return true;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            return false;
         }
 
     }
