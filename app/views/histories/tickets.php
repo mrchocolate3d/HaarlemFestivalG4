@@ -41,7 +41,10 @@
                         <td><?php echo $datum['starting_time']?></td>
                         <td><?php echo $datum['lang']?></td>
                         <td><?php echo $datum['tour_guide']?></td>
-                        <td><a href="<?php echo URLROOT; ?>/histories/add"><button type="button" id="history_order_btn">Order tickets</button></a></td>
+                        <td>
+                            <a href="<?php echo URLROOT; ?>/histories/add?event_id=<?php echo $datum['history_event_id'];?>">Order tickets</a>
+
+                        </td>
                         </tr><?php }?>
                 </table>
             </section>

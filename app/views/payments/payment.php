@@ -1,6 +1,6 @@
 <main>
     <section class="main-payment-container">
-        <section class="payment-container">
+        <form class="payment-container">
             <h1></h1>
             <form class="payment-info-container" action="<?php echo URLROOT; ?>/payment/payment" method="post">
 
@@ -37,7 +37,9 @@
                         </select>
                     </section>
                 </section>
-            </section>
+                <a name="pay" href="<?php echo URLROOT; ?>/payments/info">Continue with payment</a>
+            </form>
+
             <aside class="payment-basket-info-container">
                 <h2>Shopping cart</h2>
             </aside>
