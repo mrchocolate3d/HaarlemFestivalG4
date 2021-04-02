@@ -1,5 +1,6 @@
 <?php
 session_start();
-session_destroy();
-header('location:' . URLROOT . '/admins/adminLogout');
+unset($_SESSION['userID']);
+unset($_SESSION['email']);
+header('location:' . URLROOT . '/admins/loginAdmin');
 ?>

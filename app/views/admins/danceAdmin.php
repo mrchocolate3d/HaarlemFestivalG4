@@ -17,6 +17,7 @@ include APPROOT . '/views/includes/adminNav.php';
         </thead>
         <tbody>
         <?php
+
         //var_dump($data);
         foreach ($data as $datum){ ?>
             <tr>
@@ -25,7 +26,7 @@ include APPROOT . '/views/includes/adminNav.php';
             <td align="center"><?php echo $datum['start_time']; ?></td>
 
             <td align="center">
-                <a href="edit.php?id=<?php echo $datum['event_id']; ?>">Edit</a>
+                <a href="<?php echo URLROOT; ?>/admins/editDance?id=<?php echo $datum['event_id']; ?>">Edit</a>
             </td>
 
             <td align="center">
