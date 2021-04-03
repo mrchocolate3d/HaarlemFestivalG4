@@ -5,7 +5,6 @@
         <li> <a href="<?php echo URLROOT . "/jazz/home" ?>">Haarlem Jazz</a> </li>
         <li> <a href="<?php echo URLROOT . "/histories/detail" ?>">Haarlem History</a> </li>
         <li> <a href="<?php echo URLROOT . "/pages/dance" ?>">Haarlem Dance</a> </li>
-
         <li>
             <?php if (isset($_SESSION['firstname'])) : ?>
                 <a href="<?php echo URLROOT; ?>/users/account">Your Account</a>

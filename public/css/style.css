@@ -409,13 +409,13 @@ input::placeholder {
     grid-template-areas: "info artists";
 }
 
-#jazz-info {
-    grid-area: info;
-    padding: 1em;
-    height: 100vh;
-    margin: 0;
-    display: grid;
-    grid-template-areas:
+  grid-area: info;
+  padding: 1em;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-areas:
+
     "
     text jtext jtext jtext"
     "ptext ptext ptext ptext patronaat"
@@ -647,6 +647,176 @@ input::placeholder {
 .history-tickets-modal{
     display: none;
 }
+
+#history-main{
+    max-width: 100%;
+}
+.main-history-container{
+    background-image: url('../img/history.jpg');
+    background-position: center;
+    height: 100%;
+    width: 100%;
+
+}
+.intro-history-container{
+    text-align: center;
+    padding: 70px;
+    width: 75%;
+    height: 75%;
+    margin: auto;
+
+}
+.intro-history-container h1{
+    color: white;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.intro-history-container p{
+    color: white;
+    font-size: 30px;
+    padding: 30px;
+    background-color: transparent;
+}
+
+#history-show-more{
+    width: 150px;
+    height: 58px;
+    font-size: 20px;
+    background: #989898;
+    border: none;
+    border:solid 1.5px white;
+    opacity: 75%;
+    text-transform: uppercase;
+}
+#history-show-more:hover{
+    opacity: 90%;
+}
+.detail-history-container{
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    background-color: #F5F5F5;
+}
+#history-detail-h{
+    font-size: 35px;
+    text-align: center;
+    padding:20px;
+    text-transform: uppercase;
+    color: #BF6832;
+}
+.tour-history-container{
+    background-color: white;
+    height: 70%;
+    width: 75%;
+    margin: auto;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #814663;
+}
+#tour-title{
+    text-transform: uppercase;
+    color: #814663;
+    font-size: 40px;
+}
+.tour-text-cont{
+    float: left;
+    padding: 20px;
+    width:60%;
+    color: #814663;
+    font-size: 20px;
+}
+#history_order_btn{
+    width: 250px;
+    height: 30px;
+    font-size: 15px;
+    background: white;
+    color: #C06832;
+    border: none;
+    border:solid 2px #FFA810;
+    text-transform: uppercase;
+    
+
+}
+
+.history-map-aside{
+    float: right;
+    position: relative;
+    text-align: center;
+
+}
+#show_map_img{
+    float: right;
+    border:1px solid darkblue;
+    position: relative;
+    width: 60%;
+    margin: 20px;
+
+}
+#history-quote{
+
+    left: 0;
+    position:absolute;
+    text-align:center;
+    top: 30px;
+    width: 100%;
+}
+#map_popup_btn{
+    width: 250px;
+    height: 30px;
+    font-size: 15px;
+    background: white;
+    color: #C06832;
+    border: none;
+    border:solid 2px #FFA810;
+    text-transform: uppercase;
+
+    float: right;
+    margin: 20px;
+}
+#map_popup_btn:hover{
+
+}
+
+.history_map_modal{
+    display: none;
+    position: fixed;
+    border:solid 2px #BF6832;
+ }
+
+.tickets-history-container{
+    background-color: white;
+}
+.history-calendar-container{
+
+}
+
+.history-calendar-container table{
+    background-color: white;
+    width: 100%;
+    height: 80%;
+    align-content: center;
+    overflow: auto;
+
+}
+.history-calendar-container tr,th{
+    border: 2px solid #BF6832 ;
+    padding: 0px;
+    text-align: center;
+}
+.history-calendar-container th {
+    background-color: #BF6832;
+    color: white;
+}
+.history-calendar-container tr:nth-child(even) {
+    background-color: #BF6832;
+}
+.history-calendar-container tr:nth-child(odd) {
+    background-color: #FFBE85;
+}
+.history-tickets-modal{
+    display: none;
+}
+
 .add-history-container{
     background-color: white;
     height: 70%;
@@ -656,3 +826,4 @@ input::placeholder {
     border-width: 2px;
     border-color: #814663;
 }
+
