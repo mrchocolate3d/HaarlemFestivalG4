@@ -60,17 +60,12 @@ class Histories extends Controller
 
             $ticketstest[] = array('history_event_id'=>$tickets);
             /*$this->historyModel->addHistoryTicket($data,$quantity);*/
-            $this->historyModel->removeFromQuantity($data,$quantity);
+            //$this->historyModel->removeFromQuantity($data,$quantity);
 
         }
+
+
         if(isset($_POST['add-test'])){
-
-            $quantity = $_POST['ticket-quantity'];
-            while ($quantity!=0){
-                array_push($tickets,$id);
-            }
-
-            $ticketstest[] = array('history_event_id'=>$tickets);
             $this->view('histories/add',$ticketstest);
         }
     }

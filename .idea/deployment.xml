@@ -5,7 +5,7 @@
       <paths name="xampp">
         <serverdata>
           <mappings>
-            <mapping deploy="HaarlemFestivalG4" local="$PROJECT_DIR$" web="/HaarlemFestivalG4" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
