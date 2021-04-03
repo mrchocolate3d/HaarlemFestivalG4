@@ -6,7 +6,6 @@
         require APPROOT . '/views/includes/navigation.php';
         ?>
     </section>
-    <?php var_dump($ticketstest);?>
 
     <section class="main-history-container">
         <h1>Tour Detail</h1>

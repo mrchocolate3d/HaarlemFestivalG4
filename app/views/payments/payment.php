@@ -2,7 +2,7 @@
     <section class="main-payment-container">
         <form class="payment-container">
             <h1></h1>
-            <form class="payment-info-container" action="<?php echo URLROOT; ?>/payment/payment" method="post">
+            <form class="payment-info-container" action="<?php echo URLROOT; ?>/payments/payment" method="post">
 
                 <section class="payment-person-info-container">
                     <label for="payment-first-name">Firstname</label>
@@ -31,9 +31,9 @@
                     <section class="payment-method-dropdown-container">
                         <label id="payment-dropdown-lbl" for="payment-dropdown">Select a payment method</label>
                         <select id="payment-dropdown">
-                            <option value="pay_paypal">Paypal</option>
-                            <option value="pay_ideal">Ideal</option>
-                            <option value="pay_master">Mastercard</option>
+                            <option value="Paypal">Paypal</option>
+                            <option value="Visa">Visa</option>
+                            <option value="Credit Card">Credit Card</option>
                         </select>
                     </section>
                 </section>

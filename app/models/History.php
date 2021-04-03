@@ -37,11 +37,17 @@ class History
         return $result;
     }
 
-    public function addHistoryTicket($data,$quantity){
-        $this->db->query('');
-    }
     public function removeFromQuantity($data,$quantity){
 
+        $this->db->query('SELECT quantity from history_event where history_event_id = :id');
+        $this->db->bind(':id',$data['id']);
+        $total = $this->db->singleRow();
+        $total= $total-$quantity;
+
+        $this->db->query('UPDATE history_event SET quantity = :total where history =: id');
+        $this->db->bind(':id',$data['id']);
+        $this->db->bind(':total',$total);
+        $this->db->execute();
     }
 
 }

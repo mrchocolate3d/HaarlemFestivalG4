@@ -11,7 +11,10 @@ class Payments extends Controller
     {
         $this->view('payments/payment');
         if(isset($_POST['pay'])){
-            $method = $_POST('');
+            $method = $_POST('payment-dropdown');
+            $data = [
+
+            ];
             $this->paymentModel->placeOrder();
         }
     }
