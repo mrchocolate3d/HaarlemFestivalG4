@@ -17,4 +17,5 @@
         <li>
             <a href="/cart/view"> <i class="bi bi-basket3-fill"></i></a>
         </li>
+    </ul>
 </nav>
