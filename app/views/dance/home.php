@@ -8,7 +8,6 @@
         echo '<script>alert("Item added to cart")</script>';
     }
 ?>
-
 <!--The main static page for spotlighting artists and dance venues-->
 <main>
     <section class="title-screen container-fluid" style="padding-left: 0;">
@@ -151,13 +150,6 @@
     <section id="dance-timetable-page">
         <section class="timetable card" id="dance-timetable">
         <?php
-            //    $table =  '<table border = 1>
-            //    <tr><th>Venue</th>';
-            //    foreach($data['dates'] as $dt) {
-            //        $table .= '<th>'. $dt . '</th>';
-            //    }
-
-            //    $table .= '</tr>';
                 
             $table = '<table border = 1 class="text-center">
                     <tr><th>Venue</th>
@@ -192,10 +184,10 @@
         ?>
 
         <script>
-	// Get the modal
+	// Getting the modal
 	var modal = document.getElementById("Modal");
 
-	// Get the <span> element that closes the modal
+	// using  the <span> element which will close the modal
 	var span = document.getElementsByClassName("close")[0];
 
 	// When the user clicks on the button, open the modal
@@ -203,12 +195,12 @@
 	  modal.style.display = "block";
 	}
 
-	// When the user clicks on <span> (x), close the modal
+	// When the user clicks on <span> which is (x), close the modal
 	span.onclick = function() {
 	  modal.style.display = "none";
 	}
 
-	// When the user clicks anywhere outside of the modal, close it
+	// When the user clicks anywhere outside of the modal popup then close the modal popup
 	window.onclick = function(event) {
 	  if (event.target == modal) {
 	    modal.style.display = "none";
@@ -230,33 +222,10 @@
                 checkoutTotal.innerHTML = '€' + finalPrice.value;
                 add_to_cart.value = ticket_Count.value;
             });
-
-            // // ticket_Count.addEventListener
-            // oc=function() {
-            //     var count = parseInt(ticket_Count.value);
-            //     var price_value = parseFloat(subtotal.slice(1));
-            //     var new_subtotal = price_value * count;
-            //     var new_vat = 0.21 * new_subtotal;
-            //     var new_total = new_vat + new_total;
-
-            //     price.innerText = "€" + new_total;
-            //     total.innerText = "€" + new_total;
-            //     vat.innerText = "€" + new_vat;
-            //     subtotal.innerText = "€" + new_subtotal;
-
-            //     checkout_count.value = count;
-            //     atc_count.value = count;
-            // };
-
-            
-            
+  
         </script>
         </section>
     </section>
-
-    <form action="<?php echo URLROOT. '/pdf_invoices/send_mail';?>" method="POST">
-            <button type="submit">SendMail</button>
-    </form>
 </main>
 <?php
     if(isset($data['event_id']) && !empty(trim($data['event_id']))) {

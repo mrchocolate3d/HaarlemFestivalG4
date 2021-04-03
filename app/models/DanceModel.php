@@ -10,7 +10,7 @@ class DanceModel {
         $this->venues = array("Lichtfabriek", "Jopenkerk", "XO the Club", "Club Ruis", "Caprera Openluchttheater", "Club Stalker");
         $this->cart = array();
     }
-
+    // add to order is the addToCart and list name is cart.
     public function getTimeTable() {
 
         $this->db->query("SELECT * FROM event WHERE category='Dance'");

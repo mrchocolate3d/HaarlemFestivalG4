@@ -4,7 +4,7 @@ class SendMail extends Controller {
 
     function __construct()
     {
-        $this->I = $this->model('Invoice.php');
+        $this->I = $this->model('Invoice_tickets.php');
     }
 
     function invoice() {
