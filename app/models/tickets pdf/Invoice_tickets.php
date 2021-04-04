@@ -4,6 +4,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 require  ('fpdf182/fpdf.php');
 require ('vendor/autoload.php');
 
@@ -27,6 +31,7 @@ class Invoice {
         ORD.orderStatusID = ST.orderStatusID JOIN order_ticket AS OT ON Receipt.orderID 
         = OT.orderID JOIN tickets AS TKT ON ORD.ticketID = TKT.ticketID JOIN event AS 
         EV.event_id = TKT.event_id WHERE Receipt.orderReceiptID=?";
+        $this->db->singleRow();
         
         return $query;
     }
@@ -34,72 +39,37 @@ class Invoice {
     public function sendMail($path) {
         $mail = new PHPMailer(true);
         try {
-                    $to = "abhishek.narvekar80@gmail.com";
-                    $from = "abhishek.narvekar90@gmail.com";
-                    $subject = "Please find your attachement below";
-                    $mess = "test message";
-                    $fileatt = "mypdf.pdf";
-                    $fileatt_type = "application/pdf";
-                    $fileatt_name = "invoice_tickets.pdf";
-                    $headers = "From: $from";
-                    $file = fopen($fileatt, "rb");
-                    $data = fread($file, filesize($fileatt));
-                    fclose($file);
-
-                    $semi_rand = md5(time());
-                    $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
-
-                    // Add the headers for a file attachment
-                    $headers .= "\
-                    MIME-Version: 1.0\r\
-                    ".
-
-                    "Content-Type: multipart/mixed;\r\
-                    " .
-                            " boundary=\"{$mime_boundary}\"";
-
-                    // Add a multipart boundary above the plain message
-                    $message = "This is a multi-part message in MIME format.\r\
-                    \r\
-                    " .
-                            "--{$mime_boundary}\r\
-                    " .
-                            "Content-Type: text/plain; charset=\"iso-8859-1\"\r\
-                    " .
-                            "Content-Transfer-Encoding: 7bit\r\
-                    \r\
-                    " .
-                            $mess . "\r\
-                    \r\
-                    ";
-
-                    // using the Base64 encode the file data
-                    $data = chunk_split(base64_encode($data));
-
-                    // Add file attachment to the message
-                    $message .= "--{$mime_boundary}\r\
-                    " .
-                            "Content-Type: {$fileatt_type};\r\
-                    " .
-                            " name=\"{$fileatt_name}\"\r\
-                    " .
-                            "Content-Transfer-Encoding: base64\r\
-                    \r\
-                    " .
-                            $data . "\r\
-                    \r\
-                    " .
-                            "--{$mime_boundary}--\r\
-                    ";
-
-                    if (mail($to, $subject, $message, $headers))
-                    {
-                        echo "<p>The email was sent.</p>";
-                    }
-                    else
-                    {
-                        echo "<p>There was an error sending the mail.</p>";
-                    }
+                
+                
+                $mail = new PHPMailer(true);
+                
+                 //Server settings
+                 $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                 // sending the mail using smtp                      
+                 $mail->isSMTP(); 
+                 //Set the SMTP server on the host website to send through                                          
+                 $mail->Host       = 'smtp.example.com';                     
+                 $mail->SMTPAuth   = true;                               
+                 $mail->Username   = 'abhishek.narvekar80@gmail.com';                  
+                 $mail->Password   = '@Mx8g$E3';                            
+                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+                 $mail->Port       = 587;                                   
+                
+                $mail->SetFrom("abhishek.narvekar80@gmail.com","Company");
+                $mail->AddAddress("abhishek.narvekar90@gmail.com");
+                $mail->Subject  = "Invoice of tickets for haalrem festival";      
+                $body = "Please find your pdf ticket attachements for the haarlem festivals \n";
+                $mail->Body = $body;
+                
+                
+                $mail->AddAttachment('test.pdf', 'test.pdf');
+                if(!$mail->Send()) {
+                    
+                    echo 'Mailer error: ' . $mail->ErrorInfo;
+                    } else {
+                    echo "Invoice was sent";
+                }
+                
                     return true;
 
                 } catch (Exception $e) {
@@ -135,8 +105,8 @@ class Invoice {
         $pdf->SetFont('Arial','B',12);
 
         $pdf->Cell(130	,5,$row['event.event_name'],1,0);
-        $pdf->Cell(25	,5,$row['paymentMethodID'],1,0);
-        $pdf->Cell(34	,5,$row['payment_Method'],1,1);//end of line
+        $pdf->Cell(25	,5,$row['paymentMethodID'],1, 0);
+        $pdf->Cell(34	,5,$row['payment_Method'], 1, 1);//end of line
 
         $pdf->Cell(132	,5,$row['event.event_name'],1,0);
         $pdf->Cell(27	,5,$row['paymentMethodID'],1,0);
