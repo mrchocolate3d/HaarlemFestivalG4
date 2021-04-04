@@ -31,7 +31,8 @@ class History
 
     public function getTicketById($id){
 
-        $this->db->query('SELECT history_event_id, lang, tour_guide, location_id, starting_time, tour_date, quantity from history_event where history_event_id = :id');
+        $this->db->query('SELECT history_event.history_event_id, lang, tour_guide, location_id, starting_time, tour_date, ticketPrice
+        from history_event inner join tickets on history_event.history_event_id = tickets.history_event_id where history_event.history_event_id = :id');
         $this->db->bind(':id',$id);
         $result=$this->db->singleRow();
         return $result;

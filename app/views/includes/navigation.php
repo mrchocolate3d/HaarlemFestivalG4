@@ -15,7 +15,12 @@
         </li>
 
         <li>
-            <a href="/cart/view"> <i class="bi bi-basket3-fill"></i></a>
+            <?php
+            if(!empty($_SESSION["shopping_cart"])) {
+            $cart_count = count(array_keys($_SESSION["shopping_cart"]));
+            ?>
+            <a href="<?php echo URLROOT . "/carts/cart" ?>"><img src="../img/cart-icon.png" /> Cart<span><?php echo $cart_count; ?></span></a>
+            <?php } ?>
         </li>
     </ul>
 </nav>

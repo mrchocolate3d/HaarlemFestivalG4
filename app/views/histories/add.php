@@ -6,22 +6,31 @@
         require APPROOT . '/views/includes/navigation.php';
         ?>
     </section>
-    <?php var_dump($ticketstest);?>
 
     <section class="main-history-container">
         <h1>Tour Detail</h1>
         <section class="add-history-container">
-            <form method="post" action="<?php echo URLROOT; ?>/histories/tickets">
+            <form method="post" action="<?php echo URLROOT; ?>/histories/add">
+                <input type="hidden" name="history_event_id" value="<?php echo $data[$data['id']]['event_id']?>">
                 <ul>
-                    <li><?php echo $data['tour_date']?></li>
-                    <li><?php echo $data['starting_time']?></li>
-                    <li><?php echo $data['lang']?></li>
-                    <li><?php echo $data['tour_guide']?></li>
+                    <li><input type="text"  name="tour_guide" value="<?php echo $data[$data['id']]['tour_guide']?>" readonly></li>
+                    <li><input type="text"  name="starting_time" value="<?php echo $data[$data['id']]['starting_time']?>" readonly></li>
+                    <li><input type="text"  name="lang" value="<?php echo $data[$data['id']]['lang']?>" readonly></li>
+                    <li><input type="text"  name="tour_date" value="<?php echo $data[$data['id']]['tour_date']?>" readonly></li>
+                    <li><input type="text"  name="price" value="<?php echo $data[$data['id']]['price']?>" readonly></li>
                 </ul>
                 <input type="number" name="ticket-quantity" id="history-quantity" min="1" max="<?php echo $data['quantity']?>">
+                <button id="submit" type="submit" value="Add to cart">Submit</button>
                 <a href="<?php echo URLROOT; ?>/histories/tickets" name="add-history-ticket" type="button">Add ticket</a>
-                <a href="<?php echo URLROOT; ?>/histories/confirmation?ticket=<?php echo $ticketstest['history_event_id']?>" name="add-test" type="button">Add test</a>
+                <?php echo $data['status']?>
             </form>
+
         </section>
     </section>
+    <?php //print_r($data);
+        print_r($_SESSION["shopping_cart"]);
+    //print_r($data);
+            //print_r(count(array_keys($_SESSION["shopping_cart"])));
+    ?>
+
 </main>
