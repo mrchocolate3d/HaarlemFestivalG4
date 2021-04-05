@@ -222,7 +222,6 @@
                 checkoutTotal.innerHTML = '€' + finalPrice.value;
                 add_to_cart.value = ticket_Count.value;
             });
-  
         </script>
         </section>
     </section>
