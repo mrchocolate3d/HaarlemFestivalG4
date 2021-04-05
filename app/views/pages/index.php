@@ -57,4 +57,5 @@ include APPROOT . '/views/includes/navigation.php'; ?>
 </main>
 
 
+
 <?php include APPROOT . '/views/includes/footer.php'; ?>
