@@ -33,7 +33,21 @@ class Carts extends Controller
             }
         }
 
+
+        if (isset($_POST['action']) && $_POST['action']=="confirm"){
+            $data[] =  $_SESSION["shopping_cart"];
+            $this->view('carts/confirmationPage',$data);
+        }
+
+
         $data[] =  $_SESSION["shopping_cart"];
         $this->view('carts/cart',$data);
     }
-}
+
+    public function confirmationPage(){
+        $data[] =  '';
+
+        $this->view('carts/confirmationPage',$data);
+    }
+
+    }

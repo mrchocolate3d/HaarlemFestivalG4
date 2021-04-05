@@ -68,7 +68,15 @@ require APPROOT . '/views/includes/navigation.php';
             <?php
                 } else {
                     echo"<h3>Your cart is empty</h3>";
-                }?>-
+                }?>
+        </aside>
+
+        <aside>
+            <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
+                <input type='hidden' name='action' value="confirm" />
+                <a href="<?php echo URLROOT; ?>/carts/confirmationPage" type="button">Confirm Page</a>
+                <button type='submit' class='remove'>Confirm Order</button>
+            </form>
         </aside>
     </section>
 

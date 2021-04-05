@@ -21,7 +21,7 @@
                 </ul>
                 <input type="number" name="ticket-quantity" id="history-quantity" min="1" max="<?php echo $data['quantity']?>">
                 <button id="submit" type="submit" value="Add to cart">Submit</button>
-                <a href="<?php echo URLROOT; ?>/histories/tickets" name="add-history-ticket" type="button">Add ticket</a>
+                <a href="<?php echo URLROOT; ?>/histories/tickets" name="add-history-ticket" type="button">Back</a>
                 <?php echo $data['status']?>
             </form>
 
