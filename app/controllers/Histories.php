@@ -8,6 +8,7 @@ class Histories extends Controller
     {
         $this->historyModel = $this->model('History');
     }
+    /*
 
     public function detail(){
         $this->view('histories/detail');
@@ -72,6 +73,6 @@ class Histories extends Controller
     public function confirmation(){
         $ticket = $_REQUEST['ticket'];
         $this->view('histories/confirmation',$ticket);
-    }
+    }*/
 
 }
