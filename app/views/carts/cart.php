@@ -74,8 +74,8 @@ require APPROOT . '/views/includes/navigation.php';
         <aside>
             <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
                 <input type='hidden' name='action' value="confirm" />
-                <a href="<?php echo URLROOT; ?>/carts/confirmationPage" type="button">Confirm Page</a>
-                <button type='submit' class='remove'>Confirm Order</button>
+                <a href="<?php echo URLROOT; ?>/payments/payment?cart=<?php echo $_SESSION["shopping_cart"];?>&total=<?php echo $total_price?>" name="pay"type="button">Continue to payment</a>
+
             </form>
         </aside>
     </section>

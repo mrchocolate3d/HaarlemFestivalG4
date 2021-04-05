@@ -47,7 +47,7 @@
                 <p id="history-quote">Explore<br>Haarlem...</p>
             </aside>
 
-            <button id = "map_popup_btn">Show locations</button>
+            <a href="<?php echo URLROOT; ?>/histories/map"><button id = "map_popup_btn">Show locations</button></a>
 
 
         </section>

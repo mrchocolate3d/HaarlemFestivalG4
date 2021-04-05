@@ -774,6 +774,20 @@ select.dance-select > option {
     border-width: 2px;
     border-color: #814663;
 }
+#location_image{
+    max-height: 70%;
+}
+.history-container{
+    height: 100%;
+    width: 100%;
+    background-color: #F5F5F5;
+    text-align: center;
+    padding: 70px;
+    margin: auto;
+}
+.history-container h{
+    color: #C06832;
+}
 
 /*DANCE CSS*/
 .card.button {

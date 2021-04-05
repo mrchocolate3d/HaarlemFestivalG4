@@ -1,7 +1,6 @@
 <?php
 
 use Mollie\Api\MollieApiClient;
-require "../initialize.php";
 
 class Payments extends Controller
 {
@@ -13,26 +12,34 @@ class Payments extends Controller
     }
     public function payment()
     {
+        $user_email = $_SESSION['email'];
+        $user = $this->userMode->GetUserByEmail($user_email);
+        $data[] =  $_SESSION["shopping_cart"];
+
+        $this->view('payments/payment',$data);
         $mollie = new MollieApiClient();
         $this->view('payments/payment');
+
         if(isset($_POST['pay'])){
 
             $mollie->setApiKey('test_ajQEAHf8StBWg3dnW9VxWvcz26j5jh');
-            $amount = $_POST['amount'];
+            $_SESSION["shopping_cart"];
+            $amount = $_REQUEST['total'];
+            $description = 'Continue with payment for' ;
 
             $payment = $mollie->payments->create([
                 "amount" => [
                     "currency" => "EUR",
-                    "value" => "10.00",
+                    "value" => $amount,
                 ],
-                "description" => "Order #{$orderId}",
-                "redirectUrl" => "{$protocol}://{$hostname}{$path}/return.php?order_id={$orderId}",
-                "webhookUrl" => "{$protocol}://{$hostname}{$path}/webhook.php",
-                "metadata" => [
-                    "order_id" => $orderId,
-                ],
+                "description" => "$description",
+                "redirectUrl" => "http://localhost/PHP/HaarlemFestivalG4/payments/info.php",
+                "webhookUrl" => "",
+                "metadata" => $user,
             ]);
+            $payment->getCheckoutUrl();
             $this->paymentModel->placeOrder();
+
         }
     }
     public function info(){
