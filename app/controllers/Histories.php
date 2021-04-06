@@ -70,7 +70,6 @@ class Histories extends Controller
             $id = $_REQUEST['event_id'];
             $result = $this->historyModel->getTicketById($id);
             $code = $result->history_event_id;
-            $status = '';
             $data = array(
               $code =>array(
                 'event_id'=>$result->history_event_id,
@@ -80,9 +79,9 @@ class Histories extends Controller
                 'starting_time'=>$result->starting_time,
                 'tour_date'=>$result->tour_date,
                 'quantity'=>1,
-                'price' => $result->ticketPrice,
-                'status'=>''),
-                'id' =>$result->history_event_id
+                'price' => $result->ticketPrice),
+                'id' =>$result->history_event_id,
+                'status' =>''
             );
         }
 

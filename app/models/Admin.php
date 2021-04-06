@@ -30,25 +30,62 @@ class Admin
         return $result;
     }
 
-    public function editDance($name,$startTime,$endTime,$date){
+    public function newDance($id,$name,$startTime,$endTime,$date){
 
-        $this->db->query('INSERT INTO event(event_name, start_time, end_time, event_date)
-                        VALUES (:name,:startTime,:endTime,:date) ');
+        $this->db->query('INSERT INTO event(event_name,category, start_time, end_time, event_date)
+                        VALUES (:name,:startTime,:endTime,:date)');
+
         $this->db->bind(':name',$name);
         $this->db->bind(':startTime',$startTime);
         $this->db->bind(':date',$date);
         $this->db->bind(':endTime',$endTime);
+        $this->db->bind(':id',$id);
+        $this->db->bind(':category','Dance');
+
+
+        $this->db->execute();
+
+    }
+
+    public function updateDance($id,$name,$startTime,$endTime,$date){
+
+        $this->db->query('UPDATE event SET event_name = :name, start_time = :startTime, end_time = :endTime, event_date = :date WHERE event_id = :id ');
+
+        $this->db->bind(':name',$name);
+        $this->db->bind(':startTime',$startTime);
+        $this->db->bind(':date',$date);
+        $this->db->bind(':endTime',$endTime);
+        $this->db->bind(':id',$id);
+
+        $this->db->execute();
+
+    }
+
+
+    public function newLocation($location,$description,$locationID){
+        $this->db->query('INSERT INTO location(location_name, description)
+                        VALUES (:location,:description)');
+
+        $this->db->bind(':location',$location);
+        $this->db->bind(':locationID',$locationID);
+        $this->db->bind(':description',$description);
 
         $this->db->execute();
     }
 
-    public function updateLocation($location,$description,$capacity){
-        $this->db->query('INSERT INTO location(location_name, description, capacity) VALUES ()');
+    public function updateLocation($location,$description,$locationID){
+        $this->db->query('UPDATE location SET location_name = :location, description = :description WHERE location_id = :locationID');
+
+        $this->db->bind(':location',$location);
+        $this->db->bind(':locationID',$locationID);
+        $this->db->bind(':description',$description);
+
+        $this->db->execute();
     }
 
     public function getDanceFromId($id){
         $this->db->query('SELECT event_id, event_name, start_time, end_time,
-       event_date, location_name, description, capacity  from event
+       event_date, location_name, description, capacity, l.location_id  from event
         inner join location l on event.location_id = l.location_id
         WHERE event_id = :id');
 
@@ -60,9 +97,20 @@ class Admin
 
     }
 
+    public function passwordGet($password){
+        $this->db->query('SELECT * FROM admin WHERE email = :email');
+
+        $this->db->bind(':email','text@outlook.com');
+
+        $result = $this->db->singleRow();
+
+        return $result;
+
+    }
+
 
     public function adminCheck($email,$password){
-        $this->db->query('SELECT * FROM admin WHERE email = :email');
+        $this->db->query('SELECT adminID, email, password, type FROM admin inner join roles on admin.roleID = roles.roleID WHERE email = :email');
 
         $this->db->bind(':email',$email);
 

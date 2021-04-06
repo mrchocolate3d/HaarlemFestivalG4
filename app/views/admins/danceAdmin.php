@@ -30,10 +30,14 @@ include APPROOT . '/views/includes/adminNav.php';
             </td>
 
             <td align="center">
-                <a href="delete.php?id=<?php echo $datum['event_id']; ?>">Delete</a>
+                <a href="<?php echo URLROOT; ?>/admins/deleteDance?id=<?php echo $datum['event_id']; ?>">Delete</a>
             </td>
         </tr>
         <?php }?>
         </tbody>
     </table>
+
+    <a href="<?php echo URLROOT; ?>/admins/createDance?>">New Dance Event</a>
+
+
 </main>

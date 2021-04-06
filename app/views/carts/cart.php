@@ -58,6 +58,10 @@ require APPROOT . '/views/includes/navigation.php';
                     $count++;
                 }
                 ?>
+                <form>
+                    <input type='hidden' name='action' value=< />
+
+                </form>
                 <tr>
                     <td colspan="5" align="right">
                         <strong>TOTAL: <?php echo "$".$total_price; ?></strong>

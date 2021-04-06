@@ -1,6 +1,7 @@
 <?php
+require APPROOT . '/views/includes/header.php';
+        require APPROOT . '/views/includes/navigation.php';
 
-// if user clicks on an event on the table cell this will be evaluated
 
 $event_details = $data["artist_data"];
 if (is_array($event_details)) {

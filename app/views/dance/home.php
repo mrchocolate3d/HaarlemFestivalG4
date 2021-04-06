@@ -1,4 +1,5 @@
-<?php include APPROOT . '/views/includes/header.php'; ?>
+<?php require APPROOT . '/views/includes/header.php';
+require APPROOT . '/views/includes/navigation.php'; ?>
 
 <?php
      if(isset($data['event_id']) && !empty(trim($data['event_id']))) {

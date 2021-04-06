@@ -1,6 +1,8 @@
 <?php
 require APPROOT . '/views/includes/header.php';
 include APPROOT . '/views/includes/adminNav.php';
+
+echo $data['status'];
 ?>
 
 <main role="main">
