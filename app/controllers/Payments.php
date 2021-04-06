@@ -13,18 +13,16 @@ class Payments extends Controller
     public function payment()
     {
         $user_email = $_SESSION['email'];
-        $user = $this->userMode->GetUserByEmail($user_email);
+        $user = $this->userModel->GetUserByEmail($user_email);
         $data[] =  $_SESSION["shopping_cart"];
 
-        $this->view('payments/payment',$data);
-        $mollie = new MollieApiClient();
-        $this->view('payments/payment');
 
         if(isset($_POST['pay'])){
 
+            $mollie = new MollieApiClient();
             $mollie->setApiKey('test_ajQEAHf8StBWg3dnW9VxWvcz26j5jh');
             $_SESSION["shopping_cart"];
-            $amount = $_REQUEST['total'];
+            $amount = $_REQUEST["total"];
             $description = 'Continue with payment for' ;
 
             $payment = $mollie->payments->create([
@@ -33,16 +31,13 @@ class Payments extends Controller
                     "value" => $amount,
                 ],
                 "description" => "$description",
-                "redirectUrl" => "http://localhost/PHP/HaarlemFestivalG4/payments/info.php",
+                "redirectUrl" => "http://localhost/PHP/HaarlemFestivalG4/carts/confirmationPage",
                 "webhookUrl" => "",
-                "metadata" => $user,
+                "metadata" => "",
             ]);
-            $payment->getCheckoutUrl();
-            $this->paymentModel->placeOrder();
+
+            header("Location: " . $payment->getCheckoutUrl(), \true, 303);
 
         }
-    }
-    public function info(){
-        $this->view('payments/info');
     }
 }

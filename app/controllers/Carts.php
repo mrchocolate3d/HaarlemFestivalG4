@@ -1,5 +1,5 @@
 <?php
-
+use Mollie\Api\MollieApiClient;
 
 class Carts extends Controller
 {
@@ -50,4 +50,5 @@ class Carts extends Controller
         $this->view('carts/confirmationPage',$data);
     }
 
-    }
+
+}

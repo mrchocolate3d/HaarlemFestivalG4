@@ -72,9 +72,9 @@ require APPROOT . '/views/includes/navigation.php';
         </aside>
 
         <aside>
-            <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
-                <input type='hidden' name='action' value="confirm" />
-                <a href="<?php echo URLROOT; ?>/payments/payment?cart=<?php echo $_SESSION["shopping_cart"];?>&total=<?php echo $total_price?>" name="pay"type="button">Continue to payment</a>
+            <form method="post" action="<?php echo URLROOT; ?>/carts/cart<?php echo $total = $item["price"]*$item["quantity"]?>">
+
+                <input type="submit" name="pay"type="button">
 
             </form>
         </aside>
