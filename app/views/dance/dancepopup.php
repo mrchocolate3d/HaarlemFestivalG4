@@ -153,8 +153,10 @@
                                                                 <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
                                                                 <input type="hidden" name="atc_count" value=1 />
                                                                 <input type="hidden" name="total-price" value='.$price.' />
-                                                                <input type="hidden" name="name" value='.$event_details["name"].'/>
-                                                                <input type="hidden" name="location" value='.$event_details["time_place"].'/>
+                                                                <input type="hidden" name="eventname" value='.$event_details["name"].'/>
+                                                                <input type="hidden" name="location" value='.$event_details["location"].'/>
+                                                                <input type="hidden" name="eventdate" value='.$event_details["eventdate"].'/>
+                                                                <input type="hidden" name="starttime" value='.$event_details["starttime"].'/>
                                                                 <button id="addcartbutton" class="dance-button" type="submit" style="height: 80%; width: 80%; margin: auto;">Add To Cart</button>
                                                         </form>
                                                 </section>

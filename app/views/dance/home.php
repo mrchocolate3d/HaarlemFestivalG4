@@ -1,11 +1,11 @@
 <?php include APPROOT . '/views/includes/header.php'; ?>
 
 <?php
-     if(isset($data['event_id']) && !empty(trim($data['event_id']))) {
+     if(isset($data['artist_data'])) {
         include APPROOT . '/views/dance/dancepopup.php';
      }
-     else if(isset($data['addtocart']) && $data['addtocart']) {
-        echo '<script>alert("Item added to cart")</script>';
+     else if(isset($data['status']) && !empty(trim($data['status']))) {
+        echo '<script>alert("'.$data['status'].'")</script>';
     }
 ?>
 <!--The main static page for spotlighting artists and dance venues-->
@@ -228,7 +228,7 @@
     </section>
 </main>
 <?php
-    if(isset($data['event_id']) && !empty(trim($data['event_id']))) {
+    if(isset($data['artist_data'])) {
         $event_details = $data["artist_data"];
 
         if (is_array($event_details)) {
