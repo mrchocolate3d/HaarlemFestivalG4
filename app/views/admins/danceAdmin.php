@@ -37,7 +37,7 @@ include APPROOT . '/views/includes/adminNav.php';
         </tbody>
     </table>
 
-    <a href="<?php echo URLROOT; ?>/admins/createDance?>">New Dance Event</a>
+    <a href="<?php echo URLROOT; ?>/admins/editDance">New Dance Event</a>
 
 
 </main>

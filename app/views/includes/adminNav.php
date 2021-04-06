@@ -7,7 +7,7 @@
 
         <li>
             <?php if (isset($_SESSION['email'])) : ?>
-                <a href="<?php echo URLROOT; ?>/users/account">Your Account</a>
+                <a href="<?php echo URLROOT; ?>/admins/adminAccount">Your Account</a>
                 <a href="<?php echo URLROOT; ?>/admins/adminLogout">Log out</a>
             <?php else : ?>
                 <a href="<?php echo URLROOT; ?>/admins/loginAdmin">Log In</a>

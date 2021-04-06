@@ -1,7 +1,6 @@
 
 <html>
 <?php
-echo session_id();
 require APPROOT . '/views/includes/header.php';
 include APPROOT . '/views/includes/adminNav.php';
 ?>
@@ -18,8 +17,8 @@ include APPROOT . '/views/includes/adminNav.php';
         <aside>
             <label>Start time</label>
             <?php
-            $start = "00:00"; //you can write here 00:00:00 but not need to it
-            $end = "23:30";
+            $start = "00:00:00"; //you can write here 00:00:00 but not need to it
+            $end = "23:30:00";
 
             $time = $data['startTime'];
 
@@ -67,7 +66,6 @@ include APPROOT . '/views/includes/adminNav.php';
             <input type="text" name="location" value='<?php echo $data['location']?>'>
             <input type="hidden" name="locationID" value='<?php echo $data['locationID']?>'>
         </aside>
-
 
         <label>Description</label>
         <aside>
