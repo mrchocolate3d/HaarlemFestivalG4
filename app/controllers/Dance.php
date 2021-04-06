@@ -57,23 +57,48 @@
                 'dates' => $this->dates,
                 'venues' => $this->venues,
                 'addtocart' => false,
-
-
-        ];
+            ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Process form
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            $data = [
-                'title' => 'Dance Home',
-                'timetable' => $this->timetable,
-                'dates' => $this->dates,
-                'venues' => $this->venues,
-                'addtocart' => $this->danceModel->addToCart($_POST["event_id"], $_POST["total-price"], $_POST["atc_count"], $_POST["name"], $_POST["location"])
-            ];
-            
+           
+
+            $code = trim($_POST['event_id']);
+            $idItem = uniqid();
+            $data = array(
+                        'title' => 'Dance Home',
+                        'timetable' => $this->timetable,
+                        'dates' => $this->dates,
+                        'venues' => $this->venues,
+            $code=>array(
+              'event_id' => trim($_POST['event_id']),
+              'idItem'=> $idItem,
+              'eventdate' => trim($_POST['eventdate']),
+              'starting_time' => trim($_POST['starttime']),
+              'eventname' => trim($_POST["eventname"]),
+              'quantity'=> 1,
+              'price' =>trim($_POST['total-price']),
+              'location' => trim($_POST['location']))
+            );
+
+            if(empty($_SESSION["shopping_cart"])){
+               $_SESSION["shopping_cart"] = $data;
+                $status = 'Ticket has been added to the cart';
+            } else{
+                $array_keys = array_keys($_SESSION["shopping_cart"]);
+                if(in_array($code,$array_keys)){
+                    $status = 'Ticket is already added to the cart';
+                } else {
+                    $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$data);
+                    $status = 'Ticket is added to your cart';
+                }
+
+            }
+            $data += [ 'event_id' =>trim($_POST['event_id']) ];
+            $data += [ 'status' =>$status ];
             $this->view('dance/home', $data);
         }
         }

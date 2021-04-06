@@ -62,6 +62,9 @@ class DanceModel {
 
         if($row) {
         	$event_details["name"] = $row->event_name;
+            $event_details["eventdate"] = $row->event_date;
+            $event_details["starttime"] = $row->start_time;
+            $event_details["location"] = $row->location;
         	$event_details["time_place"] = $row->event_date . " - ".  $row->start_time . " at " . $row->location;
         	$event_details["price"] = $row->price;
                     
