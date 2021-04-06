@@ -76,10 +76,10 @@ require APPROOT . '/views/includes/navigation.php';
         </aside>
 
         <aside>
-            <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
-                <input type='hidden' name='action' value="confirm" />
-                <a href="<?php echo URLROOT; ?>/carts/confirmationPage" type="button">Confirm Page</a>
-                <button type='submit' class='remove'>Confirm Order</button>
+            <form method="post" action="<?php echo URLROOT; ?>/carts/cart<?php echo $total = $item["price"]*$item["quantity"]?>">
+
+                <input type="submit" name="pay"type="button">
+
             </form>
         </aside>
     </section>

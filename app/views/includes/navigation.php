@@ -6,7 +6,7 @@
         <li> <a href="<?php echo URLROOT . "/histories/detail" ?>">Haarlem History</a> </li>
         <li> <a href="<?php echo URLROOT . "/dance/home" ?>">Haarlem Dance</a> </li>
         <li>
-            <?php if (isset($_SESSION['firstname'])) : ?>
+            <?php if (isset($_SESSION['email'])) : ?>
                 <a href="<?php echo URLROOT; ?>/users/account">Your Account</a>
                 <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
             <?php else : ?>

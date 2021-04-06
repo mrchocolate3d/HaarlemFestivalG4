@@ -17,12 +17,12 @@
                 <label for="history-ticket-dropdown" id="history-dropdown-btn">Select a language</label>
                 <form method="post" action="<?php echo URLROOT; ?>/histories/tickets">
                     <select name="ticket_dropdown" id="history-ticket-dropdown">
-                        <option name="lange_all" value="lang_all">All languages</option>
                         <option name="Chinese" value="Chinese">Chinese</option>
                         <option name="Dutch" value="Dutch">Dutch</option>
                         <option name="English" value="English">English</option>
                     </select>
                     <input type="submit" name="filter-language">
+                    <button name="reset-language">Show all languages</button>
                 </form>
             </section>
             <section class="history-calendar-container">

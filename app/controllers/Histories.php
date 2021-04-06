@@ -24,6 +24,9 @@ class Histories extends Controller
 
             }
         }
+        if (isset($_POST['reset-language'])){
+            $result = $this->historyModel->getHistoryEvents();
+        }
         foreach ($result as $item){
             $data[]=array('history_event_id'=>$item->history_event_id,'lang'=>$item->lang,
                 'tour_guide'=>$item->tour_guide, 'location_id'=>$item->location_id,
@@ -92,6 +95,9 @@ class Histories extends Controller
     public function confirmation(){
         $id = $_REQUEST['ticket'];
         $this->view('histories/confirmation');
+    }
+    public function map(){
+        $this->view('histories/map');
     }
 
 }
