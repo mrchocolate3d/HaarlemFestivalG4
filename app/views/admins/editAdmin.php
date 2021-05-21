@@ -11,17 +11,21 @@ include APPROOT . '/views/includes/adminNav.php';
         <h2>Edit Admin</h2>
         <label>Admin Email</label>
         <?php if(isset($_GET['id'])){?>
-            <input type="hidden" name="id" value='<?php echo $_REQUEST['id']?>'>
+            <input type="text" name="id" value='<?php echo $_REQUEST['id']?>'>
         <?php } ?>
         <input type="text" name="email" value='<?php echo $data['email']?>'>
 
         <aside>
-            <label>Event Date</label>
-            <input type="text" name="password" value='<?php echo $data['password']?>'>
+            <label>Admin Password</label>
+            <input type="password" name="password" value='<?php echo $data['password']?>'>
         </aside>
-
-        <button id="update" type="submit" value="update">Update Admin</button>
-        <button id="insert" type="submit" value="insert">Create New Admin</button>
+        <?php
+        if(isset($_GET['id'])) {
+        ?>
+        <button id="update" type="submit" name="action" value="update">Update Admin</button>
+        <?php } else { ?>
+        <button id="insert" type="submit" name="action" value="insert">Create New Admin</button>
+        <?php }  ?>
 
     </form>
 </section>

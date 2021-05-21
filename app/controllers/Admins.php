@@ -26,7 +26,7 @@ class Admins extends Controller
 
         ];
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'  && isset($_POST['update'])){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action']=="updateDance"){
             $data = [
                 'title' => 'Add Dance',
                 'id'=> trim($_POST['id']),
@@ -43,8 +43,7 @@ class Admins extends Controller
 
             if(empty($data['id']) || empty($data['event_name']) || empty($data['startTime']) ||
                 empty($data['event_date']) ||empty($data['location']) ||empty($data['locationDescription']) ||empty($data['capacity'])){
-                $data['emptyFieldsErrors'] = 'Fill out all fields';
-                $this->view('admins/danceAdmin',$data);
+                $this->view('admins/homepage');
             } else {
                 try {
                     $this->adminModel->updateDance($data['id'],$data['event_name'],$data['startTime'],$data['endTime'],$data['event_date']);
@@ -53,13 +52,13 @@ class Admins extends Controller
                         'status' => 'Event information has been updated'
                     ];
                     $this->view('admins/homepage' , $data);
-
                 } catch(Exception $exception){
                     echo $exception;
                 }
             }
         }
-        else if ($_SERVER['REQUEST_METHOD'] == 'POST'  && isset($_POST['insert'])){
+
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST'  && $_POST['action']=="insertDance"){
             $data = [
                 'title' => 'Add Dance',
                 'event_name'=> trim($_POST['event_name']),
@@ -162,8 +161,6 @@ class Admins extends Controller
         ];
 
 
-
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -233,7 +230,7 @@ class Admins extends Controller
     }
 
     public function editAdmin(){
-        $data = [
+       $data = [
             'title' => 'Add Admin',
             'id'=> '',
             'email' =>'',
@@ -241,7 +238,7 @@ class Admins extends Controller
 
         ];
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'  && isset($_POST['update'])){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'  && $_POST['action']=="update"){
             $data = [
                 'title' => 'Add Dance',
                 'id'=> trim($_POST['id']),
@@ -266,20 +263,22 @@ class Admins extends Controller
                 }
             }
         }
-        else if ($_SERVER['REQUEST_METHOD'] == 'POST'  && isset($_POST['insert'])){
+
+
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST'  && $_POST['action']=="insert"){
             $data = [
                 'title' => 'Add Dance',
-                'id'=> trim($_POST['id']),
                 'email'=> trim($_POST['email']),
                 'password' =>trim($_POST['password']),
             ];
-            if(empty($data['id']) || empty($data['email']) || empty($data['password'])){
+            if( empty($data['email']) || empty($data['password'])){
                 $data =  [
                     'status' => 'Please fill out all fields for the admin account'
                 ];
                 $this->view('admins/homepage' , $data);
             } else {
-                echo'test';
+                $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+                $this->adminModel->newAdminUsingSuper($data['email'],$data['password']);
             }
         }
 
@@ -287,30 +286,31 @@ class Admins extends Controller
             $id=$_GET['id'];
             //$id=$_REQUEST['id'];
             $result = '';
-            $result = $this->adminModel->getDanceFromId($id);
+            $result = $this->adminModel->getAdminFromId($id);
 
             if ($result){
                 $data = [
-                    'title' => 'Add Dance',
-                    'id'=> $result->event_id,
-                    'event_name'=> $result->event_name,
-                    'startTime' =>$result->start_time,
-                    'event_date' =>$result->event_date,
-                    'location' => $result->location_name,
-                    'locationDescription' => $result->description,
-                    'capacity' => $result->capacity,
-                    'endTime'=>$result->end_time,
-                    'locationID' =>$result->location_id,
-                    'emptyFieldsErrors' => ''
+                    'id'=> $result->adminID,
+                    'email'=> $result->email,
+                    'password' =>$result->password,
                 ];
-                $this->view('admins/editDance',$data);
+            } else {
+                $data =  [
+                    'status' => 'Could not find a user with that Id'
+                ];
+                $this->view('admins/homepage' , $data);
             }
         }
-        $this->view('admins/editDance',$data);
         $this->view('admins/editAdmin',$data);
+
+        //$this->view('admins/homepage');
 
     }
 
+
+    public function deleteAdmin(){
+
+    }
 
 
     public function homepage(){

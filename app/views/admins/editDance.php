@@ -75,8 +75,8 @@ include APPROOT . '/views/includes/adminNav.php';
             <label>Location Capacity</label>
             <input type="text" name="capacity" value='<?php echo $data['capacity']?>' readonly>
         </aside>
-        <button id="update" type="submit" value="update">Update Dance</button>
-        <button id="insert" type="submit" value="insert">Create New Dance</button>
+        <button id="updateDance" name="action" type="submit" value="updateDance">Update Dance</button>
+        <button id="insertDance" name="action" type="submit" value="insertDance">Create New Dance</button>
         <span class="invalidFeedback">
                     <?php echo $data['emptyFieldsErrors']; ?>
         </span>

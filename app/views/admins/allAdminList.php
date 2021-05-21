@@ -26,7 +26,7 @@ include APPROOT . '/views/includes/adminNav.php';
                 <td align="center"><?php echo $datum['role']; ?></td>
 
                 <td align="center">
-                    <a href="<?php echo URLROOT; ?>/admins/editDance?id=<?php echo $datum['AdminID']; ?>">Edit</a>
+                    <a href="<?php echo URLROOT; ?>/admins/editAdmin?id=<?php echo $datum['AdminID']; ?>">Edit</a>
                 </td>
 
                 <td align="center">
@@ -37,7 +37,7 @@ include APPROOT . '/views/includes/adminNav.php';
         </tbody>
     </table>
 
-    <a href="<?php echo URLROOT; ?>/admins/editDance">New Dance Event</a>
+    <a href="<?php echo URLROOT; ?>/admins/editAdmin">New Admin Account</a>
 
 
 </main>

@@ -156,6 +156,16 @@ class Admin
         return $result;
     }
 
+    public function getAdminFromId($id){
+        $this->db->query('SELECT adminID, email, password , type FROM admin inner join roles r on admin.roleID = r.roleID WHERE adminID = :id');
+
+        $this->db->bind(':id',$id);
+
+        $result = $this->db->singleRow();
+        return $result;
+
+    }
+
     public function updateAdmin($id,$email,$password){
         $this->db->query('UPDATE admin SET email = :email, password = :password WHERE adminID = :id ');
 
@@ -167,12 +177,10 @@ class Admin
     }
 
 
-    public function newAdminUsingSuper($id,$email,$password,$roleID){
-        $this->db->query('INSERT INTO admin (email, password, roleID) VALUES (:email,:password,:roleID,:roleID)');
+    public function newAdminUsingSuper($email,$password){
+        $this->db->query('INSERT INTO admin(email, password, roleID) VALUES (:email,:password,2)');
 
-        $this->db->bind(':id',$id);
         $this->db->bind(':email',$email);
-        $this->db->bind(':email',$roleID);
         $this->db->bind(':password',$password);
 
         $this->db->execute();
@@ -182,9 +190,8 @@ class Admin
         $this->db->query('DELETE FROM admin WHERE email = :email');
         $this->db->bind(':email',$email);
         $this->db->execute();
-
-
     }
+
 
 
 
