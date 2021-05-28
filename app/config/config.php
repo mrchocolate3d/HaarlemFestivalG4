@@ -1,9 +1,9 @@
 <?php
 //Database credentials
-define('DB_HOST', 'sql11.freemysqlhosting.net');
-define('DB_USER', 'sql11392316');
-define('DB_PASSWORD', 'FwuZYKtIJs');
-define('DB_DBNAME', 'sql11392316');
+define('DB_HOST', 'gr2021hfse.infhaarlem.nl');
+define('DB_USER', 'gr2021hfse');
+define('DB_PASSWORD', 'nPtrgV0H');
+define('DB_DBNAME', 'gr2021hfse_festival');
 
 // define('DB_HOST', 'localhost');
 // define('DB_USER', 'root');
