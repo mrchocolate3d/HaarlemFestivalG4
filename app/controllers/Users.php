@@ -117,9 +117,9 @@ class Users extends Controller
                     $data['passwordError'] = 'Please enter your password';
                 } elseif (strlen($data['password']) < 6) {
                     $data['passwordError'] = 'Password must be at least 6 characters.';
-                } elseif (!preg_match($passwordValidation, $data['password'])) {
+                } /*elseif (!preg_match($passwordValidation, $data['password'])) {
                     $data['passwordError'] = 'Password must have at lest 1 numerical value';
-                }
+                }*/
 
                 //Confirm password
                 if (empty($data['confirmPassword'])){
