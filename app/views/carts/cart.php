@@ -59,7 +59,7 @@ require APPROOT . '/views/includes/navigation.php';
                 ?>
                 <tr>
                     <td colspan="5" align="right">
-                        <strong>TOTAL: <?php echo "$".$total_price; ?></strong>
+                        <strong>TOTAL: <?php echo "$".number_format($total_price,2); ?></strong>
                     </td>
                 </tr>
                 </tbody>
@@ -71,7 +71,7 @@ require APPROOT . '/views/includes/navigation.php';
         </aside>
 
         <aside>
-            <form method="post" action="<?php echo URLROOT; ?>/carts/cart<?php echo $total = $item["price"]*$item["quantity"]?>">
+            <form method="post" action="<?php echo URLROOT; ?>/payments/payment?price=<?php echo $total_price;?>">
 
                 <input type="submit" name="pay"type="button">
 
