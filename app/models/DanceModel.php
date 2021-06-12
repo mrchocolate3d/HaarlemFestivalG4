@@ -13,7 +13,7 @@ class DanceModel {
     // add to order is the addToCart and list name is cart.
     public function getTimeTable() {
 
-        $this->db->query("SELECT * FROM event WHERE category='Dance'");
+        $this->db->query("SELECT event_id, event_name, category, start_time, end_time, event_date, location_id FROM event WHERE category='Dance'");
         // inner join on using location_id
         $event_results = $this->db->resultSet();
        if ($this->db->rowCount() > 0) {
@@ -33,7 +33,7 @@ class DanceModel {
               foreach($event_results as $row) {
 
                $location_id = $row->location_id;
-               $this->db->query("SELECT * FROM location WHERE location_id=$location_id");
+               $this->db->query("SELECT location_id, location_name, description, capacity FROM location WHERE location_id=$location_id");
                
                $location_row = $this->db->singleRow();
                $location_name = $location_row->location_name;
