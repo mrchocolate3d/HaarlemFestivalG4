@@ -62,7 +62,7 @@ class Invoice {
                 $mail->Body = $body;
                 
                 
-                $mail->AddAttachment('test.pdf', 'test.pdf');
+                $mail->AddAttachment("Invoice_tickets.pdf", "Invoice_tickets.pdf");
                 if(!$mail->Send()) {
                     
                     echo 'Mailer error: ' . $mail->ErrorInfo;
@@ -112,7 +112,7 @@ class Invoice {
         $pdf->Cell(27	,5,$row['paymentMethodID'],1,0);
         $pdf->Cell(36	,5,$row['payment_Method'],1,1);//end of line
 
-        $pdf->Output();  
+        $pdf->Output("Invoice_tickets.pdf");  
 
         $this->sendMail("Invoice_tickets.pdf");
     }
