@@ -40,7 +40,7 @@ class Payments extends Controller
                     "value" => "$total_price",
                 ],
                 "description" => "$description",
-                "redirectUrl" => "http://localhost/PHP/HaarlemFestivalG4/carts/index.php",
+                "redirectUrl" => "http://localhost/PHP/HaarlemFestivalG4/carts/cart",
                 "webhookUrl" => "",
                 "metadata" => "",
             ]);

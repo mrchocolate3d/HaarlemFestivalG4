@@ -78,12 +78,7 @@
               'eventName' => trim($_POST["eventname"]),
               'quantity'=> 1,
               'price' =>trim($_POST['total-price']),
-              'location' => trim($_POST['location'])),
-                'title' => 'Dance Home',
-                'timetable' => $this->timetable,
-                'dates' => $this->dates,
-                'venues' => $this->venues,
-                'addtocart' => false,
+              'location' => trim($_POST['location']))
             );
 
             if(empty($_SESSION["shopping_cart"])){
