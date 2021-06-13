@@ -35,7 +35,7 @@ require APPROOT . '/views/includes/navigation.php';
                     <td><?php echo "€".$item["price"]; ?></td>
                     <td><?php echo "€".$item["price"]*$item["quantity"]; ?></td>
                     <td>
-                        <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
+                        <form method="post"  action="<?php echo URLROOT; ?>/carts/cart">
                             <input type='hidden' name='event_id' value="<?php echo $item["event_id"]; ?>" />
                             <input type='hidden' name='action' value="change" />
                             <select name="quantity" class="quantity" onchange="this.form.submit()">
@@ -45,6 +45,7 @@ require APPROOT . '/views/includes/navigation.php';
                                 <option <?php if($item["quantity"]==4) echo "selected";?> value="4">4</option>
                                 <option <?php if($item["quantity"]==5) echo "selected";?> value="5">5</option>
                             </select>
+
                         </form>
                     </td>
 
