@@ -908,3 +908,9 @@ select.dance-select > option {
 }
 
 
+#cartTable {
+    border-spacing: 100px;
+    color: #CC0000;
+}
+
+

@@ -75,7 +75,7 @@
               'idItem'=> $idItem,
               'date' => trim($_POST['eventdate']),
               'starting_time' => trim($_POST['starttime']),
-              //'eventname' => trim($_POST["eventname"]),
+              'eventName' => trim($_POST["eventname"]),
               'quantity'=> 1,
               'price' =>trim($_POST['total-price']),
               'location' => trim($_POST['location'])),
