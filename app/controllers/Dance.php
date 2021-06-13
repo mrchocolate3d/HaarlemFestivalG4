@@ -70,7 +70,7 @@
             $idItem = uniqid();
             $data = array(
             $code=>array(
-              'type' => 'history',
+              'type' => 'Dance',
               'event_id' => trim($_POST['event_id']),
               'idItem'=> $idItem,
               'date' => trim($_POST['eventdate']),

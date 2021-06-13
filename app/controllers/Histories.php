@@ -43,7 +43,7 @@ class Histories extends Controller
             $data = array(
             $code=>array(
                 'eventName'=>'Tour With: '. trim($_POST['tour_guide']),
-                'type' => 'Dance',
+                'type' => 'History',
               'date' => trim($_POST['date']),
               'idItem'=> $idItem,
               'starting_time' => trim($_POST['starting_time']),

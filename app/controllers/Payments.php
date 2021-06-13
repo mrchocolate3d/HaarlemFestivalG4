@@ -23,8 +23,9 @@ class Payments extends Controller
     public function payment()
     {
         $total_price = number_format($_GET['price'],2);
-       // $user_email = $_SESSION['email'];
-      //  $user = $this->userModel->GetUserByEmail($user_email);
+        $cart = $_SESSION['shopping_cart'];
+        $userId = $_SESSION['userID'];
+
       //  $data[] =  $_SESSION["shopping_cart"];
         // $totalPrice = $_REQUEST['$total'];
 
@@ -45,8 +46,33 @@ class Payments extends Controller
                 "metadata" => "",
             ]);
 
-            var_dump($total_price);
-            header('location: '.$payment->getCheckoutUrl(), true, 303);
+
+
+           $id= $this->paymentModel->getOrderId();
+           $data = $id->orderID;
+
+        $this->paymentModel->createOrder($payment->status,$userId,$total_price,$cart);
+
+
+        header('location: '.$payment->getCheckoutUrl(), true, 303);
+
+
+        foreach ($cart as $item){
+            $quantity = $item["quantity"];
+            $eventID = $item["event_id"];
+            $price = $item["price"];
+
+            if($item["type"]=="Dance"){
+                $result = $this->paymentModel->searchDanceTicket($eventID,$price);
+
+            }
+            else{
+                $result = $this->paymentModel->searchHistoryTicket($eventID,$price);
+            }
+            $tickID = $result->ticketID;
+            $this->paymentModel->addOrderItem($data,$tickID,$quantity);
+        }
 
     }
+
 }
