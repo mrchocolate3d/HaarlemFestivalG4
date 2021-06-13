@@ -216,7 +216,7 @@ require APPROOT . '/views/includes/navigation.php'; ?>
             var total = document.getElementById("total");
             var checkoutTotal = document.getElementById("checkoutTotal");
             var price = document.getElementById("modal-ticket-price");
-            var add_to_cart = document.getElementsByName("atc_count")[0];
+            var add_to_cart = document.getElementsByName("quantity")[0];
             ticket_Count.addEventListener("change", function() {
                 finalPrice.value = (parseInt(ticket_Count.value) * parseFloat((price.innerHTML).slice(1)));
                 total.innerHTML = '€' + finalPrice.value;

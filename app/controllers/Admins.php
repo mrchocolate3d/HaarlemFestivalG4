@@ -9,6 +9,7 @@ class Admins extends Controller
 
     }
 
+
     public function editDance(){
 
         $data = [
@@ -70,10 +71,9 @@ class Admins extends Controller
                 'capacity' => trim($_POST['capacity']),
                 'emptyFieldsErrors' => ''
             ];
-            if(empty($data['id']) || empty($data['event_name']) || empty($data['startTime']) ||
+            if(empty($data['event_name']) || empty($data['startTime']) ||
                 empty($data['event_date']) ||empty($data['location']) ||empty($data['locationDescription']) ||empty($data['capacity'])){
                 $data['emptyFieldsErrors'] = 'Fill out all fields';
-                $this->view('admins/danceAdmin',$data);
             } else {
                 try {
                     $result = $this->adminModel->getLocationId($data['location']);
@@ -89,7 +89,6 @@ class Admins extends Controller
                         'status' => 'New event has been added'
                     ];
                     $this->view('admins/homepage' , $data);
-
                 } catch(Exception $exception){
                     echo $exception;
                 }
@@ -136,6 +135,13 @@ class Admins extends Controller
             'emailError' => '',
             'passwordError' => ''
         ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        }
+
+
+
 
 
         $this->view('admins/createDance',$data);
@@ -197,20 +203,24 @@ class Admins extends Controller
 
 
     public function deleteDance(){
-        $data =  [
+        $data = [
             'status' => ''
-            ];
+        ];
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
 
-        if (isset($_POST['confirm'])) {
-            if ($_POST['confirm'] == 'Yes') {
-                $data['status'] = 'Event has been deleted';
-                $this->view('admins/homepage' , $data);
-            }
-            else if ($_POST['confirm'] == 'No') {
-                $data['status'] = 'Event could not be deleted please contact the administrator';
-                $this->view('admins/homepage' , $data);
+            if (isset($_POST['confirm'])) {
+                if ($_POST['confirm'] == 'Yes') {
+                    $this->adminModel->deleteDance($id);
+                    $data['status'] = 'Event has been deleted';
+                    $this->view('admins/homepage', $data);
+                } else if ($_POST['confirm'] == 'No') {
+                    $data['status'] = 'Event could not be deleted please contact the administrator';
+                    $this->view('admins/homepage', $data);
+                }
             }
         }
+        $this->view('admins/deleteDance' , $data);
 
     }
 

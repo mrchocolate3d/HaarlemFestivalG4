@@ -48,7 +48,7 @@ require APPROOT . '/views/includes/navigation.php';
                             </select>
                         </form>
                     </td>
-                    <td><?php echo $item["tour_date"]; ?></td>
+                    <td><?php echo $item["date"]; ?></td>
                     <td><?php echo $item["starting_time"]; ?></td>
                     <td><?php echo "€".$item["price"]; ?></td>
                     <td><?php echo "€".$item["price"]*$item["quantity"]; ?></td>

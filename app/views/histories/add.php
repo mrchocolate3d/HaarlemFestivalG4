@@ -16,7 +16,7 @@
                     <li><input type="text"  name="tour_guide" value="<?php echo $data[$data['id']]['tour_guide']?>" readonly></li>
                     <li><input type="text"  name="starting_time" value="<?php echo $data[$data['id']]['starting_time']?>" readonly></li>
                     <li><input type="text"  name="lang" value="<?php echo $data[$data['id']]['lang']?>" readonly></li>
-                    <li><input type="text"  name="tour_date" value="<?php echo $data[$data['id']]['tour_date']?>" readonly></li>
+                    <li><input type="text"  name="date" value="<?php echo $data[$data['id']]['date']?>" readonly></li>
                     <li><input type="text"  name="price" value="<?php echo $data[$data['id']]['price']?>" readonly></li>
                 </ul>
 

@@ -1,6 +1,10 @@
 <?php
 require APPROOT . '/views/includes/header.php';
 include APPROOT . '/views/includes/adminNav.php';
+if ($_SESSION['AdminType'] == 'Administrator') {
+    echo 'This is a adDDmin';
+}
+
 ?>
 
 <main role="main">

@@ -151,7 +151,7 @@
                                                 <section class="col-sm-6">
                                                         <form action="' . URLROOT . '/dance/add_to_cart" method="POST" >
                                                                 <input type="hidden" name="event_id" value="' . $data["event_id"] . '" />
-                                                                <input type="hidden" name="atc_count" value=1 />
+                                                                <input type="hidden" name="quantity" value=1 />
                                                                 <input type="hidden" name="total-price" value='.$price.' />
                                                                 <input type="hidden" name="eventname" value='.$event_details["name"].'/>
                                                                 <input type="hidden" name="location" value='.$event_details["location"].'/>

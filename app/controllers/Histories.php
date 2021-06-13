@@ -30,7 +30,7 @@ class Histories extends Controller
         foreach ($result as $item){
             $data[]=array('history_event_id'=>$item->history_event_id,'lang'=>$item->lang,
                 'tour_guide'=>$item->tour_guide, 'location_id'=>$item->location_id,
-                'starting_time'=>$item->starting_time,'tour_date'=>$item->tour_date,'quantity'=>$item->quantity);
+                'starting_time'=>$item->starting_time,'date'=>$item->tour_date,'quantity'=>$item->quantity);
         }
 
         $this->view('histories/tickets',$data);
@@ -42,10 +42,11 @@ class Histories extends Controller
             $idItem = uniqid();
             $data = array(
             $code=>array(
-              'tour_date' => trim($_POST['tour_date']),
+              'type' => 'Dance',
+              'date' => trim($_POST['date']),
               'idItem'=> $idItem,
               'starting_time' => trim($_POST['starting_time']),
-              'lang' => trim($_POST['lang']),
+             // 'lang' => trim($_POST['lang']),
               'tour_guide' => trim($_POST['tour_guide']),
               'quantity'=>1,
               'price' =>trim($_POST['price']),
@@ -80,7 +81,7 @@ class Histories extends Controller
                 'tour_guide'=>$result->tour_guide,
                 'location_id'=>$result->location_id,
                 'starting_time'=>$result->starting_time,
-                'tour_date'=>$result->tour_date,
+                'date'=>$result->tour_date,
                 'quantity'=>1,
                 'price' => $result->ticketPrice),
                 'id' =>$result->history_event_id,

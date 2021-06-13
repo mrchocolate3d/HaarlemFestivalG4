@@ -33,7 +33,7 @@ class Admin
     public function newDance($name,$startTime,$endTime,$date,$locationID){
 
         $this->db->query('INSERT INTO event(event_name,category, start_time, end_time, event_date,location_id)
-                        VALUES (:name,:startTime,:endTime,:date,:locationID)');
+                        VALUES (:name,:category,:startTime,:endTime,:date,:locationID)');
 
         $this->db->bind(':name',$name);
         $this->db->bind(':startTime',$startTime);
@@ -57,7 +57,6 @@ class Admin
         $this->db->bind(':id',$id);
 
         $this->db->execute();
-
     }
 
 
@@ -101,6 +100,13 @@ class Admin
         $result = $this->db->singleRow();
 
         return $result;
+
+    }
+
+    public function deleteDance($id){
+        $this->db->query('DELETE FROM event where event_id = :id');
+        $this->db->bind(':id',$id);
+        $this->db->execute();
 
     }
 
