@@ -78,7 +78,12 @@
               //'eventname' => trim($_POST["eventname"]),
               'quantity'=> 1,
               'price' =>trim($_POST['total-price']),
-              'location' => trim($_POST['location']))
+              'location' => trim($_POST['location'])),
+                'title' => 'Dance Home',
+                'timetable' => $this->timetable,
+                'dates' => $this->dates,
+                'venues' => $this->venues,
+                'addtocart' => false,
             );
 
             if(empty($_SESSION["shopping_cart"])){
@@ -96,7 +101,7 @@
             }
             $data += [ 'event_id' =>trim($_POST['event_id']) ];
             $data += [ 'status' =>$status ];
-            $this->view('dance/home', $data);
+            $this->view('pages/index', $data);
         }
         }
     }
