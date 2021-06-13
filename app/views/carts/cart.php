@@ -13,7 +13,7 @@ require APPROOT . '/views/includes/navigation.php';
                     $total_price = 0;
                     $count = 1;
                 ?>
-            <table>
+            <table id="cartTable">
                 <tbody>
                 <tr>
                     <td>Event</td>
@@ -21,23 +21,22 @@ require APPROOT . '/views/includes/navigation.php';
                     <td>Time</td>
                     <td>Price</td>
                     <td>Item Total</td>
+                    <td>Remove</td>
                 </tr>
 
                 <?php
                 foreach($_SESSION["shopping_cart"] as $item){
                 ?>
                 <tr>
-                    <td><?php echo $count; ?><br />
-                    <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
-                        <input type='hidden' name='idItem' value="<?php echo $item["idItem"]; ?>" />
-                        <input type='hidden' name='action' value="remove" />
-                        <button type='submit' class='remove'>Remove Item</button>
-                    </form>
-                    </td>
+                    <td><?php echo $item["eventName"]; ?></td>
 
+                    <td><?php echo $item["date"]; ?></td>
+                    <td><?php echo $item["starting_time"]; ?></td>
+                    <td><?php echo "€".$item["price"]; ?></td>
+                    <td><?php echo "€".$item["price"]*$item["quantity"]; ?></td>
                     <td>
                         <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
-                            <input type='text' name='event_id' value="<?php echo $item["event_id"]; ?>" />
+                            <input type='hidden' name='event_id' value="<?php echo $item["event_id"]; ?>" />
                             <input type='hidden' name='action' value="change" />
                             <select name="quantity" class="quantity" onchange="this.form.submit()">
                                 <option <?php if($item["quantity"]==1) echo "selected";?> value="1">1</option>
@@ -48,10 +47,15 @@ require APPROOT . '/views/includes/navigation.php';
                             </select>
                         </form>
                     </td>
-                    <td><?php echo $item["date"]; ?></td>
-                    <td><?php echo $item["starting_time"]; ?></td>
-                    <td><?php echo "€".$item["price"]; ?></td>
-                    <td><?php echo "€".$item["price"]*$item["quantity"]; ?></td>
+
+                    <td>
+                        <form method="post" action="<?php echo URLROOT; ?>/carts/cart">
+                            <input type='hidden' name='idItem' value="<?php echo $item["idItem"]; ?>" />
+                            <input type='hidden' name='action' value="remove" />
+                            <button type='submit' class='remove'>Remove Item</button>
+                        </form>
+                    </td>
+
                 </tr>
                     <?php $total_price += ($item["price"]*$item["quantity"]);
                     $count++;
@@ -59,7 +63,7 @@ require APPROOT . '/views/includes/navigation.php';
                 ?>
                 <tr>
                     <td colspan="5" align="right">
-                        <strong>TOTAL: <?php echo "$".number_format($total_price,2); ?></strong>
+                        <strong>TOTAL: <?php echo "€".number_format($total_price,2); ?></strong>
                     </td>
                 </tr>
                 </tbody>

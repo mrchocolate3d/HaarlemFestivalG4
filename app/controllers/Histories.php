@@ -42,11 +42,12 @@ class Histories extends Controller
             $idItem = uniqid();
             $data = array(
             $code=>array(
-              'type' => 'Dance',
+                'eventName'=>'Tour With: '. trim($_POST['tour_guide']),
+                'type' => 'Dance',
               'date' => trim($_POST['date']),
               'idItem'=> $idItem,
               'starting_time' => trim($_POST['starting_time']),
-             // 'lang' => trim($_POST['lang']),
+              'lang' => trim($_POST['lang']),
               'tour_guide' => trim($_POST['tour_guide']),
               'quantity'=>1,
               'price' =>trim($_POST['price']),
