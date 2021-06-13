@@ -9,7 +9,7 @@ require APPROOT . '/views/includes/navigation.php';
         <aside >
             <h2>Basket</h2>
                 <?php
-                if (isset($_SESSION["shopping_cart"])){
+                if (isset($_SESSION["shopping_cart"]) and  $_SESSION["shopping_cart"] != ''){
                     $total_price = 0;
                     $count = 1;
                 ?>

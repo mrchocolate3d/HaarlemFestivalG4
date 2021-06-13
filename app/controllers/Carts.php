@@ -40,7 +40,7 @@ class Carts extends Controller
         }
 
 
-        $data[] =  $_SESSION["shopping_cart"];
+        $data[] = '';
         $this->view('carts/cart',$data);
     }
 
