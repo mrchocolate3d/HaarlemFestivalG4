@@ -908,9 +908,68 @@ select.dance-select > option {
 }
 
 
-#cartTable {
-    border-spacing: 100px;
-    color: #CC0000;
+.main-cart-container{
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+
 }
+
+#cart-table{
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    border-collapse: collapse;
+    border: 2px solid #BF6832;
+    padding: 10px;
+    text-align: center;
+    align-content: center;
+    background-color: #BF6832;
+
+}
+#cart-table td{
+    padding: 5px;
+}
+#cart-table tr:nth-child(even){
+    background-color: white;
+}
+#cart-table tr:nth-child(odd){
+    background-color: white;
+
+}
+#cart-table tr:last-child{
+    color: white;
+    background: #BF6832;
+
+}
+#cart-table thead{
+    color: white;
+    background: #BF6832;
+}
+
+#cart-table th{
+    padding: 5px;
+}
+.remove{
+    border: 2px solid #BF6832;
+    background-color: #BF6832;
+    color: white;
+    text-align: center;
+}
+.payment-submit{
+    border: 2px solid #BF6832;
+    background-color: #BF6832;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 100px;
+    position: fixed;
+}
+
+
 
 

@@ -4,25 +4,27 @@ require APPROOT . '/views/includes/navigation.php';
 ?>
 
 
-<main role="main">
-    <section >
-        <aside >
-            <h2>Basket</h2>
+<main role="main" id="cart-main">
+    <section class="main-cart-container">
+        <aside class="cart-aside">
+            <h2 id="cart-h">Basket</h2>
                 <?php
                 if (isset($_SESSION["shopping_cart"]) and  $_SESSION["shopping_cart"] != ''){
                     $total_price = 0;
                     $count = 1;
                 ?>
-            <table id="cartTable">
-                <tbody>
-                <tr>
-                    <td>Event</td>
-                    <td>Date</td>
-                    <td>Time</td>
-                    <td>Price</td>
-                    <td>Item Total</td>
-                    <td>Remove</td>
-                </tr>
+
+            <table id="cart-table">
+
+                <thead>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Price</th>
+                    <th>Item Total</th>
+                    <th>Quantity</th>
+                    <th>Remove</th>
+                </thead>
 
                 <?php
                 foreach($_SESSION["shopping_cart"] as $item){
@@ -67,7 +69,7 @@ require APPROOT . '/views/includes/navigation.php';
                         <strong>TOTAL: <?php echo "€".number_format($total_price,2); ?></strong>
                     </td>
                 </tr>
-                </tbody>
+
             </table>
             <?php
                 } else {
@@ -77,8 +79,8 @@ require APPROOT . '/views/includes/navigation.php';
 
         <aside>
             <form method="post" action="<?php echo URLROOT; ?>/payments/payment?price=<?php echo $total_price;?>">
-
-                <input type="submit" name="pay"type="button">
+                <input type="hidden" name="pay"type="button">
+                <button type='submit' class='payment-submit'>Continue to payment</button>
 
             </form>
         </aside>

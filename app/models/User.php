@@ -71,6 +71,7 @@ class User
         }
     }
 
+
     public function GetUserByEmail($email){
         $this->db->query('SELECT firstname, lastname, email, password,roleID FROM users WHERE email = :email');
         $this->db->bind(':email',$email);
