@@ -20,29 +20,28 @@ include APPROOT . '/views/includes/adminNav.php';
         <tbody>
         <?php
 
-        //var_dump($data);
         foreach ($data as $datum){ ?>
             <tr>
-                <td align="center"><?php echo $datum['tour_date']; ?></td>
+                <td align="center"><?php echo $datum['tour_guide']; ?></td>
                 <td align="center"><?php echo $datum['startTime']; ?></td>
                 <td align="center"><?php echo $datum['event_date']; ?></td>
                 <td align="center"><?php echo $datum['lang']; ?></td>
-                <td align="center"><?php echo $datum['quantity']; ?></td>
+                <td align="center"><?php echo $datum['capacity']; ?></td>
 
 
                 <td align="center">
-                    <a href="<?php echo URLROOT; ?>/admins/editHistory?id=<?php echo $datum['event_id']; ?>">Edit</a>
+                    <a href="<?php echo URLROOT; ?>/historyAdmins/editHistory?id=<?php echo $datum['event_id']; ?>">Edit</a>
                 </td>
 
                 <td align="center">
-                    <a href="<?php echo URLROOT; ?>/admins/deleteDance?id=<?php echo $datum['event_id']; ?>">Delete</a>
+                    <a href="<?php echo URLROOT; ?>/historyAdmins/deleteHistory?id=<?php echo $datum['event_id']; ?>">Delete</a>
                 </td>
             </tr>
         <?php }?>
         </tbody>
     </table>
 
-    <a href="<?php echo URLROOT; ?>/admins/editDance">New History Event</a>
+    <a href="<?php echo URLROOT; ?>/historyAdmins/editHistory">New History Event</a>
 
 
 </main>

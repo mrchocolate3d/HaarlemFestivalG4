@@ -1,4 +1,3 @@
-
 <html>
 <?php
 require APPROOT . '/views/includes/header.php';
@@ -9,7 +8,7 @@ include APPROOT . '/views/includes/adminNav.php';
 <section>
     <form action="<?php echo URLROOT; ?>/historyAdmins/editHistory" method="post">
         <h2>History Event</h2>
-        <label>Event Name</label>
+        <label>Event Date</label>
         <?php if(isset($_GET['id'])){?>
             <input type="hidden" name="id" value='<?php echo $_REQUEST['id']?>'>
         <?php } ?>
@@ -37,21 +36,21 @@ include APPROOT . '/views/includes/adminNav.php';
 
         </aside>
         <aside>
-            <label>Location</label>
-            <input type="text" name="location" value='<?php echo $data['location']?>'>
-            <input type="hidden" name="locationID" value='<?php echo $data['locationID']?>'>
+            <label>Tour Guide</label>
+            <input type="text" name="tour_guide" value='<?php echo $data['tour_guide']?>'>
+        </aside>
+        <aside>
+            <label>Language</label>
+            <input type="text" name="lang" value='<?php echo $data['lang']?>'>
         </aside>
 
-        <label>Description</label>
-        <aside>
-            <textarea class="FormElement" name="description" cols="140" rows="10"><?php echo $data['locationDescription']?></textarea>
-        </aside>
+
         <aside>
             <label>Location Capacity</label>
             <input type="text" name="capacity" value='<?php echo $data['capacity']?>' readonly>
         </aside>
-        <button id="updateDance" name="action" type="submit" value="updateDance">Update Dance</button>
-        <button id="insertDance" name="action" type="submit" value="insertDance">Create New Dance</button>
+        <button id="updateHistory" name="action" type="submit" value="updateHistory">Update History</button>
+        <button id="insertHistory" name="action" type="submit" value="insertHistory">Create New History Event</button>
         <span class="invalidFeedback">
                     <?php echo $data['emptyFieldsErrors']; ?>
         </span>

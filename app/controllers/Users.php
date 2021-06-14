@@ -54,7 +54,7 @@ class Users extends Controller
 
 
     public function createUserSession($user){
-        $_SESSION['userID'] = $user->id;
+        $_SESSION['userID'] = $user->userID;
         $_SESSION['firstname'] = $user->firstname;
         $_SESSION['email'] = $user->email;
         header('location:' . URLROOT . '/pages/index');
