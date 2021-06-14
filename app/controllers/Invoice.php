@@ -10,7 +10,7 @@ class SendMailWithAttachement extends Controller {
 
     public function index()
     {
-        $this->view('invoice/qr');
+        $this->view('Invoice/invoice');
     }
     
     public function generatePdf()
