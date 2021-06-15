@@ -8,35 +8,29 @@
     </section>
 
     <section class="main-history-container">
-        <section class="main-add-history">
-            <h1 id="add-ticket-title">Tour Detail</h1>
-            <section class="add-history-container">
-                <h2>Add ticket:</h2>
-                <form method="post" action="<?php echo URLROOT; ?>/histories/add">
-                    <input type="hidden" name="history_event_id" value="<?php echo $data[$data['id']]['event_id']?>">
-                    <ul id="ul-headers">
-                        <li>Tour guide</li>
-                        <li>Starting time</li>
-                        <li>Language</li>
-                        <li>Date of tour</li>
-                        <li>Price of ticket</li>
-                    </ul>
-                    <ul id="ul-content">
-                        <li><input type="text"  name="tour_guide" value="<?php echo $data[$data['id']]['tour_guide']?>" readonly></li>
-                        <li><input type="text"  name="starting_time" value="<?php echo $data[$data['id']]['starting_time']?>" readonly></li>
-                        <li><input type="text"  name="lang" value="<?php echo $data[$data['id']]['lang']?>" readonly></li>
-                        <li><input type="text"  name="date" value="<?php echo $data[$data['id']]['date']?>" readonly></li>
-                        <li><input type="text"  name="price" value="<?php echo $data[$data['id']]['price']?>" readonly></li>
-                    </ul>
+        <h1 id="add-ticket-title">Tour Detail</h1>
+        <section class="tour-history-container">
+            <form id="history-tickets-form" method="post" action="<?php echo URLROOT; ?>/histories/add">
 
-                    <button id="submit" type="submit" value="Add to cart">Submit</button>
-                    <a href="<?php echo URLROOT; ?>/histories/tickets" name="add-history-ticket" type="button">Back</a>
-                    <?php echo $data['status']?>
-                </form>
+                <input type="hidden" name="history_event_id" value="<?php echo $data[$data['id']]['event_id']?>">
+                <ul id="ul-content">
+                    <label for="guide_lbl">Guide name</label>
+                    <li><input id="guide_lbl" type="text"  name="tour_guide" value="<?php echo $data[$data['id']]['tour_guide']?>" readonly></li>
+                    <label for="time_lbl">time</label>
+                    <li><input id="time_lbl" type="text"  name="starting_time" value="<?php echo $data[$data['id']]['starting_time']?>" readonly></li>
+                    <label for="lang_lbl">Language</label>
+                    <li><input id="lang_lbl" type="text"  name="lang" value="<?php echo $data[$data['id']]['lang']?>" readonly></li>
+                    <label for="date_lbl">Date</label>
+                    <li><input id="date_lbl" type="text"  name="date" value="<?php echo $data[$data['id']]['date']?>" readonly></li>
+                    <label for="price_lbl">Price</label>
+                    <li><input id="price_lbl" type="text"  name="price" value="<?php echo $data[$data['id']]['price']?>" readonly></li>
+                </ul>
 
-            </section>
+                <button class="add-ticket-history" id="add-ticket-history" type="submit" value="Add to cart">Add ticket to cart</button>
+                <a href="<?php echo URLROOT; ?>/histories/tickets" name="add-history-ticket" type="button" id="back-tickets">Back</a>
+                <?php echo $data['status']?>
+            </form>
         </section>
-
     </section>
     <?php //print_r($data);
         print_r($_SESSION["shopping_cart"]);

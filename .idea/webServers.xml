@@ -5,6 +5,9 @@
       <webServer id="21e0b19e-57e5-44fa-a377-dfd3aa49d70b" name="xampp" url="http://localhost/PHP">
         <fileTransfer mountedRoot="C:\Program Files\xampp\htdocs\PHP" accessType="MOUNT" port="0" />
       </webServer>
+      <webServer id="e2a3b3fc-8a5f-485b-be8c-40329f4c1b1a" name="xampp2" url="http://localhost/PHP">
+        <fileTransfer mountedRoot="D:\xampp\htdocs\PHP" accessType="MOUNT" port="0" />
+      </webServer>
     </option>
   </component>
 </project>
