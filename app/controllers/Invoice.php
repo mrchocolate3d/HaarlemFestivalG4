@@ -88,9 +88,10 @@ class Invoice extends Controller {
             $dompdf->setOptions($options);
             $dompdf->output();
             //$dompdf->load_html($content);
-            $dompdf->loadHtml($content);
+            $dompdf->loadHtml(html_entity_decode($content));
             $dompdf->render();
-            // $dompdf->stream("sample.pdf", array("Attachment"=>0));
+            ob_end_clean();
+            //$dompdf->stream("sample.pdf", array("Attachment"=>0));
             $output  = $dompdf->output();
             $pdfName = mt_rand(0, 1000000) . md5(strtotime("now"));
             $pdf     = file_put_contents($pdfName . '.pdf', $output);
