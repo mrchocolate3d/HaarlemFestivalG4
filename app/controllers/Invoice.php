@@ -82,8 +82,8 @@ class Invoice extends Controller {
             $dompdf = new Dompdf();
             $dompdf->setOptions($options);
             $dompdf->output();
-            $dompdf->load_html($content);
-            //$dompdf->loadHtml($content);
+            //$dompdf->load_html($content);
+            $dompdf->loadHtml($content);
             $dompdf->render();
             // $dompdf->stream("sample.pdf", array("Attachment"=>0));
             $output  = $dompdf->output();
