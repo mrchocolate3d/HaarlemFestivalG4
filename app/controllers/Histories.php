@@ -14,19 +14,23 @@ class Histories extends Controller
     }
 
     public function tickets(){
+        //get all the history events
         $result = $this->historyModel->getHistoryEvents();
 
-
+        //checks if user wants to filter the table through dropdown
         if(isset($_POST['filter-language'])){
             if (!empty($_POST['ticket_dropdown'])){
+                //gets the argument from dropdown and fetches result from model
                 $lang = $_POST['ticket_dropdown'];
                 $result = $this->historyModel->getHistoryEventByLanguage($lang);
 
             }
         }
         if (isset($_POST['reset-language'])){
+            //when user wants to see all languages again
             $result = $this->historyModel->getHistoryEvents();
         }
+        //fills the array to display all tours or filtered tours
         foreach ($result as $item){
             $data[]=array('history_event_id'=>$item->history_event_id,'lang'=>$item->lang,
                 'tour_guide'=>$item->tour_guide, 'location_id'=>$item->location_id,
@@ -95,6 +99,7 @@ class Histories extends Controller
     }
 
     public function confirmation(){
+        //request ticket id
         $id = $_REQUEST['ticket'];
         $this->view('histories/confirmation');
     }
