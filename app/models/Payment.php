@@ -9,9 +9,9 @@ class Payment
     {
         $this->db = new Database();
     }
-    public function createOrder($payStatus,$userId,$total,$cart){
+    public function createOrder($payStatus,$userId,$total){
 
-        $this->db->query('INSERT INTO orders (userID,totalPrice,status) VALUE (:id,:total,:status); ');
+        $this->db->query('INSERT INTO orders (userID,totalPrice,status) VALUE (:id,:total,:status)');
         $this->db->bind(':id',$userId);
         $this->db->bind(':total',$total);
         $this->db->bind(':status',$payStatus);
@@ -19,7 +19,7 @@ class Payment
 
     }
     public function getOrderId(){
-        $this->db->query('SELECT MAX(orderID) as orderID FROM orders;');
+        $this->db->query('SELECT MAX(orderID) as orderID FROM orders ');
         return $this->db->singleRow();
     }
     public function addOrderItem($id,$ticketID,$quantity){

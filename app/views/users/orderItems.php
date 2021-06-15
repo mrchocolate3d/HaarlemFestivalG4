@@ -12,7 +12,7 @@
             <table id="confirm-table">
                 <thead>
                 <th>Order ID</th>
-                <th>Ticket</th>
+                <th>Ticket ID</th>
                 <th>Quantity</th>
                 </thead>
                 <?php

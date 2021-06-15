@@ -46,14 +46,13 @@ class Payments extends Controller
 
 
 
+
+            $statusPay = "paid";
+            $this->paymentModel->createOrder($statusPay,$userId,$total_price);
             $id= $this->paymentModel->getOrderId();
 
             $data = $id->orderID;
             $_SESSION['orderID']= $data;
-
-            $statusPay = "paid";
-            $this->paymentModel->createOrder($statusPay,$userId,$total_price,$cart);
-
 
             header('location: '.$payment->getCheckoutUrl(), true, 303);
 
@@ -75,6 +74,7 @@ class Payments extends Controller
                 $this->paymentModel->addOrderItem($data,$tickID,$quantity);
             }
             $data='';
+            unset($_SESSION['shopping_cart']);
 
             $this->view('payments/index',$data);
 

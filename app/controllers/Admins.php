@@ -9,7 +9,7 @@ class Admins extends Controller
         $this->adminModel = $this->model('Admin');
     }
 
-
+    //Edit dance page
     public function editDance(){
 
         $data = [
@@ -26,7 +26,7 @@ class Admins extends Controller
             'emptyFieldsErrors' => ''
 
         ];
-
+        //Update dance information
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action']=="updateDance"){
             $data = [
                 'title' => 'Add Dance',
@@ -59,6 +59,7 @@ class Admins extends Controller
             }
         }
 
+        //Insert new dance information
         else if ($_SERVER['REQUEST_METHOD'] == 'POST'  && $_POST['action']=="insertDance"){
             $data = [
                 'title' => 'Add Dance',
@@ -95,7 +96,7 @@ class Admins extends Controller
             }
         }
 
-
+            //Get the specific dance using the id in the url and display it on the page
             if(isset($_GET['id'])) {
             $id=$_GET['id'];
             //$id=$_REQUEST['id'];
@@ -139,11 +140,6 @@ class Admins extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         }
-
-
-
-
-
         $this->view('admins/createDance',$data);
     }
 
@@ -225,6 +221,14 @@ class Admins extends Controller
     }
 
     public function adminAccount(){
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'&& $_POST['action'] == "submit"){
+            $this->adminModel->updateAdmin($_SESSION['adminID'],trim($_POST['email']),trim($_POST['password']));
+            unset($_SESSION['adminEmail']);
+            $_SESSION['adminEmail'] = trim($_POST['email']);
+            $this->view('admins/adminAccount');
+        }
+
         $this->view('admins/adminAccount');
 
     }

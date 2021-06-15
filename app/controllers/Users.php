@@ -82,7 +82,6 @@ class Users extends Controller
         foreach ($result as $item){
             $data[]=array('orderID'=>$item->orderID,'ticketID'=>$item->ticketID,
                 'quantity'=>$item->quantity);
-
         }
         $this->view('users/orderItems',$data);
     }
