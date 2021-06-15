@@ -6,7 +6,7 @@ include '../vendor/phpqrcode/qrlib.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class SendMailWithAttachement extends Controller {
+class Invoice extends Controller {
 
     public function index()
     {
@@ -73,7 +73,7 @@ class SendMailWithAttachement extends Controller {
                 
             }
             
-            $content = '<style>td,th{padding:10px}</style><div style="text-align:center"><h1>History Ticket Invoice </h1><p>Scan the Qr Code to get more details</p>' . $qrcode . $html2 . '</div>';
+            $content = '<style>td,th{padding:10px}</style><section style="text-align:center"><h1>History Ticket Invoice </h1><p>Scan the Qr Code to get more details</p>' . $qrcode . $html2 . '</section>';
             
             
             $options = new Options();
@@ -119,7 +119,7 @@ class SendMailWithAttachement extends Controller {
             
         } else {
             echo '<h3>Please add some items in the cart</h3>';
-            echo '<a href="' . URLROOT . '/histories/tickets">Go to Shop</a>';
+            echo '<a href="' . URLROOT . '/histories/tickets">Go back to website</a>';
         }
     }
 }
