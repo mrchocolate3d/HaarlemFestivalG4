@@ -8,7 +8,13 @@ include APPROOT . '/views/includes/adminNav.php';
 <body>
 <section>
     <form action="<?php echo URLROOT; ?>/admins/editAdmin" method="post">
-        <h2>Edit Admin</h2>
+        <?php
+        if(isset($_GET['id'])) {
+            ?>
+            <h2>Edit Admin</h2>
+        <?php } else { ?>
+            <h2>New Admin</h2>
+        <?php }  ?>
         <label>Admin Email</label>
         <?php if(isset($_GET['id'])){?>
             <input type="text" name="id" value='<?php echo $_REQUEST['id']?>'>

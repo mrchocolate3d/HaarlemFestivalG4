@@ -1,13 +1,17 @@
 <?php 
-require "../vendor/autoload.php";
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
 include '../vendor/phpqrcode/qrlib.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 class Invoice extends Controller {
 
+    public function __construct()
+    {
+
+    }
     public function index()
     {
         $this->view('Invoice/invoice');
@@ -55,7 +59,7 @@ class Invoice extends Controller {
                        <td> ' . $value['quantity'] . '</td>;
                        <td> &euro; ' . $value['price'] . '</td>';
                 }
-                
+
                 $html2 .= '<tr><td colspan="6">Grand Total</td><td>&euro; ' . $total . '</td></tr></table>';
                 
                 $fileName = md5(uniqid()) . '.jpg';

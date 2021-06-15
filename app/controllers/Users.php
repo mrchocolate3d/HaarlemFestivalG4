@@ -67,6 +67,83 @@ class Users extends Controller
         header('location:' . URLROOT . '/users/login');
     }
 
+    public function account(){
+        $data = [
+            'firstname' => '',
+            'lastname' => '',
+            'email' => '',
+            'error' => ''
+        ];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'  && $_POST['action']=="update"){
+            $data = [
+                'firstname' => trim($_POST['firstname']),
+                'lastname' => trim($_POST['lastname']),
+                'email'=> trim($_POST['email']),
+                'password' =>trim($_POST['password']),
+                'confirmPassword' =>trim($_POST['confirmPassword']),
+                'error' => ''
+            ];
+            $id = $_SESSION['userID'];
+            if(empty($data['firstname']) || empty($data['lastname']) || empty($data['email'])){
+                $data['error'] = 'Enter the required fields';
+                $this->view('users/account' , $data);
+            } else  if (!empty($data['firstname']) && !empty($data['lastname']) && !empty($data['email'])
+                && !empty($data['password']) && !empty($data['confirmPassword'])){
+                if($data['password'] != $data['confirmPassword']){
+                    $data['error'] = 'Passwords do not match. Please try again';
+                    $this->view('users/account' , $data);
+                } else{
+                    try {
+                        $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+                        $check = $this->userModel->findUserByEmail($data['email']);
+                        if (!$check){
+                            $this->userModel->updateUser($data['firstname'],$data['lastname'],$data['email'],$data['password'],$id);
+                            $data['error'] = 'User information has been updated';
+                        }
+                        else {
+                            $data['error'] = 'User information has been updated';
+                        }
+
+                        $this->view('users/account' , $data);
+                    } catch(Exception $exception){
+                        echo $exception;
+                    }
+                }
+
+            } else {
+                try {
+                    $check = $this->userModel->findUserByEmail($data['email']);
+                    if (!$check){
+                        $this->userModel->updateUserWithoutPassword($data['firstname'],$data['lastname'],$data['email'],$id);
+                        $data['error'] = 'User information has been updated';
+                    }
+                    else {
+                        $data['error'] = 'User information has been updated';
+                    }
+                    $this->view('users/account' , $data);
+                } catch(Exception $exception){
+                    echo $exception;
+                }
+            }
+        }
+
+        if(isset($_GET['email'])) {
+            $id = $_GET['email'];
+            $result = $this->userModel->GetUserByEmail($id);
+            if ($result){
+                $data = [
+                    'firstname' => $result->firstname,
+                    'lastname' => $result->lastname,
+                    'email' => $result->email,
+                    'error' => '',
+                ];
+                $this->view('users/account', $data);
+            }
+        }
+        $this->view('users/account', $data);
+
+    }
+
     public function register()
     {
         $data = [

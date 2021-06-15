@@ -28,7 +28,7 @@ include APPROOT . '/views/includes/navigation.php';
                 </span>
 
 
-                <button id="submit" type="submit" value="submit">Submit</button>
+                <button id="update" type="submit" value="update">Submit</button>
             </form>
         </aside>
     </section>
