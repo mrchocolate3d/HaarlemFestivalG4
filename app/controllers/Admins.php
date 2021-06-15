@@ -331,11 +331,11 @@ class Admins extends Controller
     }
 
     public function createAdminSession($user){
-        $_SESSION['userID'] = $user->adminID;
+        $_SESSION['adminID'] = $user->adminID;
         $_SESSION['AdminType'] = $user->type;
-        $_SESSION['email'] = $user->email;
+        $_SESSION['adminEmail'] = $user->email;
         $data =  [
-            'status' => 'Welcome to admin page ' . $_SESSION['email']
+            'status' => 'Welcome to admin page ' . $_SESSION['adminEmail']
         ];
         $this->view('admins/homepage' , $data);
     }

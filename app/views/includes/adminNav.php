@@ -6,7 +6,7 @@
         <li> <a href="<?php echo URLROOT . "/admins/danceAdmin" ?>">Haarlem Dance</a></li>
 
         <li>
-            <?php if (isset($_SESSION['email'])) : ?>
+            <?php if (isset($_SESSION['adminEmail'])) : ?>
                 <?php if ($_SESSION['AdminType'] == 'Administrator') :?>
                     <a href="<?php echo URLROOT; ?>/admins/adminAccount">Your Account</a>
             <?php else : ?>
