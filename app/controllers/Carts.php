@@ -9,8 +9,10 @@ class Carts extends Controller
 
     }
 
+    //Cart page
     public function cart(){
         $status="";
+        //Remove an item from the cart if the remove button is clicked
         if(isset($_POST['action']) && $_POST['action']=="remove"){
             if(!empty($_SESSION["shopping_cart"])) {
                 foreach ($_SESSION["shopping_cart"] as $key => $value){
@@ -24,6 +26,7 @@ class Carts extends Controller
             }
         }
 
+        //Change the quantity of an item in the cart by searching for the correct one
         if (isset($_POST['action']) && $_POST['action']=="change"){
             foreach($_SESSION["shopping_cart"] as &$value){
                 if($value['event_id'] === $_POST["event_id"]){
@@ -44,6 +47,7 @@ class Carts extends Controller
         $this->view('carts/cart',$data);
     }
 
+    //Geting the orders for what was just paid and telling the user that it was paid
     public function confirmationPage(){
 
         $orderID = $_SESSION["orderID"];

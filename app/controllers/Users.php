@@ -9,6 +9,7 @@ class Users extends Controller
         $this->userModel = $this->model('User');
     }
 
+    //Customer login with validation
     public function login()
     {
         $data = [
@@ -53,14 +54,14 @@ class Users extends Controller
         $this->view('users/login', $data);
     }
 
-
+    //Creating a user session
     public function createUserSession($user){
         $_SESSION['userID'] = $user->userID;
         $_SESSION['firstname'] = $user->firstname;
         $_SESSION['email'] = $user->email;
         header('location:' . URLROOT . '/pages/index');
     }
-
+    // Signing out of the session and unsetting it
     public function logout(){
         unset($_SESSION['userID']);
         unset($_SESSION['firstname']);
@@ -258,5 +259,18 @@ class Users extends Controller
         if(!isset($_SESSION['adminID'])){
             $this->view('admins/loginAdmin',$data);
         }
+    }
+
+    public function deleteUser(){
+
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $this->userModel->deleteUser($id);
+            $data =  [
+                'status' => 'User has been deleted'
+            ];
+        }
+        $this->view('admins/homepage' ,$data);
+
     }
 }

@@ -106,6 +106,12 @@ class User
 
     }
 
+    public function deleteUser($id){
+        $this->db->query('DELETE FROM users WHERE userID = :id');
+        $this->db->bind(':id',$id);
+        $this->db->execute();
+    }
+
 
 
     public function GetUserByEmail($email){

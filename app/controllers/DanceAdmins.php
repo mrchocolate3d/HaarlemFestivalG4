@@ -9,6 +9,7 @@ class DanceAdmins extends Controller
         $this->danceAdmin = $this->model('DanceAdmin');
     }
 
+    //View a list of Artists
     public function viewArtist(){
         $result = $this->danceAdmin->getAllArtists();
         foreach ($result as $row){
@@ -17,6 +18,7 @@ class DanceAdmins extends Controller
         $this->view('danceAdmins/viewArtist',$data);
     }
 
+    //Edit a specific Artist
     public function editArtist(){
         $data = [
             'id'=> '',
@@ -60,7 +62,7 @@ class DanceAdmins extends Controller
 
         }
 
-
+        //Get the Artist using the id provided
         if(isset($_GET['id'])) {
             $id=$_GET['id'];
             $row = $this->danceAdmin->getArtistsById($id);
@@ -73,7 +75,7 @@ class DanceAdmins extends Controller
     }
 
 
-
+    //Check if the admin is logged in and if not send them to the loginpage
     public function checkAdmin(){
         $data = [
             'emailError' => '',

@@ -29,14 +29,12 @@ include APPROOT . '/views/includes/adminNav.php';
                 </td>
 
                 <td align="center">
-                    <a href="<?php echo URLROOT; ?>/historyAdmins/deleteHistory?id=<?php echo $datum['id']; ?>">Delete</a>
+                    <a href="<?php echo URLROOT; ?>/users/deleteUser?id=<?php echo $datum['id']; ?>">Delete</a>
                 </td>
             </tr>
         <?php }?>
         </tbody>
     </table>
-
-    <a href="<?php echo URLROOT; ?>/historyAdmins/editHistory">New History Event</a>
 
 
 </main>

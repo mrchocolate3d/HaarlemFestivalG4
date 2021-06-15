@@ -124,26 +124,7 @@ class Admins extends Controller
 
     }
 
-
-
-    public function createDance(){
-        $result = $this->adminModel->getAllDance();
-
-        $data = [
-            'title'=> 'Admin page',
-            'email'=> '',
-            'password'=>'',
-            'emailError' => '',
-            'passwordError' => ''
-        ];
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-        }
-        $this->view('admins/createDance',$data);
-    }
-
-
+    // Get all the dance events and pu them in a list
     public function danceAdmin(){
         $result = $this->adminModel->getAllDance();
         foreach ($result as $row){
@@ -153,6 +134,7 @@ class Admins extends Controller
         $this->view('admins/danceAdmin',$data);
     }
 
+    //Check the credentails that are being used to log in and if they are correnct then create a new session for the user
     public function loginAdmin(){
         $data = [
             'title'=> 'Admin page',
@@ -173,7 +155,7 @@ class Admins extends Controller
               'passwordError' => ''
             ];
 
-
+            //Validations
             if (empty($data['email'])){
                 $data['emailError'] = 'Please enter email';
             }
@@ -197,7 +179,7 @@ class Admins extends Controller
         $this->view('admins/loginAdmin' , $data);
     }
 
-
+    //Delete a dance event based on the id that is being sent
     public function deleteDance(){
         $data = [
             'status' => ''
@@ -220,10 +202,12 @@ class Admins extends Controller
 
     }
 
+    //Update the current admin account information
     public function adminAccount(){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST'&& $_POST['action'] == "submit"){
-            $this->adminModel->updateAdmin($_SESSION['adminID'],trim($_POST['email']),trim($_POST['password']));
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $password = password_hash(trim($_POST['password']),PASSWORD_DEFAULT);
+            $this->adminModel->updateAdmin($_SESSION['adminID'],trim($_POST['email']),$password);
             unset($_SESSION['adminEmail']);
             $_SESSION['adminEmail'] = trim($_POST['email']);
             $this->view('admins/adminAccount');
@@ -233,6 +217,7 @@ class Admins extends Controller
 
     }
 
+    //Get the list of all admins
     public function allAdminList(){
         $result = $this->adminModel->getAllAdmin();
         foreach ($result as $row){
@@ -243,6 +228,7 @@ class Admins extends Controller
 
     }
 
+    //Edit the admin according the id provided
     public function editAdmin(){
        $data = [
             'title' => 'Add Admin',
@@ -252,6 +238,7 @@ class Admins extends Controller
 
         ];
 
+       //Update the admin information
         if ($_SERVER['REQUEST_METHOD'] == 'POST'  && $_POST['action']=="update"){
             $data = [
                 'title' => 'Add Dance',
@@ -278,7 +265,7 @@ class Admins extends Controller
             }
         }
 
-
+        //Create a new admin
         else if ($_SERVER['REQUEST_METHOD'] == 'POST'  && $_POST['action']=="insert"){
             $data = [
                 'title' => 'Add Dance',
@@ -296,6 +283,7 @@ class Admins extends Controller
             }
         }
 
+        //Show the admin information on a page according to the id that was used
         if(isset($_GET['id'])) {
             $id=$_GET['id'];
             //$id=$_REQUEST['id'];
@@ -322,11 +310,6 @@ class Admins extends Controller
     }
 
 
-    public function deleteAdmin(){
-
-    }
-
-
     public function homepage(){
         $data =  [
             'status' => ''
@@ -334,6 +317,7 @@ class Admins extends Controller
         $this->view('admins/homepage', $data);
     }
 
+    //Creating admin sessions
     public function createAdminSession($user){
         $_SESSION['adminID'] = $user->adminID;
         $_SESSION['AdminType'] = $user->type;
@@ -344,6 +328,7 @@ class Admins extends Controller
         $this->view('admins/homepage' , $data);
     }
 
+    //Logging out of the admin sessions
     public function adminLogout(){
         unset($_SESSION['adminID']);
         unset($_SESSION['AdminType']);
@@ -357,6 +342,7 @@ class Admins extends Controller
         // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
         return $d && $d->format($format) === $date;
     }
+    //Check if an admin is logged in and if not then send them to the login page
     public function checkAdmin(){
         $data = [
             'emailError' => '',

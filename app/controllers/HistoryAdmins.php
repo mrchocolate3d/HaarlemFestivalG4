@@ -10,6 +10,7 @@ class HistoryAdmins extends Controller
         $this->history = $this->model('History');
 
     }
+    //View a list of history events
     public function viewHistories(){
         $result = $this->history->getHistoryEvents();
         foreach ($result as $row){
@@ -30,7 +31,7 @@ class HistoryAdmins extends Controller
             'lang' => '',
             'emptyFieldsErrors' => ''
         ];
-
+        //Edit the specific history information
         if($_SERVER['REQUEST_METHOD'] == 'POST'&& $_POST['action']=="updateHistory"){
             $data = [
                 'title' => 'Add Dance',
@@ -60,6 +61,7 @@ class HistoryAdmins extends Controller
 
         }
 
+        //Create a new history event
         if($_SERVER['REQUEST_METHOD'] == 'POST'&& $_POST['action']=="insertHistory"){
             $data = [
                 'title' => 'Add Dance',
@@ -88,6 +90,7 @@ class HistoryAdmins extends Controller
             }
         }
 
+        //Display the history event using the id that is passed in the url
             if(isset($_GET['id'])) {
             $id=$_GET['id'];
 
@@ -112,7 +115,7 @@ class HistoryAdmins extends Controller
 
     }
 
-
+    //Delete the specific History using the id
     public function deleteHistory(){
         $data = [
             'status' => ''
