@@ -10,7 +10,7 @@ define('DB_DBNAME', 'gr2021hfse_festival');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 //URLROOT
-define ('URLROOT', 'http://localhost/HaarlemFestivalG4');
+define ('URLROOT', 'http://localhost/PHP/HaarlemFestivalG4');
 //define ('URLROOT', 'https://hfestivalg4.000webhostapp.com/HaarlemFestivalG4');
 
 //SITENAME
