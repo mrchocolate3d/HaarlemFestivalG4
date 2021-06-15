@@ -5,6 +5,7 @@ class HistoryAdmins extends Controller
 {
     public function __construct()
     {
+        $this->checkAdmin();
         $this->historyAdminModel = $this->model('HistoryAdmin');
         $this->history = $this->model('History');
 
@@ -135,7 +136,15 @@ class HistoryAdmins extends Controller
 
 
 
-
+    public function checkAdmin(){
+        $data = [
+            'emailError' => '',
+            'passwordError' => ''
+        ];
+        if(!isset($_SESSION['adminID'])){
+            $this->view('admins/loginAdmin',$data);
+        }
+    }
 
 
 

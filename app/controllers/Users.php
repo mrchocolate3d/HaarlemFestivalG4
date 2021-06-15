@@ -5,6 +5,7 @@ class Users extends Controller
 {
     public function __construct()
     {
+
         $this->userModel = $this->model('User');
     }
 
@@ -240,5 +241,23 @@ class Users extends Controller
             }
         }
         $this->view('users/register', $data);
+    }
+
+    public function viewAllUsers(){
+        $this->checkAdmin();
+        $result = $this->userModel->getUsers();
+        foreach ($result as $row){
+            $data[] = array('id'=>$row->userID,'firstname'=>$row->firstname,'lastname'=>$row->lastname,'email'=>$row->email);
+        }
+        $this->view('users/viewAllUsers',$data);
+    }
+    public function checkAdmin(){
+        $data = [
+            'emailError' => '',
+            'passwordError' => ''
+        ];
+        if(!isset($_SESSION['adminID'])){
+            $this->view('admins/loginAdmin',$data);
+        }
     }
 }
