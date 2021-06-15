@@ -53,6 +53,19 @@ class User
             return false;
         }
     }
+    //get all the orders of logged in user
+    public function getAllOrdersByUserID($userID){
+        $this->db->query('SELECT * FROM orders where userID =:id');
+        $this->db->bind(':id',$userID);
+        return $this->db->resultSet();
+    }
+    //search of all the order items selected by the user
+    public function searchOrderTicketsByID($id){
+        $this->db->query('SELECT * FROM order_ticket WHERE orderID = :id');
+        $this->db->bind(':id',$id);
+        $result = $this->db->resultSet();
+        return $result;
+    }
 
     //Find user using email and return true
     //

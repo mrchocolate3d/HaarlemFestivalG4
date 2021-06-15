@@ -16,6 +16,7 @@ class Invoice extends Controller {
     {
         $this->view('Invoice/invoice');
     }
+
     
     public function generatePdf()
     {

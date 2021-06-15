@@ -51,7 +51,8 @@ class Payments extends Controller
             $data = $id->orderID;
             $_SESSION['orderID']= $data;
 
-            $this->paymentModel->createOrder($payment->status,$userId,$total_price,$cart);
+            $statusPay = "paid";
+            $this->paymentModel->createOrder($statusPay,$userId,$total_price,$cart);
 
 
             header('location: '.$payment->getCheckoutUrl(), true, 303);

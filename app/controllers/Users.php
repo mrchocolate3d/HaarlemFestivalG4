@@ -66,6 +66,25 @@ class Users extends Controller
         unset($_SESSION['email']);
         header('location:' . URLROOT . '/users/login');
     }
+    public function orders(){
+        $userID = $_SESSION['userID'];
+        $result = $this->userModel->getAllOrdersByUserID($userID);
+        foreach ($result as $item){
+            $data[]=array('orderID'=>$item->orderID,'userID'=>$item->userID,
+                'totalPrice'=>$item->totalPrice,'status'=>$item->status);
+        }
+        $this->view('users/orders',$data);
+    }
+    public function orderItems(){
+        $id = $_REQUEST['orderID'];
+        $result=$this->userModel->searchOrderTicketsByID($id);
+        foreach ($result as $item){
+            $data[]=array('orderID'=>$item->orderID,'ticketID'=>$item->ticketID,
+                'quantity'=>$item->quantity);
+
+        }
+        $this->view('users/orderItems',$data);
+    }
 
     public function account(){
         $data = [
@@ -140,6 +159,7 @@ class Users extends Controller
                 $this->view('users/account', $data);
             }
         }
+
         $this->view('users/account', $data);
 
     }
