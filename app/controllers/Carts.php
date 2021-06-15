@@ -45,7 +45,17 @@ class Carts extends Controller
     }
 
     public function confirmationPage(){
-        $data[] =  '';
+
+        $orderID = $_SESSION["orderID"];
+
+        $result = $this->cartModel->searchOrderTicketsByID($orderID);
+
+
+        foreach ($result as $item){
+            $data[]=array('orderID'=>$item->orderID,'ticketID'=>$item->ticketID,
+                'quantity'=>$item->quantity);
+
+        }
 
         $this->view('carts/confirmationPage',$data);
     }

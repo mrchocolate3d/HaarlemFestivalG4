@@ -765,6 +765,13 @@ select.dance-select > option {
 .history-tickets-modal{
     display: none;
 }
+#add-ticket-title {
+    text-align: center;
+    color: white;
+}
+.main-add-history{
+    color: white;
+}
 .add-history-container{
     background-color: white;
     height: 70%;
@@ -968,6 +975,9 @@ select.dance-select > option {
     margin-right: auto;
     bottom: 100px;
     position: fixed;
+}
+#order-table{
+    border: black;
 }
 
 

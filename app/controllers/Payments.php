@@ -24,15 +24,13 @@ class Payments extends Controller
     {
         $total_price = number_format($_GET['price'],2);
         $cart = $_SESSION['shopping_cart'];
-        $userId = $_SESSION['userID'];
 
-      //  $data[] =  $_SESSION["shopping_cart"];
-        // $totalPrice = $_REQUEST['$total'];
 
+        if(isset($_SESSION['userID'])){
+
+            $userId = $_SESSION['userID'];
             $mollie = new MollieApiClient();
             $mollie->setApiKey('test_ajQEAHf8StBWg3dnW9VxWvcz26j5jh');
-            //$_SESSION["shopping_cart"];
-           // $amount = $_REQUEST["total"];
             $description = 'Payment for Haarlem Festival order' ;
 
             $payment = $mollie->payments->create([
@@ -41,37 +39,57 @@ class Payments extends Controller
                     "value" => "$total_price",
                 ],
                 "description" => "$description",
-                "redirectUrl" => "http://localhost/PHP/HaarlemFestivalG4/carts/cart",
+                "redirectUrl" => "http://localhost/PHP/HaarlemFestivalG4/carts/confirmationPage",
                 "webhookUrl" => "",
                 "metadata" => "",
             ]);
 
 
 
-           $id= $this->paymentModel->getOrderId();
-           $data = $id->orderID;
+            $id= $this->paymentModel->getOrderId();
 
-        $this->paymentModel->createOrder($payment->status,$userId,$total_price,$cart);
+            $data = $id->orderID;
+            $_SESSION['orderID']= $data;
+
+            $this->paymentModel->createOrder($payment->status,$userId,$total_price,$cart);
 
 
-        header('location: '.$payment->getCheckoutUrl(), true, 303);
+            header('location: '.$payment->getCheckoutUrl(), true, 303);
 
 
-        foreach ($cart as $item){
-            $quantity = $item["quantity"];
-            $eventID = $item["event_id"];
-            $price = $item["price"];
 
-            if($item["type"]=="Dance"){
-                $result = $this->paymentModel->searchDanceTicket($eventID,$price);
+            foreach ($cart as $item){
+                $quantity = $item["quantity"];
+                $eventID = $item["event_id"];
+                $price = $item["price"];
 
+                if($item["type"]=="Dance"){
+                    $result = $this->paymentModel->searchDanceTicket($eventID,$price);
+
+                }
+                else{
+                    $result = $this->paymentModel->searchHistoryTicket($eventID,$price);
+                }
+                $tickID = $result->ticketID;
+                $this->paymentModel->addOrderItem($data,$tickID,$quantity);
             }
-            else{
-                $result = $this->paymentModel->searchHistoryTicket($eventID,$price);
-            }
-            $tickID = $result->ticketID;
-            $this->paymentModel->addOrderItem($data,$tickID,$quantity);
+            $data='';
+
+            $this->view('payments/index',$data);
+
+
         }
+        else{
+            $data = [
+                'email'=> '',
+                'password' => '',
+                'emailError' => '',
+                'passwordError' => ''
+            ];
+            $this->view('/users/login',$data);
+        }
+
+
 
     }
 
