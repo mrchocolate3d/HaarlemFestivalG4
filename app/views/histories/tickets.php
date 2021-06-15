@@ -21,7 +21,8 @@
                         <option name="Dutch" value="Dutch">Dutch</option>
                         <option name="English" value="English">English</option>
                     </select>
-                    <input type="submit" name="filter-language">
+                    <input type="hidden" name="filter-language">
+                    <button type='submit' class='language-submit'> Set language</button>
                     <button name="reset-language">Show all languages</button>
                 </form>
             </section>
@@ -42,7 +43,7 @@
                         <td><?php echo $datum['lang']?></td>
                         <td><?php echo $datum['tour_guide']?></td>
                         <td>
-                            <a href="<?php echo URLROOT; ?>/histories/add?event_id=<?php echo $datum['history_event_id'];?>">Order tickets</a>
+                            <a id="select-history-ticket"href="<?php echo URLROOT; ?>/histories/add?event_id=<?php echo $datum['history_event_id'];?>">Order tickets</a>
 
                         </td>
                         </tr><?php }?>

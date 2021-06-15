@@ -15,7 +15,7 @@
                 <br>it is something you do not want to miss.
                 <br>Join one of our tours on Thursday, Friday, Saturday
                 or Sunday.</p>
-            <a id="history-show-more" href="#detail-history-container" type="button">Join us</a>
+            <a id="history-show-more" href="#detail-history-container" type="button"> Join us </a>
         </section>
     </section>
 
@@ -43,11 +43,11 @@
 
             </section>
             <aside class="history-map-aside">
-                <img src="../img/history_map.jpg" alt="Show map" id="show_map_img">
-                <p id="history-quote">Explore<br>Haarlem...</p>
+                <section class="img-map-aside">
+                    <img src="../img/history_map.jpg" alt="Show map" id="show_map_img">
+                </section>
+                <a href="<?php echo URLROOT; ?>/histories/map"><button id = "map_popup_btn">Show locations</button></a>
             </aside>
-
-            <a href="<?php echo URLROOT; ?>/histories/map"><button id = "map_popup_btn">Show locations</button></a>
 
 
         </section>
@@ -58,17 +58,6 @@
 </main>
 
 <script>
-    //popup
-    var btn = document.getElementById("map_popup_btn");
-    var modal=document.getElementById("map_popup");
 
-    btn.onclick=function (){
-        modal.style.display = "block";
-    }
-/*
-    this.window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }*/
 
 </script>

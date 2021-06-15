@@ -1,5 +1,5 @@
 <?php ?>
-<main>
+<main role="main" id="cart-main">
     <section class="nav-bar">
         <?php
         require APPROOT . '/views/includes/header.php';
@@ -7,13 +7,12 @@
         ?>
     </section>
     <section class="main-history-container">
-
-        <h1 id="confirm-title">Order Confirmation</h1>
-        <section class="confirmation-container">
+        <section class="main-confirm-container">
+            <h1 id="confirm-title">Order Confirmation</h1>
 
             <h2 id="confirm-detail">Your order has been placed!</h2>
 
-            <table id="order-table">
+            <table id="confirm-table">
                 <thead>
                 <th>Order ID</th>
                 <th>Ticket</th>
@@ -21,16 +20,21 @@
                 </thead>
                 <?php
                 foreach ($data as $datum){ ?>
-                        <tr>
+                    <tr id="tr-confirm">
 
-                            <td><?php echo $datum['orderID']?></td>
-                            <td><?php echo $datum['ticketID']?></td>
-                            <td><?php echo $datum['quantity']?></td>
-                        </tr>
+                        <td><?php echo $datum['orderID']?></td>
+                        <td><?php echo $datum['ticketID']?></td>
+                        <td><?php echo $datum['quantity']?></td>
+                    </tr>
                 <?php }?>
             </table>
+
+            <form action="<?php echo URLROOT; ?>/Invoice/generatePdf">
+                <button id="generate-invoice-btn" type="submit">Generate Invoice</button>
+            </form>
+
+        </section>
     </section>
-        <form action="<?php echo URLROOT; ?>/Invoice/generatePdf">
-            <button type="submit">Generate Invoice</button>
-        </form>
+
+
 </main>
