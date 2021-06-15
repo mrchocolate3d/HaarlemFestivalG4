@@ -47,7 +47,7 @@ include APPROOT . '/views/includes/adminNav.php';
 
         <aside>
             <label>Location Capacity</label>
-            <input type="text" name="capacity" value='<?php echo $data['capacity']?>' readonly>
+            <input type="text" name="capacity" value='<?php echo $data['capacity']?>'>
         </aside>
         <button id="updateHistory" name="action" type="submit" value="updateHistory">Update History</button>
         <button id="insertHistory" name="action" type="submit" value="insertHistory">Create New History Event</button>
