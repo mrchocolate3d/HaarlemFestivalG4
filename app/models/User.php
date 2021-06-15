@@ -71,9 +71,32 @@ class User
         }
     }
 
+    public function updateUser($firstname,$lastname,$email,$password,$userID){
+        $this->db->query('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :password WHERE userID = :userID');
+        $this->db->bind(':firstname',$firstname);
+        $this->db->bind(':lastname',$lastname);
+        $this->db->bind(':email',$email);
+        $this->db->bind(':password',$password);
+        $this->db->bind(':userID',$userID);
+
+        $this->db->execute();
+
+    }
+
+    public function updateUserWithoutPassword($firstname,$lastname,$email,$userID){
+        $this->db->query('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email WHERE userID = :userID');
+        $this->db->bind(':firstname',$firstname);
+        $this->db->bind(':lastname',$lastname);
+        $this->db->bind(':email',$email);
+        $this->db->bind(':userID',$userID);
+        $this->db->execute();
+
+    }
+
+
 
     public function GetUserByEmail($email){
-        $this->db->query('SELECT firstname, lastname, email, password,roleID FROM users WHERE email = :email');
+        $this->db->query('SELECT firstname, lastname, email FROM users WHERE email = :email');
         $this->db->bind(':email',$email);
         return $this->db->singleRow();
     }

@@ -1,13 +1,17 @@
 <?php 
-require "../vendor/autoload.php";
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
 include '../vendor/phpqrcode/qrlib.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 class Invoice extends Controller {
 
+    public function __construct()
+    {
+
+    }
     public function index()
     {
         $this->view('Invoice/invoice');
@@ -36,7 +40,7 @@ class Invoice extends Controller {
                 foreach ($_SESSION["shopping_cart"] as $value) {
                     
                     $html .= '
-                       Tour Date: ' . $value['tour_date'] . ';
+                       Tour Date: ' . $value['date'] . ';
                        Tour Item: ' . $value['idItem'] . ';
                        Tour Time: ' . $value['starting_time'] . ';
                        Tour Language: ' . $value['lang'] . ';
@@ -47,7 +51,7 @@ class Invoice extends Controller {
                     
                     $html2 .= '
                        <tr>
-                       <td> ' . $value['tour_date'] . '</td>;
+                       <td> ' . $value['date'] . '</td>;
                        <td>' . $value['idItem'] . '</td>;
                        <td>' . $value['starting_time'] . '</td>;
                        <td>' . $value['lang'] . '</td>;
@@ -55,7 +59,7 @@ class Invoice extends Controller {
                        <td> ' . $value['quantity'] . '</td>;
                        <td> &euro; ' . $value['price'] . '</td>';
                 }
-                
+
                 $html2 .= '<tr><td colspan="6">Grand Total</td><td>&euro; ' . $total . '</td></tr></table>';
                 
                 $fileName = md5(uniqid()) . '.jpg';
@@ -82,7 +86,8 @@ class Invoice extends Controller {
             $dompdf = new Dompdf();
             $dompdf->setOptions($options);
             $dompdf->output();
-            $dompdf->load_html($content);
+            //$dompdf->load_html($content);
+            $dompdf->loadHtml($content);
             $dompdf->render();
             // $dompdf->stream("sample.pdf", array("Attachment"=>0));
             $output  = $dompdf->output();

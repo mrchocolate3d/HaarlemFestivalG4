@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '4691861dfbc466616425b7ac0722da59040783ab',
+    'reference' => 'a67785680a4b964700068f5a3b982e14e82ccc87',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => '4691861dfbc466616425b7ac0722da59040783ab',
+      'reference' => 'a67785680a4b964700068f5a3b982e14e82ccc87',
+    ),
+    'dompdf/dompdf' => 
+    array (
+      'pretty_version' => 'v1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8768448244967a46d6e67b891d30878e0e15d25c',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -56,6 +65,33 @@
       ),
       'reference' => 'a8d20b941d622151a924acf4cf6e634bec2e2b30',
     ),
+    'phenx/php-font-lib' => 
+    array (
+      'pretty_version' => '0.5.2',
+      'version' => '0.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ca6ad461f032145fff5971b5985e5af9e7fa88d8',
+    ),
+    'phenx/php-svg-lib' => 
+    array (
+      'pretty_version' => 'v0.3.3',
+      'version' => '0.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5fa61b65e612ce1ae15f69b3d223cb14ecc60e32',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.4.1',
+      'version' => '6.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9256f12d8fb0cd0500f93b19e18c356906cbed3d',
+    ),
     'psr/http-message' => 
     array (
       'pretty_version' => '1.0.1',
@@ -80,6 +116,15 @@
       array (
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+    ),
+    'sabberworm/php-css-parser' => 
+    array (
+      'pretty_version' => '8.3.1',
+      'version' => '8.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd217848e1396ef962fb1997cf3e2421acba7f796',
     ),
     'symfony/polyfill-intl-idn' => 
     array (

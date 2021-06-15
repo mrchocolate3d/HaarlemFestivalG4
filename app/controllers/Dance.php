@@ -76,6 +76,8 @@
               'date' => trim($_POST['eventdate']),
               'starting_time' => trim($_POST['starttime']),
               'eventName' => trim($_POST["eventname"]),
+              'lang' => 'English',
+              'tour_guide' => 'N/A',
               'quantity'=> 1,
               'price' =>trim($_POST['total-price']),
               'location' => trim($_POST['location']))
