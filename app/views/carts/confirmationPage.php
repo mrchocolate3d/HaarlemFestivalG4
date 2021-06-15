@@ -30,4 +30,7 @@
                 <?php }?>
             </table>
     </section>
+        <form action="<?php echo URLROOT; ?>/Invoice/generatePdf">
+            <button type="submit">Generate Invoice</button>
+        </form>
 </main>

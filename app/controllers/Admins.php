@@ -5,8 +5,8 @@ class Admins extends Controller
 {
     public function __construct()
     {
+        $this->checkAdmin();
         $this->adminModel = $this->model('Admin');
-
     }
 
 
@@ -340,10 +340,26 @@ class Admins extends Controller
         $this->view('admins/homepage' , $data);
     }
 
+    public function adminLogout(){
+        unset($_SESSION['adminID']);
+        unset($_SESSION['AdminType']);
+        unset($_SESSION['adminEmail']);
+        header('location:' . URLROOT . '/admins/loginAdmin');
+    }
+
     function validateDate($date, $format = 'Y-m-d')
     {
         $d = DateTime::createFromFormat($format, $date);
         // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
         return $d && $d->format($format) === $date;
+    }
+    public function checkAdmin(){
+        $data = [
+            'emailError' => '',
+            'passwordError' => ''
+        ];
+        if(!isset($_SESSION['adminID'])){
+            $this->view('admins/loginAdmin',$data);
+        }
     }
 }

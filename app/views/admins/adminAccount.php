@@ -2,7 +2,6 @@
 require APPROOT . '/views/includes/header.php';
 include APPROOT . '/views/includes/adminNav.php';
 if ($_SESSION['AdminType'] == 'Administrator') {
-    echo 'This is a adDDmin';
 }
 
 ?>
@@ -19,11 +18,6 @@ if ($_SESSION['AdminType'] == 'Administrator') {
 
                 <button id="submit" type="submit" value="submit">Submit</button>
             </form>
-            <?php
-            if ($_SESSION['AdminType'] == 'SuperAdministrator'){ ?>
-                <a href="<?php echo URLROOT; ?>/admins/allAdminList">All admins</a>
-            <?php }
-            ?>
         </aside>
     </section>
 
