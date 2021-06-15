@@ -46,11 +46,12 @@ class Carts extends Controller
 
     public function confirmationPage(){
 
+        //this can be accessed after the payment
+        //gets the orderID which was set as a session
         $orderID = $_SESSION["orderID"];
-
+        //get the order items linked to the orderID
         $result = $this->cartModel->searchOrderTicketsByID($orderID);
-
-
+        //fill the array with the results from the method used above
         foreach ($result as $item){
             $data[]=array('orderID'=>$item->orderID,'ticketID'=>$item->ticketID,
                 'quantity'=>$item->quantity);

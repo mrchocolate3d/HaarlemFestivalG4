@@ -67,6 +67,7 @@ class Users extends Controller
         unset($_SESSION['email']);
         header('location:' . URLROOT . '/users/login');
     }
+    //get orders from logged in user
     public function orders(){
         $userID = $_SESSION['userID'];
         $result = $this->userModel->getAllOrdersByUserID($userID);
@@ -76,6 +77,7 @@ class Users extends Controller
         }
         $this->view('users/orders',$data);
     }
+    //get order items of selected order
     public function orderItems(){
         $id = $_REQUEST['orderID'];
         $result=$this->userModel->searchOrderTicketsByID($id);
