@@ -76,11 +76,11 @@ class Invoice extends Controller {
             $content = '<style>td,th{padding:10px}</style><section style="text-align:center"><h1>History Ticket Invoice </h1><p>Scan the Qr Code to get more details</p>' . $qrcode . $html2 . '</section>';
             
             
-            //$options = new Options();
-            //$options->set(URLROOT . '/public/qrfiles');
-            //$options->setIsRemoteEnabled(true);
+            $options = new Options();
+            $options->set(URLROOT . '/public/qrfiles');
+            $options->setIsRemoteEnabled(true);
             $dompdf = new Dompdf();
-            //$dompdf->setOptions($options);
+            $dompdf->setOptions($options);
             $dompdf->output();
             $dompdf->load_html($content);
             //$dompdf->loadHtml($content);
