@@ -105,8 +105,9 @@ class Invoice extends Controller {
                     
                     $mail->setFrom  = "test@gmail.com";
                     $mail->FromName = "Haarlem Festival";
-                    
-                    $mail->addAddress("abhishek.narvekar80@gmail.com", "Abhishek");
+                    $UserEmail = $_SESSION['email'];
+                    $UserFirstname = $_SESSION['firstname'];
+                    $mail->addAddress($UserEmail, $UserFirstname);
                     
                     //Provide file path and name of the attachments
                     $mail->addAttachment($file);
@@ -114,7 +115,7 @@ class Invoice extends Controller {
                     $mail->isHTML(true);
                     
                     $mail->Subject = "Haarlem Festival Tickets";
-                    
+                    var_dump($file);
                     echo $mail->send();
                     echo "Message has been sent successfully";
                 }
