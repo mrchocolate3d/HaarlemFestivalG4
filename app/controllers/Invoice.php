@@ -80,7 +80,7 @@ class Invoice extends Controller {
             
             $content = '<style>td,th{padding:10px}</style><section style="text-align:center"><h1>History Ticket Invoice </h1><p>Scan the Qr Code to get more details</p>' . $qrcode . $html2 . '</section>';
             
-            
+           
             $options = new Options();
             $options->set(URLROOT . '/public/qrfiles');
             $options->setIsRemoteEnabled(true);
@@ -90,8 +90,8 @@ class Invoice extends Controller {
             $dompdf->load_html($content);
             //$dompdf->loadHtml(html_entity_decode($content));
             $dompdf->render();
-            //ob_end_clean();
-            $dompdf->stream("sample.pdf", array("Attachment"=>0));
+            
+            // $dompdf->stream("sample.pdf", array("Attachment"=>0));
             $output  = $dompdf->output();
             $pdfName = mt_rand(0, 1000000) . md5(strtotime("now"));
             $pdf     = file_put_contents($pdfName . '.pdf', $output);
