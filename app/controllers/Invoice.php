@@ -87,11 +87,11 @@ class Invoice extends Controller {
             $dompdf = new Dompdf();
             $dompdf->setOptions($options);
             $dompdf->output();
-            //$dompdf->load_html($content);
-            $dompdf->loadHtml(html_entity_decode($content));
+            $dompdf->load_html($content);
+            //$dompdf->loadHtml(html_entity_decode($content));
             $dompdf->render();
-            ob_end_clean();
-            //$dompdf->stream("sample.pdf", array("Attachment"=>0));
+            //ob_end_clean();
+            $dompdf->stream("sample.pdf", array("Attachment"=>0));
             $output  = $dompdf->output();
             $pdfName = mt_rand(0, 1000000) . md5(strtotime("now"));
             $pdf     = file_put_contents($pdfName . '.pdf', $output);
@@ -106,6 +106,9 @@ class Invoice extends Controller {
                     
                     $mail->setFrom  = "test@gmail.com";
                     $mail->FromName = "Haarlem Festival";
+                    
+                    $mail->addAddress("abhishek.narvekar80@gmail.com", "Abhishek");
+
                     $UserEmail = $_SESSION['email'];
                     $UserFirstname = $_SESSION['firstname'];
                     $mail->addAddress($UserEmail, $UserFirstname);
@@ -117,6 +120,7 @@ class Invoice extends Controller {
                     
                     $mail->Subject = "Haarlem Festival Tickets";
                     var_dump($file);
+                    
                     echo $mail->send();
                     echo "Message has been sent successfully";
                 }
